@@ -1,0 +1,30 @@
+[
+  {
+    "timestamp": "2025-07-17T17:10:33.032Z",
+    "buildNumber": 1752772233032,
+    "gitCommit": "unknown",
+    "bundleSize": 0,
+    "initialBundleSize": 0,
+    "chunkCount": 0,
+    "lazyChunkCount": 0,
+    "performanceScore": 100,
+    "budgetStatus": {
+      "withinBudget": true,
+      "overage": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-17T19:02:29.269Z",
+    "buildNumber": 1752778949269,
+    "gitCommit": "unknown",
+    "bundleSize": 0,
+    "initialBundleSize": 0,
+    "chunkCount": 0,
+    "lazyChunkCount": 0,
+    "performanceScore": 100,
+    "budgetStatus": {
+      "withinBudget": true,
+      "overage": 0
+    }
+  }
+]

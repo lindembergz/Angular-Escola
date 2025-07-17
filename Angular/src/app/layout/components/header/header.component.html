@@ -1,0 +1,62 @@
+<header class="app-header">
+  <div class="header-content">
+    <!-- Left Section -->
+    <div class="header-left">
+      <button 
+        pButton 
+        pRipple
+        type="button" 
+        icon="pi pi-bars" 
+        class="p-button-text p-button-rounded sidebar-toggle"
+        (click)="onToggleSidebar()"
+        pTooltip="Menu"
+        tooltipPosition="bottom">
+      </button>
+      
+      <div class="app-logo">
+        <i class="pi pi-graduation-cap logo-icon"></i>
+        <span class="logo-text">Sistema Escolar</span>
+      </div>
+    </div>
+
+    <!-- Center Section -->
+    <div class="header-center">
+      <!-- Search or breadcrumb can go here -->
+    </div>
+
+    <!-- Right Section -->
+    <div class="header-right">
+      <!-- Notifications -->
+      <button 
+        pButton 
+        pRipple
+        type="button" 
+        icon="pi pi-bell" 
+        class="p-button-text p-button-rounded notification-btn"
+        pTooltip="Notificações"
+        tooltipPosition="bottom">
+        <p-badge value="3" severity="danger" class="notification-badge"></p-badge>
+      </button>
+
+      <!-- User Menu -->
+      <div class="user-menu" *ngIf="currentUser">
+        <button 
+          pButton 
+          pRipple
+          type="button" 
+          class="p-button-text user-btn"
+          [pMenuTriggerFor]="userMenu">
+          <p-avatar 
+            [label]="currentUser.name.charAt(0).toUpperCase()" 
+            styleClass="user-avatar"
+            size="normal">
+          </p-avatar>
+          <span class="user-name">{{ currentUser.name }}</span>
+          <i class="pi pi-chevron-down"></i>
+        </button>
+        
+        <p-menu #userMenu [model]="userMenuItems" [popup]="true"></p-menu>
+      </div>
+    </div>
+  </div>
+</header>

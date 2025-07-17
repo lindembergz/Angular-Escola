@@ -1,0 +1,77 @@
+[
+  {
+    "timestamp": "2025-07-17T19:01:46.266Z",
+    "metrics": {
+      "bundleSize": 2405966,
+      "initialBundleSize": 1192982,
+      "chunkCount": 65,
+      "lazyChunkCount": 47,
+      "largestAssetSize": 417490,
+      "timestamp": "2025-07-17T19:01:46.258Z"
+    },
+    "buildInfo": {
+      "nodeVersion": "v22.17.0",
+      "platform": "win32"
+    }
+  },
+  {
+    "timestamp": "2025-07-17T19:05:50.443Z",
+    "metrics": {
+      "bundleSize": 2405966,
+      "initialBundleSize": 1192982,
+      "chunkCount": 65,
+      "lazyChunkCount": 47,
+      "largestAssetSize": 417490,
+      "timestamp": "2025-07-17T19:05:50.439Z"
+    },
+    "buildInfo": {
+      "nodeVersion": "v22.17.0",
+      "platform": "win32"
+    }
+  },
+  {
+    "timestamp": "2025-07-17T19:50:12.509Z",
+    "metrics": {
+      "bundleSize": 2405966,
+      "initialBundleSize": 1192982,
+      "chunkCount": 65,
+      "lazyChunkCount": 47,
+      "largestAssetSize": 417490,
+      "timestamp": "2025-07-17T19:50:12.508Z"
+    },
+    "buildInfo": {
+      "nodeVersion": "v22.17.0",
+      "platform": "win32"
+    }
+  },
+  {
+    "timestamp": "2025-07-17T19:56:50.117Z",
+    "metrics": {
+      "bundleSize": 2405966,
+      "initialBundleSize": 1192982,
+      "chunkCount": 65,
+      "lazyChunkCount": 47,
+      "largestAssetSize": 417490,
+      "timestamp": "2025-07-17T19:56:50.108Z"
+    },
+    "buildInfo": {
+      "nodeVersion": "v22.17.0",
+      "platform": "win32"
+    }
+  },
+  {
+    "timestamp": "2025-07-17T19:59:50.674Z",
+    "metrics": {
+      "bundleSize": 2405966,
+      "initialBundleSize": 1192982,
+      "chunkCount": 65,
+      "lazyChunkCount": 47,
+      "largestAssetSize": 417490,
+      "timestamp": "2025-07-17T19:59:50.669Z"
+    },
+    "buildInfo": {
+      "nodeVersion": "v22.17.0",
+      "platform": "win32"
+    }
+  }
+]

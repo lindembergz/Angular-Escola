@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+// PrimeNG v19+ uses component-level styling - no global CSS imports needed
+
+// PrimeIcons
+@import "primeicons/primeicons.css";
+
+// PrimeFlex para layout responsivo
+@import "primeflex/primeflex.css";
+
+// Estilos globais customizados para o sistema escolar
+:root {
+  // Cores do tema escolar
+  --primary-color: #1976d2;
+  --primary-color-text: #ffffff;
+  --surface-ground: #f8f9fa;
+  --surface-section: #ffffff;
+  --surface-card: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-border: #dee2e6;
+  --surface-hover: #f8f9fa;
+  
+  // Cores específicas do sistema escolar
+  --school-primary: #1976d2;
+  --school-secondary: #424242;
+  --school-success: #4caf50;
+  --school-warning: #ff9800;
+  --school-danger: #f44336;
+  --school-info: #2196f3;
+}
+
+// Reset e estilos base
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+}
+
+// Estilos para o layout principal
+.layout-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+}
+
+.layout-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+// Utilitários customizados
+.text-school-primary {
+  color: var(--school-primary) !important;
+}
+
+.bg-school-primary {
+  background-color: var(--school-primary) !important;
+}
+
+.border-school-primary {
+  border-color: var(--school-primary) !important;
+}
+
+// Responsividade customizada
+@media screen and (max-width: 768px) {
+  .layout-content {
+    padding: 0.5rem;
+  }
+}
+
+// Estilos para componentes PrimeNG customizados
+.p-menubar {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.p-sidebar {
+  .p-sidebar-header {
+    background-color: var(--school-primary);
+    color: var(--primary-color-text);
+  }
+}
+
+// Animações suaves
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

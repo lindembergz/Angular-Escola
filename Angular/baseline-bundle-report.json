@@ -1,0 +1,140 @@
+{
+  "timestamp": "2025-01-15T00:00:00.000Z",
+  "summary": {
+    "totalSize": 1073741824,
+    "totalSizeFormatted": "1.02 MB",
+    "initialBundleSize": 1073741824,
+    "initialBundleSizeFormatted": "1.02 MB",
+    "budgetStatus": {
+      "initialBudget": 1048576,
+      "isOverBudget": true,
+      "overageBytes": 24576,
+      "overageFormatted": "23.59 KB"
+    }
+  },
+  "initialChunks": [
+    {
+      "name": "chunk-KUPXATMI.js",
+      "size": 453017,
+      "sizeFormatted": "442.33 KB",
+      "description": "Main PrimeNG and vendor libraries"
+    },
+    {
+      "name": "styles-EQCZMEOW.css",
+      "size": 369449,
+      "sizeFormatted": "360.79 KB",
+      "description": "CSS styles including PrimeNG themes"
+    },
+    {
+      "name": "main-GMQ2TK3C.js",
+      "size": 138824,
+      "sizeFormatted": "135.57 KB",
+      "description": "Application main bundle"
+    },
+    {
+      "name": "chunk-D74XWK5Q.js",
+      "size": 48148,
+      "sizeFormatted": "47.02 KB",
+      "description": "Additional vendor chunk"
+    },
+    {
+      "name": "polyfills-B6TNHZQ6.js",
+      "size": 35409,
+      "sizeFormatted": "34.58 KB",
+      "description": "Browser polyfills"
+    },
+    {
+      "name": "chunk-2FHTQFPN.js",
+      "size": 2519,
+      "sizeFormatted": "2.46 KB",
+      "description": "Small vendor chunk"
+    },
+    {
+      "name": "chunk-4CLCTAJ7.js",
+      "size": 830,
+      "sizeFormatted": "830 bytes",
+      "description": "Minimal chunk"
+    }
+  ],
+  "lazyChunks": [
+    {
+      "name": "chunk-6BZFVC4P.js",
+      "size": 427601,
+      "sizeFormatted": "417.58 KB",
+      "description": "escolas-list-component (largest lazy chunk)"
+    },
+    {
+      "name": "chunk-IWD5JANI.js",
+      "size": 142561,
+      "sizeFormatted": "139.22 KB",
+      "description": "Additional escolas functionality"
+    },
+    {
+      "name": "chunk-Z7OWQCQH.js",
+      "size": 56300,
+      "sizeFormatted": "54.98 KB",
+      "description": "Shared components"
+    },
+    {
+      "name": "chunk-X76KC3FF.js",
+      "size": 52173,
+      "sizeFormatted": "50.95 KB",
+      "description": "Additional shared functionality"
+    },
+    {
+      "name": "chunk-V7FJ3WAP.js",
+      "size": 22149,
+      "sizeFormatted": "21.63 KB",
+      "description": "escola-detail-component"
+    },
+    {
+      "name": "chunk-BWIBOMTL.js",
+      "size": 13209,
+      "sizeFormatted": "12.90 KB",
+      "description": "escola-form-component"
+    },
+    {
+      "name": "chunk-43TYFYQN.js",
+      "size": 5171,
+      "sizeFormatted": "5.05 KB",
+      "description": "dashboard-component"
+    },
+    {
+      "name": "chunk-QKCIRDSW.js",
+      "size": 441,
+      "sizeFormatted": "441 bytes",
+      "description": "escolas-routes"
+    }
+  ],
+  "analysis": {
+    "majorIssues": [
+      "Initial bundle exceeds 1MB budget by 23.59 KB",
+      "PrimeNG chunk (442.33 KB) is the largest contributor",
+      "CSS bundle (360.79 KB) is very large, likely including unused styles",
+      "Largest lazy chunk (417.58 KB) suggests room for further splitting"
+    ],
+    "optimizationOpportunities": [
+      "Optimize PrimeNG imports to reduce vendor chunk size",
+      "Implement selective CSS imports to reduce style bundle",
+      "Split large lazy chunks into smaller, more focused chunks",
+      "Review polyfills to include only necessary browser support",
+      "Implement tree shaking for unused code elimination"
+    ],
+    "positiveAspects": [
+      "Lazy loading is already implemented for escolas module",
+      "Dashboard component is properly lazy loaded",
+      "Good separation between initial and lazy chunks",
+      "Multiple small chunks suggest some code splitting is working"
+    ]
+  },
+  "targets": {
+    "initialBundleTarget": "< 1 MB",
+    "currentOverage": "23.59 KB",
+    "reductionNeeded": "2.3%",
+    "primaryTargets": [
+      "Reduce PrimeNG chunk by ~50 KB through selective imports",
+      "Reduce CSS bundle by ~100 KB through unused style removal",
+      "Optimize polyfills and vendor chunks"
+    ]
+  }
+}

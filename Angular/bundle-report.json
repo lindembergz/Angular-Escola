@@ -1,0 +1,84 @@
+{
+  "timestamp": "2025-07-17T19:04:13.605Z",
+  "summary": {
+    "totalSize": 2405966,
+    "totalSizeFormatted": "2.29 MB",
+    "initialBundleSize": 1192982,
+    "initialBundleSizeFormatted": "1.14 MB",
+    "jsSize": 1401582,
+    "jsSizeFormatted": "1.34 MB",
+    "cssSize": 371519,
+    "cssSizeFormatted": "362.81 KB",
+    "budgetStatus": {
+      "initialBudget": 1048576,
+      "isOverBudget": true,
+      "overageBytes": 144406,
+      "overageFormatted": "141.02 KB"
+    }
+  },
+  "assets": {
+    "total": 65,
+    "largest": [
+      {
+        "name": "chunk-LD3WHSCY.js",
+        "size": 417490,
+        "sizeFormatted": "407.71 KB"
+      },
+      {
+        "name": "styles-EQCZMEOW.css",
+        "size": 360793,
+        "sizeFormatted": "352.34 KB"
+      },
+      {
+        "name": "media/primeicons-DHQU4SEP.svg",
+        "size": 342525,
+        "sizeFormatted": "334.5 KB"
+      },
+      {
+        "name": "chunk-F5YW6S5C.js",
+        "size": 199209,
+        "sizeFormatted": "194.54 KB"
+      },
+      {
+        "name": "main-QPJ55W2S.js",
+        "size": 154019,
+        "sizeFormatted": "150.41 KB"
+      },
+      {
+        "name": "chunk-6H7O7YGJ.js",
+        "size": 136134,
+        "sizeFormatted": "132.94 KB"
+      },
+      {
+        "name": "chunk-GOTXU6SU.js",
+        "size": 130286,
+        "sizeFormatted": "127.23 KB"
+      },
+      {
+        "name": "chunk-3FJVOBVQ.js",
+        "size": 109463,
+        "sizeFormatted": "106.9 KB"
+      },
+      {
+        "name": "media/primeicons-RSSEDYLY.eot",
+        "size": 85156,
+        "sizeFormatted": "83.16 KB"
+      },
+      {
+        "name": "media/primeicons-P53SE5CV.woff",
+        "size": 85056,
+        "sizeFormatted": "83.06 KB"
+      }
+    ]
+  },
+  "chunks": {
+    "total": 65,
+    "initial": 18,
+    "lazy": 47
+  },
+  "recommendations": [
+    "Initial bundle exceeds 1MB - implement more aggressive lazy loading",
+    "Large UI library detected - optimize PrimeNG imports",
+    "Multiple large chunks detected - consider additional code splitting"
+  ]
+}

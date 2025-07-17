@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-07-17T19:50:12.521Z",
+  "duration": 7277,
+  "summary": {
+    "total": 4,
+    "passed": 1,
+    "failed": 3,
+    "successRate": "25.0"
+  },
+  "details": [
+    {
+      "name": "Bundle Size Tests",
+      "passed": false,
+      "output": null,
+      "error": "Command failed: node scripts/test-bundle-size.js",
+      "duration": 0
+    },
+    {
+      "name": "Performance Tests",
+      "passed": false,
+      "output": null,
+      "error": "Command failed: node scripts/test-performance-regression.js",
+      "duration": 0
+    },
+    {
+      "name": "Cross-Browser Compatibility",
+      "passed": true,
+      "output": "Compatibility checks: 5/5 passed",
+      "error": null,
+      "duration": 0
+    }
+  ],
+  "environment": {
+    "nodeVersion": "v22.17.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cwd": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend"
+  },
+  "bundleInfo": null
+}

@@ -1,0 +1,228 @@
+{
+  "timestamp": "2025-07-17T20:04:43.416Z",
+  "duration": 166,
+  "summary": {
+    "total": 6,
+    "passed": 4,
+    "failed": 2,
+    "successRate": "66.7"
+  },
+  "tests": [
+    {
+      "name": "Lazy Loaded Routes",
+      "startTime": 1752782683256,
+      "passed": true,
+      "details": {
+        "configurationChecks": {
+          "hasLoadComponent": true,
+          "hasLoadChildren": true,
+          "hasErrorHandling": true,
+          "hasGuards": true,
+          "hasWildcardRoute": true,
+          "hasRedirects": true
+        },
+        "routeChecks": [
+          {
+            "route": "dashboard",
+            "exists": true
+          },
+          {
+            "route": "escolas",
+            "exists": true
+          },
+          {
+            "route": "alunos",
+            "exists": true
+          },
+          {
+            "route": "professores",
+            "exists": true
+          },
+          {
+            "route": "academico",
+            "exists": true
+          },
+          {
+            "route": "avaliacoes",
+            "exists": true
+          },
+          {
+            "route": "financeiro",
+            "exists": true
+          },
+          {
+            "route": "relatorios",
+            "exists": true
+          }
+        ],
+        "configScore": "100.0",
+        "routeScore": "100.0"
+      },
+      "endTime": 1752782683257,
+      "duration": 1
+    },
+    {
+      "name": "PrimeNG Functionality",
+      "startTime": 1752782683258,
+      "passed": true,
+      "details": {
+        "analysis": {
+          "optimizedImports": 85,
+          "moduleImports": 32,
+          "files": [
+            {
+              "path": "\\src\\app\\app.component.ts",
+              "optimized": 4,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\core\\services\\notification.service.ts",
+              "optimized": 1,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\features\\dashboard\\dashboard.component.ts",
+              "optimized": 2,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\features\\escolas\\components\\escolas-list.component.ts",
+              "optimized": 9,
+              "modules": 4
+            },
+            {
+              "path": "\\src\\app\\features\\escolas\\components\\rede-escolar-form\\rede-escolar-form.component.ts",
+              "optimized": 6,
+              "modules": 3
+            },
+            {
+              "path": "\\src\\app\\features\\escolas\\pages\\escola-detail\\escola-detail.component.ts",
+              "optimized": 6,
+              "modules": 2
+            },
+            {
+              "path": "\\src\\app\\features\\escolas\\pages\\escola-form\\escola-form.component.ts",
+              "optimized": 6,
+              "modules": 2
+            },
+            {
+              "path": "\\src\\app\\features\\escolas\\pages\\escolas-list\\escolas-list.component.ts",
+              "optimized": 12,
+              "modules": 5
+            },
+            {
+              "path": "\\src\\app\\layout\\components\\header\\header.component.ts",
+              "optimized": 1,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\layout\\layout.module.ts",
+              "optimized": 10,
+              "modules": 6
+            },
+            {
+              "path": "\\src\\app\\shared\\components\\em-desenvolvimento\\em-desenvolvimento.component.ts",
+              "optimized": 2,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\shared\\components\\lazy-loading-error\\lazy-loading-error.component.ts",
+              "optimized": 2,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\shared\\components\\loading-spinner\\loading-spinner.component.ts",
+              "optimized": 1,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\shared\\components\\page-header\\page-header.component.ts",
+              "optimized": 2,
+              "modules": 0
+            },
+            {
+              "path": "\\src\\app\\shared\\shared.module.ts",
+              "optimized": 17,
+              "modules": 8
+            },
+            {
+              "path": "\\src\\test\\primeng-optimization-validation.spec.ts",
+              "optimized": 4,
+              "modules": 2
+            }
+          ]
+        },
+        "dependencies": {
+          "primeng": true,
+          "primeicons": true,
+          "primeflex": true
+        },
+        "optimizationScore": "72.6"
+      },
+      "endTime": 1752782683275,
+      "duration": 17
+    },
+    {
+      "name": "Cross-Browser Compatibility",
+      "startTime": 1752782683276,
+      "passed": false,
+      "details": {},
+      "error": "Unexpected token '/', \"/* To lear\"... is not valid JSON",
+      "endTime": 1752782683278,
+      "duration": 2
+    },
+    {
+      "name": "Network Performance",
+      "startTime": 1752782683279,
+      "passed": false,
+      "details": {},
+      "error": "Cannot read properties of undefined (reading 'reduce')",
+      "endTime": 1752782683285,
+      "duration": 6
+    },
+    {
+      "name": "Bundle Structure",
+      "startTime": 1752782683286,
+      "passed": true,
+      "details": {
+        "bundleAnalysis": {
+          "hasInitialBundleTest": true,
+          "hasTotalBundleTest": true,
+          "hasLazyLoadingTest": true,
+          "hasAssetSizeTest": true,
+          "passedTests": 6,
+          "failedTests": 3
+        },
+        "output": "\u001b[0m\n\u001b[1m\u001b[34mBundle Size Validation Tests\u001b[0m\u001b[0m\n\u001b[34m============================\u001b[0m\n\u001b[0m📊 Loaded stats: 65 assets, 65 chunks\u001b[0m\n\u001b[0m\n🧪 Testing: Initial Bundle Size\u001b[0m\n\u001b[31m❌ Initial Bundle Size: 1.1 MB exceeds budget by 141 KB\u001b[0m\n\u001b[0m\n🧪 Testing: Total Bundle Size\u001b[0m\n\u001b[32m✅ Total Bundle Size: 2.3 MB (within 3 MB budget)\u001b[0m\n\u001b[0m\n🧪 Testing: Individual Asset Sizes\u001b[0m\n\u001b[32m✅ Individual Asset Sizes: All assets within 1 MB limit\u001b[0m\n\u001b[0m\n🧪 Testing: Chunk Sizes\u001b[0m\n\u001b[32m✅ Chunk Sizes: Al...",
+        "testsPassed": 6,
+        "testsFailed": 3,
+        "successRate": "66.7"
+      },
+      "endTime": 1752782683414,
+      "duration": 128
+    },
+    {
+      "name": "Error Handling",
+      "startTime": 1752782683414,
+      "passed": true,
+      "details": {
+        "checks": {
+          "hasCatchBlocks": true,
+          "hasErrorComponents": true,
+          "hasWildcardRoute": true,
+          "hasGuards": true,
+          "hasErrorLogging": true
+        },
+        "score": "100.0"
+      },
+      "endTime": 1752782683416,
+      "duration": 2
+    }
+  ],
+  "requirements": {
+    "6.1": true,
+    "6.2": false,
+    "6.3": false,
+    "6.4": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "g21QGb00fbHTNrCGebEy3Rl5+joP893ihhbxshHxbrE=",
+  "Source": "SistemaGestaoEscolar.API",
+  "BasePath": "_content/SistemaGestaoEscolar.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

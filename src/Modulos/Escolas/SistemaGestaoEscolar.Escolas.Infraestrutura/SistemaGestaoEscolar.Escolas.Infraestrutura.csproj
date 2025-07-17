@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\SistemaGestaoEscolar.Shared.Domain\SistemaGestaoEscolar.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\SistemaGestaoEscolar.Shared.Application\SistemaGestaoEscolar.Shared.Application.csproj" />
+    <ProjectReference Include="..\SistemaGestaoEscolar.Escolas.Dominio\SistemaGestaoEscolar.Escolas.Dominio.csproj" />
+    <ProjectReference Include="..\SistemaGestaoEscolar.Escolas.Aplicacao\SistemaGestaoEscolar.Escolas.Aplicacao.csproj" />
+  </ItemGroup>
+
+</Project>

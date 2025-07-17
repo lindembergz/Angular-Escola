@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SistemaGestaoEscolar.Shared.Application/1.0.0": {
+        "dependencies": {
+          "SistemaGestaoEscolar.Shared.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SistemaGestaoEscolar.Shared.Application.dll": {}
+        }
+      },
+      "SistemaGestaoEscolar.Shared.Domain/1.0.0": {
+        "runtime": {
+          "SistemaGestaoEscolar.Shared.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SistemaGestaoEscolar.Shared.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SistemaGestaoEscolar.Shared.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

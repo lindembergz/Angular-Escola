@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uqnd/Vd/yuY=",
+  "success": true,
+  "projectFilePath": "C:\\Lindemberg\\Projetos\\Kiro\\src\\Modulos\\Escolas\\SistemaGestaoEscolar.Escolas.Dominio\\SistemaGestaoEscolar.Escolas.Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\linde\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

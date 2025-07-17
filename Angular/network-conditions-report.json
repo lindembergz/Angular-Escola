@@ -1,0 +1,125 @@
+{
+  "timestamp": "2025-07-17T19:50:25.998Z",
+  "summary": {
+    "totalProfiles": 4,
+    "successfulProfiles": 0,
+    "failedProfiles": 4
+  },
+  "profiles": [
+    {
+      "profile": "fast-3g",
+      "config": {
+        "downloadThroughput": 209715.2,
+        "uploadThroughput": 96000,
+        "latency": 150
+      },
+      "startTime": 1752781825975,
+      "endTime": 1752781825981,
+      "duration": 6,
+      "bundleLoadTime": null,
+      "chunkLoadTimes": [],
+      "errors": [
+        "Bundle information not available"
+      ],
+      "success": false,
+      "metrics": {}
+    },
+    {
+      "profile": "slow-3g",
+      "config": {
+        "downloadThroughput": 64000,
+        "uploadThroughput": 64000,
+        "latency": 400
+      },
+      "startTime": 1752781825981,
+      "endTime": 1752781825986,
+      "duration": 5,
+      "bundleLoadTime": null,
+      "chunkLoadTimes": [],
+      "errors": [
+        "Bundle information not available"
+      ],
+      "success": false,
+      "metrics": {}
+    },
+    {
+      "profile": "2g",
+      "config": {
+        "downloadThroughput": 35840,
+        "uploadThroughput": 32768,
+        "latency": 800
+      },
+      "startTime": 1752781825986,
+      "endTime": 1752781825992,
+      "duration": 6,
+      "bundleLoadTime": null,
+      "chunkLoadTimes": [],
+      "errors": [
+        "Bundle information not available"
+      ],
+      "success": false,
+      "metrics": {}
+    },
+    {
+      "profile": "offline",
+      "config": {
+        "downloadThroughput": 0,
+        "uploadThroughput": 0,
+        "latency": 0
+      },
+      "startTime": 1752781825992,
+      "endTime": 1752781825997,
+      "duration": 5,
+      "bundleLoadTime": null,
+      "chunkLoadTimes": [],
+      "errors": [
+        "Bundle information not available"
+      ],
+      "success": false,
+      "metrics": {}
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "reliability",
+      "priority": "medium",
+      "message": "Some network profiles failed. Improve error handling and retry mechanisms.",
+      "affectedProfiles": [
+        "fast-3g",
+        "slow-3g",
+        "2g",
+        "offline"
+      ]
+    }
+  ],
+  "performanceMatrix": [
+    {
+      "profile": "fast-3g",
+      "bundleLoadTime": null,
+      "lazyLoadingScore": 0,
+      "errorHandlingScore": 0,
+      "overallScore": 0
+    },
+    {
+      "profile": "slow-3g",
+      "bundleLoadTime": null,
+      "lazyLoadingScore": 0,
+      "errorHandlingScore": 0,
+      "overallScore": 0
+    },
+    {
+      "profile": "2g",
+      "bundleLoadTime": null,
+      "lazyLoadingScore": 0,
+      "errorHandlingScore": 0,
+      "overallScore": 0
+    },
+    {
+      "profile": "offline",
+      "bundleLoadTime": null,
+      "lazyLoadingScore": 0,
+      "errorHandlingScore": 0,
+      "overallScore": 0
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "eKKGiZmH9Dg=",
+  "success": true,
+  "projectFilePath": "C:\\Lindemberg\\Projetos\\Kiro\\src\\Modulos\\Escolas\\SistemaGestaoEscolar.Escolas.Aplicacao\\SistemaGestaoEscolar.Escolas.Aplicacao.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\linde\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\linde\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
+    "C:\\Users\\linde\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\linde\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

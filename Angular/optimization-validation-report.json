@@ -1,0 +1,160 @@
+{
+  "timestamp": "2025-07-17T19:59:50.780Z",
+  "duration": 310,
+  "summary": {
+    "passed": 2,
+    "total": 6,
+    "successRate": "33.3",
+    "duration": 310
+  },
+  "details": {
+    "bundleSize": {
+      "passed": false,
+      "output": null,
+      "error": "Command failed: node scripts/test-bundle-size.js",
+      "metrics": null
+    },
+    "performance": {
+      "passed": false,
+      "output": null,
+      "error": "Command failed: node scripts/test-performance-regression.js",
+      "metrics": null
+    },
+    "lazyLoading": {
+      "passed": true,
+      "checks": {
+        "hasLoadComponent": true,
+        "hasLoadChildren": true,
+        "hasErrorHandling": true,
+        "hasGuards": true
+      },
+      "score": "100.0"
+    },
+    "primeNGOptimization": {
+      "passed": true,
+      "checks": {
+        "optimizedImports": 85,
+        "moduleImports": 32,
+        "files": [
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\app.component.ts",
+            "optimized": 4,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\core\\services\\notification.service.ts",
+            "optimized": 1,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\features\\dashboard\\dashboard.component.ts",
+            "optimized": 2,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\features\\escolas\\components\\escolas-list.component.ts",
+            "optimized": 9,
+            "modules": 4
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\features\\escolas\\components\\rede-escolar-form\\rede-escolar-form.component.ts",
+            "optimized": 6,
+            "modules": 3
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\features\\escolas\\pages\\escola-detail\\escola-detail.component.ts",
+            "optimized": 6,
+            "modules": 2
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\features\\escolas\\pages\\escola-form\\escola-form.component.ts",
+            "optimized": 6,
+            "modules": 2
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\features\\escolas\\pages\\escolas-list\\escolas-list.component.ts",
+            "optimized": 12,
+            "modules": 5
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\layout\\components\\header\\header.component.ts",
+            "optimized": 1,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\layout\\layout.module.ts",
+            "optimized": 10,
+            "modules": 6
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\shared\\components\\em-desenvolvimento\\em-desenvolvimento.component.ts",
+            "optimized": 2,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\shared\\components\\lazy-loading-error\\lazy-loading-error.component.ts",
+            "optimized": 2,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\shared\\components\\loading-spinner\\loading-spinner.component.ts",
+            "optimized": 1,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\shared\\components\\page-header\\page-header.component.ts",
+            "optimized": 2,
+            "modules": 0
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\app\\shared\\shared.module.ts",
+            "optimized": 17,
+            "modules": 8
+          },
+          {
+            "path": "C:\\Lindemberg\\Projetos\\Kiro\\sistema-gestao-escolar-frontend\\src\\test\\primeng-optimization-validation.spec.ts",
+            "optimized": 4,
+            "modules": 2
+          }
+        ]
+      },
+      "score": "72.6"
+    },
+    "crossBrowser": {
+      "passed": false,
+      "error": "Unexpected token '/', \"/* To lear\"... is not valid JSON",
+      "checks": null,
+      "score": "0"
+    },
+    "networkConditions": {
+      "passed": false,
+      "checks": {
+        "hasLazyLoading": true,
+        "hasCodeSplitting": false,
+        "hasErrorHandling": true,
+        "hasOptimizedBundle": false
+      },
+      "score": "50.0"
+    },
+    "overall": {
+      "passed": 2,
+      "total": 6,
+      "successRate": "33.3",
+      "duration": 310
+    }
+  },
+  "recommendations": [
+    {
+      "category": "Bundle Size",
+      "priority": "high",
+      "message": "Bundle size exceeds target. Consider further code splitting and tree shaking.",
+      "action": "Review large chunks and optimize imports"
+    },
+    {
+      "category": "Performance",
+      "priority": "high",
+      "message": "Performance regression detected. Review recent changes.",
+      "action": "Analyze performance metrics and optimize critical paths"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.deps.json
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.dll
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.pdb
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Application.dll
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Domain.dll
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Domain.pdb
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\bin\Debug\net8.0\SistemaGestaoEscolar.Shared.Application.pdb
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.csproj.AssemblyReference.cache
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.AssemblyInfoInputs.cache
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.AssemblyInfo.cs
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaG.9BFAFFFA.Up2Date
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.dll
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\refint\SistemaGestaoEscolar.Shared.Infrastructure.dll
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\SistemaGestaoEscolar.Shared.Infrastructure.pdb
+C:\Lindemberg\Projetos\Kiro\src\Shared\SistemaGestaoEscolar.Shared.Infrastructure\obj\Debug\net8.0\ref\SistemaGestaoEscolar.Shared.Infrastructure.dll
