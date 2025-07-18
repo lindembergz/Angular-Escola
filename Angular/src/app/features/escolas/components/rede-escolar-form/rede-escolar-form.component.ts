@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -261,7 +261,7 @@ import * as EscolasSelectors from '../../store/escolas.selectors';
     }
   `]
 })
-export class RedeEscolarFormComponent implements OnInit, OnDestroy {
+export class RedeEscolarFormComponent implements OnInit, OnDestroy, OnChanges {
   private destroy$ = new Subject<void>();
   
   @Input() visible = false;

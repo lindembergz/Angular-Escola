@@ -14,6 +14,13 @@ export const routes: Routes = [
       }),
     canActivate: [LazyLoadingGuard]
   },
+
+  // Módulo de Autenticação - Lazy Loading
+  {
+    path: 'auth',
+    loadChildren: () => import('./features/auth/auth.routes')
+      .then(m => m.authRoutes)
+  },
   
   // Dashboard
   {

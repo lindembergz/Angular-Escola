@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { map, exhaustMap, catchError, tap } from 'rxjs/operators';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../features/auth/services/auth.service';
 import { NotificationService } from '../../core/services/notification.service';
 import * as AuthActions from './auth.actions';
 
@@ -35,7 +35,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
         tap(({ authResponse }) => {
-          this.notificationService.success(`Bem-vindo, ${authResponse.user.name}!`);
+          this.notificationService.success(`Bem-vindo, ${authResponse.user.fullName}!`);
           this.router.navigate(['/dashboard']);
         })
       ),
@@ -56,10 +56,12 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
-      map(() => {
-        this.authService.logout();
-        return AuthActions.logoutSuccess();
-      })
+      exhaustMap(() =>
+        this.authService.logout().pipe(
+          map(() => AuthActions.logoutSuccess()),
+          catchError(() => of(AuthActions.logoutSuccess())) // Even if API fails, logout locally
+        )
+      )
     )
   );
 
@@ -69,7 +71,7 @@ export class AuthEffects {
         ofType(AuthActions.logoutSuccess),
         tap(() => {
           this.notificationService.success('Logout realizado com sucesso');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         })
       ),
     { dispatch: false }
@@ -110,7 +112,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.refreshTokenFailure),
         tap(() => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         })
       ),
     { dispatch: false }

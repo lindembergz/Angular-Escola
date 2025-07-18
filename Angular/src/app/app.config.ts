@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 // NgRx
@@ -17,6 +17,11 @@ import { reducers, metaReducers } from './store/app.state';
 import { AuthEffects } from './store/auth/auth.effects';
 import { EscolasEffects } from './features/escolas/store/escolas.effects';
 import { environment } from '../environments/environment';
+
+// Interceptors
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,6 +40,23 @@ export const appConfig: ApplicationConfig = {
       trace: false,
       traceLimit: 75
     }),
+    
+    // HTTP Interceptors
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    },
     
     // PrimeNG Services
     MessageService,
