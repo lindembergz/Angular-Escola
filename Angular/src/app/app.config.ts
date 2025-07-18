@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { reducers, metaReducers } from './store/app.state';
 import { AuthEffects } from './store/auth/auth.effects';
-import { EscolasEffects } from './features/escolas/store/escolas.effects';
 import { environment } from '../environments/environment';
 
 // Interceptors
@@ -32,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     
     // NgRx Store
     provideStore(reducers, { metaReducers }),
-    provideEffects([AuthEffects, EscolasEffects]),
+    provideEffects([AuthEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production,
