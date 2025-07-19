@@ -13,23 +13,19 @@ public static class DatabaseConfiguration
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
+            // Use MySQL for both development and production to enable migrations
+            options.UseMySql(connectionString, ServerVersion.Parse("8.0.0"), mysqlOptions =>
+            {
+                mysqlOptions.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: null);
+            });
+
             if (environment.IsDevelopment())
             {
-                // Use in-memory database for development
-                options.UseInMemoryDatabase("SistemaGestaoEscolar_Dev");
                 options.EnableSensitiveDataLogging();
                 options.EnableDetailedErrors();
-            }
-            else
-            {
-                // Use MySQL for production
-                options.UseMySql(connectionString, ServerVersion.Parse("8.0.0"), mysqlOptions =>
-                {
-                    mysqlOptions.EnableRetryOnFailure(
-                        maxRetryCount: 5,
-                        maxRetryDelay: TimeSpan.FromSeconds(30),
-                        errorNumbersToAdd: null);
-                });
             }
 
             // Configure logging

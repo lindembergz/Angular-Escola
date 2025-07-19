@@ -1371,6 +1371,19 @@
           "bin/placeholder/SistemaGestaoEscolar.Escolas.Dominio.dll": {}
         }
       },
+      "SistemaGestaoEscolar.Shared.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SistemaGestaoEscolar.Shared.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SistemaGestaoEscolar.Shared.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SistemaGestaoEscolar.Shared.Application.dll": {}
+        }
+      },
       "SistemaGestaoEscolar.Shared.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -3294,6 +3307,11 @@
       "path": "../SistemaGestaoEscolar.Escolas.Dominio/SistemaGestaoEscolar.Escolas.Dominio.csproj",
       "msbuildProject": "../SistemaGestaoEscolar.Escolas.Dominio/SistemaGestaoEscolar.Escolas.Dominio.csproj"
     },
+    "SistemaGestaoEscolar.Shared.Application/1.0.0": {
+      "type": "project",
+      "path": "../../../Shared/SistemaGestaoEscolar.Shared.Application/SistemaGestaoEscolar.Shared.Application.csproj",
+      "msbuildProject": "../../../Shared/SistemaGestaoEscolar.Shared.Application/SistemaGestaoEscolar.Shared.Application.csproj"
+    },
     "SistemaGestaoEscolar.Shared.Domain/1.0.0": {
       "type": "project",
       "path": "../../../Shared/SistemaGestaoEscolar.Shared.Domain/SistemaGestaoEscolar.Shared.Domain.csproj",
@@ -3312,7 +3330,9 @@
       "Microsoft.Extensions.Logging.Abstractions >= 8.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.0",
       "SistemaGestaoEscolar.Escolas.Aplicacao >= 1.0.0",
-      "SistemaGestaoEscolar.Escolas.Dominio >= 1.0.0"
+      "SistemaGestaoEscolar.Escolas.Dominio >= 1.0.0",
+      "SistemaGestaoEscolar.Shared.Application >= 1.0.0",
+      "SistemaGestaoEscolar.Shared.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3353,6 +3373,12 @@
             },
             "C:\\Lindemberg\\Projetos\\Kiro\\src\\Modulos\\Escolas\\SistemaGestaoEscolar.Escolas.Dominio\\SistemaGestaoEscolar.Escolas.Dominio.csproj": {
               "projectPath": "C:\\Lindemberg\\Projetos\\Kiro\\src\\Modulos\\Escolas\\SistemaGestaoEscolar.Escolas.Dominio\\SistemaGestaoEscolar.Escolas.Dominio.csproj"
+            },
+            "C:\\Lindemberg\\Projetos\\Kiro\\src\\Shared\\SistemaGestaoEscolar.Shared.Application\\SistemaGestaoEscolar.Shared.Application.csproj": {
+              "projectPath": "C:\\Lindemberg\\Projetos\\Kiro\\src\\Shared\\SistemaGestaoEscolar.Shared.Application\\SistemaGestaoEscolar.Shared.Application.csproj"
+            },
+            "C:\\Lindemberg\\Projetos\\Kiro\\src\\Shared\\SistemaGestaoEscolar.Shared.Domain\\SistemaGestaoEscolar.Shared.Domain.csproj": {
+              "projectPath": "C:\\Lindemberg\\Projetos\\Kiro\\src\\Shared\\SistemaGestaoEscolar.Shared.Domain\\SistemaGestaoEscolar.Shared.Domain.csproj"
             }
           }
         }

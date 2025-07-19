@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using SistemaGestaoEscolar.API.Configuration;
 using SistemaGestaoEscolar.API.Middleware;
+using SistemaGestaoEscolar.Auth.Application;
+using SistemaGestaoEscolar.Auth.Infrastructure;
 using SistemaGestaoEscolar.Escolas.Infraestrutura.Configuracao;
 using SistemaGestaoEscolar.Shared.Infrastructure.Configuration;
 using SistemaGestaoEscolar.Shared.Infrastructure.Middleware;
@@ -56,6 +58,8 @@ try
     builder.Services.AddSharedInfrastructure();
 
     // Configure modules
+    builder.Services.AddAuthApplication();
+    builder.Services.AddAuthInfrastructure(builder.Configuration);
     builder.Services.AdicionarModuloEscolas(builder.Configuration);
 
     var app = builder.Build();
@@ -77,6 +81,8 @@ try
 
     app.UseHttpsRedirection();
     app.UseCors("AllowAngularApp");
+
+    app.UseAuthInfrastructure();
 
     app.UseAuthentication();
     app.UseAuthorization();

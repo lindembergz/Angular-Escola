@@ -50,6 +50,7 @@ public class ErrorHandlingMiddleware
             default:
                 response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 response.Message = "Erro interno do servidor";
+                response.Details = exception.ToString();
                 break;
         }
 

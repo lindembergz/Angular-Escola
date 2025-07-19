@@ -24,10 +24,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Domain\SistemaGestaoEscolar.Shared.Domain.csproj" />
     <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Application\SistemaGestaoEscolar.Shared.Application.csproj" />
+    <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Infrastructure\SistemaGestaoEscolar.Shared.Infrastructure.csproj" />
     <ProjectReference Include="..\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\SistemaGestaoEscolar.Escolas.Dominio.csproj" />
     <ProjectReference Include="..\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Aplicacao\SistemaGestaoEscolar.Escolas.Aplicacao.csproj" />
     <ProjectReference Include="..\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Infraestrutura\SistemaGestaoEscolar.Escolas.Infraestrutura.csproj" />
-    <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Infrastructure\SistemaGestaoEscolar.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modulos\Auth\SistemaGestaoEscolar.Auth.Domain\SistemaGestaoEscolar.Auth.Domain.csproj" />
+    <ProjectReference Include="..\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\SistemaGestaoEscolar.Auth.Application.csproj" />
+    <ProjectReference Include="..\Modulos\Auth\SistemaGestaoEscolar.Auth.Infrastructure\SistemaGestaoEscolar.Auth.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

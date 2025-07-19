@@ -1,0 +1,990 @@
+2025-07-19 10:34:06.865 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 11:39:26.130 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 11:41:02.718 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 11:47:38.106 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 11:47:40.690 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 11:47:41.146 -03:00 [ERR] An error occurred using the connection to database '' on server 'localhost'.
+2025-07-19 11:47:41.280 -03:00 [ERR] Erro ao inicializar o banco de dados
+MySqlConnector.MySqlException (0x80004005): Access denied for user 'root'@'172.17.0.1' (using password: YES)
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ServerSession.SendClearPasswordAsync(String password, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 743
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, String password, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 712
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, MySqlConnection connection, Int64 startingTimestamp, ILoadBalancer loadBalancer, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 537
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 428
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 433
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 111
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 144
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int64 startingTimestamp, Activity activity, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 919
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 419
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 48
+2025-07-19 11:47:41.443 -03:00 [FTL] Aplicação falhou ao iniciar
+MySqlConnector.MySqlException (0x80004005): Access denied for user 'root'@'172.17.0.1' (using password: YES)
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ServerSession.SendClearPasswordAsync(String password, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 743
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, String password, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 712
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, MySqlConnection connection, Int64 startingTimestamp, ILoadBalancer loadBalancer, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 537
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 428
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 433
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 111
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 144
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int64 startingTimestamp, Activity activity, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 919
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 419
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 48
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 88
+2025-07-19 11:49:28.530 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 11:49:30.287 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 11:49:30.813 -03:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 11:49:31.044 -03:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 11:49:31.237 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 11:49:31.290 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 11:49:31.295 -03:00 [INF] Hosting environment: Development
+2025-07-19 11:49:31.298 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 15:13:59.687 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 15:14:06.216 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 15:14:07.208 -03:00 [INF] Executed DbCommand (118ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 15:14:07.443 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 15:14:07.698 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 15:14:07.776 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 15:14:07.781 -03:00 [INF] Hosting environment: Development
+2025-07-19 15:14:07.785 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 15:15:10.042 -03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5001/api/auth/login - null null
+2025-07-19 15:15:10.193 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-19 15:15:10.200 -03:00 [INF] CORS policy execution successful.
+2025-07-19 15:15:10.248 -03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5001/api/auth/login - 204 null null 220.556ms
+2025-07-19 15:15:10.276 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/auth/login - application/json 232
+2025-07-19 15:15:10.304 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)
+SistemaGestaoEscolar.API.Controllers.AuthController.Login (SistemaGestaoEscolar.API)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-19 15:15:10.403 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/auth/login - 500 null text/plain; charset=utf-8 127.0019ms
+2025-07-19 15:16:14.058 -03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5001/api/auth/login - null null
+2025-07-19 15:16:14.081 -03:00 [INF] CORS policy execution successful.
+2025-07-19 15:16:14.087 -03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5001/api/auth/login - 204 null null 29.5849ms
+2025-07-19 15:16:14.118 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/auth/login - application/json 232
+2025-07-19 15:16:14.137 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)
+SistemaGestaoEscolar.API.Controllers.AuthController.Login (SistemaGestaoEscolar.API)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-19 15:16:14.154 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/auth/login - 500 null text/plain; charset=utf-8 35.2397ms
+2025-07-19 15:20:42.494 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 15:20:44.434 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 15:20:44.999 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 15:20:45.204 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 15:20:45.421 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 15:20:45.495 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 15:20:45.499 -03:00 [INF] Hosting environment: Development
+2025-07-19 15:20:45.502 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 15:20:47.304 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/ - null null
+2025-07-19 15:20:47.439 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/ - 301 0 null 143.3733ms
+2025-07-19 15:20:47.451 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 15:20:47.521 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 70.1478ms
+2025-07-19 15:20:47.540 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger-ui.css - null null
+2025-07-19 15:20:47.547 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger-ui-standalone-preset.js - null null
+2025-07-19 15:20:47.547 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger-ui-bundle.js - null null
+2025-07-19 15:20:47.624 -03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-19 15:20:47.624 -03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-19 15:20:47.632 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger-ui-standalone-preset.js - 200 312163 text/javascript 84.6859ms
+2025-07-19 15:20:47.633 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger-ui.css - 200 144929 text/css 92.8553ms
+2025-07-19 15:20:47.644 -03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-19 15:20:47.651 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 15:20:47.655 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger-ui-bundle.js - 200 1061536 text/javascript 108.3757ms
+2025-07-19 15:20:47.665 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 13.4462ms
+2025-07-19 15:20:48.874 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 15:20:48.929 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/favicon-32x32.png - null null
+2025-07-19 15:20:48.941 -03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-19 15:20:48.951 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/favicon-32x32.png - 200 628 image/png 21.6321ms
+2025-07-19 15:20:48.953 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 78.025ms
+2025-07-19 15:21:17.254 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 15:21:17.290 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 37.2524ms
+2025-07-19 15:21:17.327 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 15:21:17.339 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 12.9162ms
+2025-07-19 15:21:17.684 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 15:21:17.730 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.85ms
+2025-07-19 15:22:07.819 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/auth/login - application/json 138
+2025-07-19 15:22:07.902 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)
+SistemaGestaoEscolar.API.Controllers.AuthController.Login (SistemaGestaoEscolar.API)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-19 15:22:08.005 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/auth/login - 500 null text/plain; charset=utf-8 185.2796ms
+2025-07-19 15:25:48.396 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 15:25:52.855 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 15:25:53.442 -03:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 15:25:53.689 -03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 15:25:53.902 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 15:25:53.977 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 15:25:53.980 -03:00 [INF] Hosting environment: Development
+2025-07-19 15:25:53.985 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 15:25:54.747 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 15:25:55.068 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 331.8573ms
+2025-07-19 15:25:55.084 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 15:25:55.084 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 15:25:55.110 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 26.2779ms
+2025-07-19 15:25:55.175 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.9837ms
+2025-07-19 15:25:55.397 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 15:25:55.471 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 73.5465ms
+2025-07-19 15:43:33.225 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 135
+2025-07-19 15:43:33.297 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-19 15:43:33.308 -03:00 [INF] CORS policy execution failed.
+2025-07-19 15:43:33.316 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 15:43:33.345 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 15:43:33.447 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 15:43:33.487 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 16.8516ms
+2025-07-19 15:43:33.503 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 15:43:33.756 -03:00 [ERR] Erro não tratado na aplicação
+System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService' while attempting to activate 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method15(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at SistemaGestaoEscolar.API.Middleware.ErrorHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Middleware\ErrorHandlingMiddleware.cs:line 21
+2025-07-19 15:43:33.929 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 500 null application/json 703.7788ms
+2025-07-19 15:46:59.103 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 15:47:02.059 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 15:47:02.724 -03:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 15:47:02.979 -03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 15:47:03.220 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 15:47:03.357 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 15:47:03.361 -03:00 [INF] Hosting environment: Development
+2025-07-19 15:47:03.367 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 15:47:03.796 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 15:47:04.128 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 342.172ms
+2025-07-19 15:47:04.145 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 15:47:04.146 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 15:47:04.188 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 42.2092ms
+2025-07-19 15:47:04.257 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 112.7333ms
+2025-07-19 15:47:04.472 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 15:47:04.663 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 191.7001ms
+2025-07-19 15:47:38.716 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 139
+2025-07-19 15:47:38.778 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-19 15:47:38.787 -03:00 [INF] CORS policy execution failed.
+2025-07-19 15:47:38.794 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 15:47:38.816 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 15:47:38.897 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 15:47:38.937 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 13.0978ms
+2025-07-19 15:47:38.949 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 15:47:39.118 -03:00 [ERR] Erro não tratado na aplicação
+System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService' while attempting to activate 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method15(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at SistemaGestaoEscolar.API.Middleware.ErrorHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Middleware\ErrorHandlingMiddleware.cs:line 21
+2025-07-19 15:47:39.259 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 500 null application/json 543.3199ms
+2025-07-19 16:01:41.687 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 16:01:49.700 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 16:01:51.416 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 16:01:51.645 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 16:01:51.850 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 16:01:51.916 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 16:01:51.919 -03:00 [INF] Hosting environment: Development
+2025-07-19 16:01:51.922 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 16:01:52.655 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 16:01:53.097 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 459.1022ms
+2025-07-19 16:01:53.153 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 16:01:53.153 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 16:01:53.184 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 45.6174ms
+2025-07-19 16:01:53.222 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 80.1162ms
+2025-07-19 16:01:53.445 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 16:01:53.542 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.8169ms
+2025-07-19 16:02:12.987 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 135
+2025-07-19 16:02:13.024 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-19 16:02:13.036 -03:00 [INF] CORS policy execution failed.
+2025-07-19 16:02:13.043 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 16:02:13.053 -03:00 [INF] No CORS policy found for the specified request.
+2025-07-19 16:02:13.070 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 16:02:13.140 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 16:02:13.180 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 13.6775ms
+2025-07-19 16:02:13.194 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 16:02:13.361 -03:00 [ERR] Erro não tratado na aplicação
+System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService' while attempting to activate 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method16(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at SistemaGestaoEscolar.API.Middleware.ErrorHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Middleware\ErrorHandlingMiddleware.cs:line 21
+2025-07-19 16:02:13.546 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 500 null application/json 559.2344ms
+2025-07-19 17:55:48.093 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 17:55:49.654 -03:00 [FTL] Aplicação falhou ao iniciar
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 64
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #2) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #3) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #4) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #5) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #6) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #7) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #8) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #9) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2025-07-19 17:56:04.651 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 17:56:06.368 -03:00 [FTL] Aplicação falhou ao iniciar
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.) (Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 64
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LogoutUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #2) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.RefreshTokenUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #3) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ChangePasswordUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #4) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ForgotPasswordUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #5) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResetPasswordUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #6) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ConfirmEmailUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #7) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.ResendEmailConfirmationUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #8) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Interfaces.IAuthApplicationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #9) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService Lifetime: Scoped ImplementationType: SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService': Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'SistemaGestaoEscolar.Auth.Domain.Repositories.IUserRepository' while attempting to activate 'SistemaGestaoEscolar.Auth.Application.Services.AuthValidationService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2025-07-19 17:57:07.188 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 17:57:09.751 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 17:57:10.330 -03:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 17:57:10.523 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 17:57:10.619 -03:00 [INF] User profile is available. Using 'C:\Users\linde\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 17:57:10.889 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 17:57:10.962 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 17:57:10.966 -03:00 [INF] Hosting environment: Development
+2025-07-19 17:57:10.972 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 17:57:11.774 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 17:57:12.344 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 600.6981ms
+2025-07-19 17:57:12.387 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 17:57:12.389 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 17:57:12.421 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 29.2261ms
+2025-07-19 17:57:12.538 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 149.6132ms
+2025-07-19 17:57:12.978 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 17:57:13.137 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 159.4377ms
+2025-07-19 17:57:36.759 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 135
+2025-07-19 17:57:36.838 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-19 17:57:36.848 -03:00 [INF] CORS policy execution failed.
+2025-07-19 17:57:36.857 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 17:57:36.872 -03:00 [INF] CORS policy execution failed.
+2025-07-19 17:57:36.880 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 17:57:37.477 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 17:57:37.561 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 17:57:55.199 -03:00 [INF] Iniciando processo de login para email: admin@escola.com
+2025-07-19 17:57:55.259 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 17:57:55.601 -03:00 [INF] Executed DbCommand (63ms) [Parameters=[@__normalizedEmail_0='admin@escola.com' (Size = 254)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Ativo`, `t`.`BloqueadoAte`, `t`.`CreatedAt`, `t`.`EmailConfirmado`, `t`.`EscolaId`, `t`.`PrimeiroNome`, `t`.`RefreshToken`, `t`.`RefreshTokenExpiraEm`, `t`.`TentativasLoginFalhadas`, `t`.`UltimaMudancaSenhaEm`, `t`.`UltimoLoginEm`, `t`.`UltimoNome`, `t`.`UpdatedAt`, `t`.`Email`, `t`.`CodigoPerfil`, `t`.`NivelPerfil`, `t`.`NomePerfil`, `t`.`SenhaHash`, `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM (
+    SELECT `u`.`Id`, `u`.`Ativo`, `u`.`BloqueadoAte`, `u`.`CreatedAt`, `u`.`EmailConfirmado`, `u`.`EscolaId`, `u`.`PrimeiroNome`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiraEm`, `u`.`TentativasLoginFalhadas`, `u`.`UltimaMudancaSenhaEm`, `u`.`UltimoLoginEm`, `u`.`UltimoNome`, `u`.`UpdatedAt`, `u`.`Email`, `u`.`CodigoPerfil`, `u`.`NivelPerfil`, `u`.`NomePerfil`, `u`.`SenhaHash`
+    FROM `Usuarios` AS `u`
+    WHERE `u`.`Email` = @__normalizedEmail_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `Sessoes` AS `s` ON `t`.`Id` = `s`.`UsuarioId`
+ORDER BY `t`.`Id`
+2025-07-19 17:57:55.747 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__enderecoIp_0='::1' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM `Sessoes` AS `s`
+WHERE `s`.`EnderecoIp` = @__enderecoIp_0
+ORDER BY `s`.`IniciadaEm` DESC
+2025-07-19 17:57:56.608 -03:00 [WRN] Senha incorreta para usuário: "8307d9b6-64a6-11f0-b46f-ae359327704d"
+2025-07-19 17:57:56.624 -03:00 [WRN] Falha na validação de login para usuário "8307d9b6-64a6-11f0-b46f-ae359327704d": Credenciais inválidas
+2025-07-19 17:57:57.235 -03:00 [INF] Executed DbCommand (223ms) [Parameters=[@p13='8307d9b6-64a6-11f0-b46f-ae359327704d', @p0='True', @p1=NULL (DbType = DateTime), @p2='2025-07-19T13:44:37.3961260' (DbType = DateTime), @p3='True', @p4=NULL (DbType = Guid), @p5='Administrador' (Nullable = false) (Size = 100), @p6=NULL (Size = 500), @p7=NULL (DbType = DateTime), @p8='1', @p9='2025-07-19T13:44:37.3961260' (Nullable = true) (DbType = DateTime), @p10=NULL (DbType = DateTime), @p11='Sistema' (Nullable = false) (Size = 100), @p12='2025-07-19T20:57:56.7332544Z' (Nullable = true) (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usuarios` SET `Ativo` = @p0, `BloqueadoAte` = @p1, `CreatedAt` = @p2, `EmailConfirmado` = @p3, `EscolaId` = @p4, `PrimeiroNome` = @p5, `RefreshToken` = @p6, `RefreshTokenExpiraEm` = @p7, `TentativasLoginFalhadas` = @p8, `UltimaMudancaSenhaEm` = @p9, `UltimoLoginEm` = @p10, `UltimoNome` = @p11, `UpdatedAt` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+2025-07-19 17:58:11.096 -03:00 [ERR] Tentativa de login não autorizada
+System.UnauthorizedAccessException: Credenciais inválidas
+   at SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase.ExecuteAsync(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\UseCases\LoginUseCase.cs:line 85
+   at SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService.LoginAsync(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\Services\AuthApplicationService.cs:line 62
+   at SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Infrastructure\Controllers\AuthController.cs:line 50
+2025-07-19 17:58:30.752 -03:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-07-19 17:58:30.777 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 53202.4344ms
+2025-07-19 17:58:30.783 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 17:58:30.793 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 401 null application/json; charset=utf-8 54034.7341ms
+2025-07-19 18:00:43.254 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 142
+2025-07-19 18:00:43.320 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:00:43.328 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:00:43.339 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:00:43.347 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:00:43.362 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:00:43.372 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 18:01:19.187 -03:00 [INF] Iniciando processo de login para email: admin@escola.com
+2025-07-19 18:01:30.679 -03:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedEmail_0='admin@escola.com' (Size = 254)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Ativo`, `t`.`BloqueadoAte`, `t`.`CreatedAt`, `t`.`EmailConfirmado`, `t`.`EscolaId`, `t`.`PrimeiroNome`, `t`.`RefreshToken`, `t`.`RefreshTokenExpiraEm`, `t`.`TentativasLoginFalhadas`, `t`.`UltimaMudancaSenhaEm`, `t`.`UltimoLoginEm`, `t`.`UltimoNome`, `t`.`UpdatedAt`, `t`.`Email`, `t`.`CodigoPerfil`, `t`.`NivelPerfil`, `t`.`NomePerfil`, `t`.`SenhaHash`, `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM (
+    SELECT `u`.`Id`, `u`.`Ativo`, `u`.`BloqueadoAte`, `u`.`CreatedAt`, `u`.`EmailConfirmado`, `u`.`EscolaId`, `u`.`PrimeiroNome`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiraEm`, `u`.`TentativasLoginFalhadas`, `u`.`UltimaMudancaSenhaEm`, `u`.`UltimoLoginEm`, `u`.`UltimoNome`, `u`.`UpdatedAt`, `u`.`Email`, `u`.`CodigoPerfil`, `u`.`NivelPerfil`, `u`.`NomePerfil`, `u`.`SenhaHash`
+    FROM `Usuarios` AS `u`
+    WHERE `u`.`Email` = @__normalizedEmail_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `Sessoes` AS `s` ON `t`.`Id` = `s`.`UsuarioId`
+ORDER BY `t`.`Id`
+2025-07-19 18:02:20.697 -03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__enderecoIp_0='::1' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM `Sessoes` AS `s`
+WHERE `s`.`EnderecoIp` = @__enderecoIp_0
+ORDER BY `s`.`IniciadaEm` DESC
+2025-07-19 18:03:38.967 -03:00 [WRN] Senha incorreta para usuário: "8307d9b6-64a6-11f0-b46f-ae359327704d"
+2025-07-19 18:03:38.991 -03:00 [WRN] Falha na validação de login para usuário "8307d9b6-64a6-11f0-b46f-ae359327704d": Credenciais inválidas
+2025-07-19 18:03:39.034 -03:00 [INF] Executed DbCommand (22ms) [Parameters=[@p13='8307d9b6-64a6-11f0-b46f-ae359327704d', @p0='True', @p1=NULL (DbType = DateTime), @p2='2025-07-19T13:44:37.3961260' (DbType = DateTime), @p3='True', @p4=NULL (DbType = Guid), @p5='Administrador' (Nullable = false) (Size = 100), @p6=NULL (Size = 500), @p7=NULL (DbType = DateTime), @p8='2', @p9='2025-07-19T13:44:37.3961260' (Nullable = true) (DbType = DateTime), @p10=NULL (DbType = DateTime), @p11='Sistema' (Nullable = false) (Size = 100), @p12='2025-07-19T21:03:38.9989818Z' (Nullable = true) (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usuarios` SET `Ativo` = @p0, `BloqueadoAte` = @p1, `CreatedAt` = @p2, `EmailConfirmado` = @p3, `EscolaId` = @p4, `PrimeiroNome` = @p5, `RefreshToken` = @p6, `RefreshTokenExpiraEm` = @p7, `TentativasLoginFalhadas` = @p8, `UltimaMudancaSenhaEm` = @p9, `UltimoLoginEm` = @p10, `UltimoNome` = @p11, `UpdatedAt` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+2025-07-19 18:03:39.267 -03:00 [ERR] Tentativa de login não autorizada
+System.UnauthorizedAccessException: Credenciais inválidas
+   at SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase.ExecuteAsync(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\UseCases\LoginUseCase.cs:line 85
+   at SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService.LoginAsync(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\Services\AuthApplicationService.cs:line 62
+   at SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Infrastructure\Controllers\AuthController.cs:line 50
+2025-07-19 18:03:39.273 -03:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-07-19 18:03:39.281 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 175895.7373ms
+2025-07-19 18:03:39.287 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:03:39.291 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 401 null application/json; charset=utf-8 176037.0006ms
+2025-07-19 18:03:45.361 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 142
+2025-07-19 18:03:45.407 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:03:45.414 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:03:45.423 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:03:45.429 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:03:45.440 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:03:45.448 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 18:03:47.448 -03:00 [INF] Iniciando processo de login para email: admin@escola.com
+2025-07-19 18:03:47.703 -03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedEmail_0='admin@escola.com' (Size = 254)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Ativo`, `t`.`BloqueadoAte`, `t`.`CreatedAt`, `t`.`EmailConfirmado`, `t`.`EscolaId`, `t`.`PrimeiroNome`, `t`.`RefreshToken`, `t`.`RefreshTokenExpiraEm`, `t`.`TentativasLoginFalhadas`, `t`.`UltimaMudancaSenhaEm`, `t`.`UltimoLoginEm`, `t`.`UltimoNome`, `t`.`UpdatedAt`, `t`.`Email`, `t`.`CodigoPerfil`, `t`.`NivelPerfil`, `t`.`NomePerfil`, `t`.`SenhaHash`, `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM (
+    SELECT `u`.`Id`, `u`.`Ativo`, `u`.`BloqueadoAte`, `u`.`CreatedAt`, `u`.`EmailConfirmado`, `u`.`EscolaId`, `u`.`PrimeiroNome`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiraEm`, `u`.`TentativasLoginFalhadas`, `u`.`UltimaMudancaSenhaEm`, `u`.`UltimoLoginEm`, `u`.`UltimoNome`, `u`.`UpdatedAt`, `u`.`Email`, `u`.`CodigoPerfil`, `u`.`NivelPerfil`, `u`.`NomePerfil`, `u`.`SenhaHash`
+    FROM `Usuarios` AS `u`
+    WHERE `u`.`Email` = @__normalizedEmail_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `Sessoes` AS `s` ON `t`.`Id` = `s`.`UsuarioId`
+ORDER BY `t`.`Id`
+2025-07-19 18:03:47.748 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__enderecoIp_0='::1' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM `Sessoes` AS `s`
+WHERE `s`.`EnderecoIp` = @__enderecoIp_0
+ORDER BY `s`.`IniciadaEm` DESC
+2025-07-19 18:10:41.906 -03:00 [WRN] Senha incorreta para usuário: "8307d9b6-64a6-11f0-b46f-ae359327704d"
+2025-07-19 18:10:41.914 -03:00 [WRN] Falha na validação de login para usuário "8307d9b6-64a6-11f0-b46f-ae359327704d": Credenciais inválidas
+2025-07-19 18:10:42.045 -03:00 [INF] Executed DbCommand (34ms) [Parameters=[@p13='8307d9b6-64a6-11f0-b46f-ae359327704d', @p0='True', @p1=NULL (DbType = DateTime), @p2='2025-07-19T13:44:37.3961260' (DbType = DateTime), @p3='True', @p4=NULL (DbType = Guid), @p5='Administrador' (Nullable = false) (Size = 100), @p6=NULL (Size = 500), @p7=NULL (DbType = DateTime), @p8='3', @p9='2025-07-19T13:44:37.3961260' (Nullable = true) (DbType = DateTime), @p10=NULL (DbType = DateTime), @p11='Sistema' (Nullable = false) (Size = 100), @p12='2025-07-19T21:10:41.9223899Z' (Nullable = true) (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usuarios` SET `Ativo` = @p0, `BloqueadoAte` = @p1, `CreatedAt` = @p2, `EmailConfirmado` = @p3, `EscolaId` = @p4, `PrimeiroNome` = @p5, `RefreshToken` = @p6, `RefreshTokenExpiraEm` = @p7, `TentativasLoginFalhadas` = @p8, `UltimaMudancaSenhaEm` = @p9, `UltimoLoginEm` = @p10, `UltimoNome` = @p11, `UpdatedAt` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+2025-07-19 18:10:42.324 -03:00 [ERR] Tentativa de login não autorizada
+System.UnauthorizedAccessException: Credenciais inválidas
+   at SistemaGestaoEscolar.Auth.Application.UseCases.LoginUseCase.ExecuteAsync(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\UseCases\LoginUseCase.cs:line 85
+   at SistemaGestaoEscolar.Auth.Application.Services.AuthApplicationService.LoginAsync(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\Services\AuthApplicationService.cs:line 62
+   at SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login(LoginDto loginDto) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Infrastructure\Controllers\AuthController.cs:line 50
+2025-07-19 18:10:42.350 -03:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-07-19 18:10:42.367 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 416907.3534ms
+2025-07-19 18:10:42.382 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:10:42.393 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 401 null application/json; charset=utf-8 417031.8512ms
+2025-07-19 18:10:43.048 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 18:10:43.166 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 118.1026ms
+2025-07-19 18:10:43.249 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 18:10:43.250 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 18:10:43.263 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 13.8745ms
+2025-07-19 18:10:43.339 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 88.9901ms
+2025-07-19 18:10:43.936 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 18:10:44.234 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 298.0079ms
+2025-07-19 18:11:25.053 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 133
+2025-07-19 18:11:25.086 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:11:25.106 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:11:25.113 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:11:25.119 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:11:25.128 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:11:25.144 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 18:11:25.214 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-19 18:11:25.239 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 79.3953ms
+2025-07-19 18:11:25.247 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:11:25.252 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 400 null application/json; charset=utf-8 202.9883ms
+2025-07-19 18:14:09.255 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:14:13.268 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:14:13.911 -03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:14:14.260 -03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 18:14:14.376 -03:00 [INF] User profile is available. Using 'C:\Users\linde\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 18:14:14.736 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 18:14:14.890 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 18:14:14.894 -03:00 [INF] Hosting environment: Development
+2025-07-19 18:14:14.897 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 18:14:15.596 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 18:14:15.966 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 387.8825ms
+2025-07-19 18:14:15.981 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 18:14:15.994 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 18:14:16.031 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 38.1375ms
+2025-07-19 18:14:16.072 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 91.098ms
+2025-07-19 18:14:16.279 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 18:14:16.368 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 88.7559ms
+2025-07-19 18:14:52.568 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:14:54.053 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:14:54.469 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:14:54.613 -03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 18:14:54.663 -03:00 [INF] User profile is available. Using 'C:\Users\linde\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 18:14:54.795 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 18:14:54.900 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 18:14:54.908 -03:00 [INF] Hosting environment: Development
+2025-07-19 18:14:54.916 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 18:14:55.256 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 18:14:55.665 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 430.2091ms
+2025-07-19 18:14:55.678 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 18:14:55.678 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 18:14:55.689 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 10.5064ms
+2025-07-19 18:14:55.766 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.808ms
+2025-07-19 18:14:55.914 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 18:14:55.982 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 67.6058ms
+2025-07-19 18:16:45.798 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:16:47.704 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:16:48.294 -03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:16:51.644 -03:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 18:17:00.436 -03:00 [INF] User profile is available. Using 'C:\Users\linde\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 18:17:00.579 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 18:17:00.641 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 18:17:00.643 -03:00 [INF] Hosting environment: Development
+2025-07-19 18:17:00.645 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 18:17:01.524 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 18:17:01.729 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 214.2522ms
+2025-07-19 18:17:01.740 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 18:17:01.740 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 18:17:01.761 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 21.1294ms
+2025-07-19 18:17:01.804 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.2422ms
+2025-07-19 18:17:01.948 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 18:17:01.997 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.1278ms
+2025-07-19 18:17:59.135 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:18:00.929 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:18:01.344 -03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:18:01.496 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 18:18:01.642 -03:00 [ERR] Erro ao inicializar o banco de dados
+System.ArgumentException: Bairro é obrigatório (Parameter 'bairro')
+   at SistemaGestaoEscolar.Escolas.Dominio.ObjetosDeValor.Endereco..ctor(String logradouro, String numero, String bairro, String cidade, String estado, String cep, String complemento, String pais) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\ObjetosDeValor\Endereco.cs:line 36
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 19
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+2025-07-19 18:18:01.790 -03:00 [FTL] Aplicação falhou ao iniciar
+System.ArgumentException: Bairro é obrigatório (Parameter 'bairro')
+   at SistemaGestaoEscolar.Escolas.Dominio.ObjetosDeValor.Endereco..ctor(String logradouro, String numero, String bairro, String cidade, String estado, String cep, String complemento, String pais) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\ObjetosDeValor\Endereco.cs:line 36
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 19
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 94
+2025-07-19 18:18:18.353 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:18:20.231 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:18:20.650 -03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:18:20.813 -03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 18:18:20.898 -03:00 [ERR] Erro ao inicializar o banco de dados
+System.ArgumentException: Bairro é obrigatório (Parameter 'bairro')
+   at SistemaGestaoEscolar.Escolas.Dominio.ObjetosDeValor.Endereco..ctor(String logradouro, String numero, String bairro, String cidade, String estado, String cep, String complemento, String pais) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\ObjetosDeValor\Endereco.cs:line 36
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 19
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+2025-07-19 18:18:20.976 -03:00 [FTL] Aplicação falhou ao iniciar
+System.ArgumentException: Bairro é obrigatório (Parameter 'bairro')
+   at SistemaGestaoEscolar.Escolas.Dominio.ObjetosDeValor.Endereco..ctor(String logradouro, String numero, String bairro, String cidade, String estado, String cep, String complemento, String pais) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\ObjetosDeValor\Endereco.cs:line 36
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 19
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 94
+2025-07-19 18:19:13.416 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:19:16.608 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:19:17.028 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:19:17.172 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `RedesEscolares` AS `r`)
+2025-07-19 18:19:17.259 -03:00 [ERR] Erro ao inicializar o banco de dados
+System.ArgumentException: Bairro é obrigatório (Parameter 'bairro')
+   at SistemaGestaoEscolar.Escolas.Dominio.ObjetosDeValor.Endereco..ctor(String logradouro, String numero, String bairro, String cidade, String estado, String cep, String complemento, String pais) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\ObjetosDeValor\Endereco.cs:line 36
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 19
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+2025-07-19 18:19:17.342 -03:00 [FTL] Aplicação falhou ao iniciar
+System.ArgumentException: Bairro é obrigatório (Parameter 'bairro')
+   at SistemaGestaoEscolar.Escolas.Dominio.ObjetosDeValor.Endereco..ctor(String logradouro, String numero, String bairro, String cidade, String estado, String cep, String complemento, String pais) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Escolas\SistemaGestaoEscolar.Escolas.Dominio\ObjetosDeValor\Endereco.cs:line 36
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 19
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 94
+2025-07-19 18:22:24.715 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:22:26.881 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:22:27.503 -03:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:22:27.704 -03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Usuarios` AS `u`)
+2025-07-19 18:22:27.959 -03:00 [ERR] Erro ao inicializar o banco de dados
+System.ArgumentException: Senha não pode conter sequências comuns (123, abc, qwerty, etc.) (Parameter 'password')
+   at SistemaGestaoEscolar.Auth.Domain.ValueObjects.Password.ValidatePassword(String password) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Domain\ValueObjects\Password.cs:line 66
+   at SistemaGestaoEscolar.Auth.Domain.ValueObjects.Password..ctor(String plainTextPassword) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Domain\ValueObjects\Password.cs:line 26
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 126
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+2025-07-19 18:22:28.130 -03:00 [FTL] Aplicação falhou ao iniciar
+System.ArgumentException: Senha não pode conter sequências comuns (123, abc, qwerty, etc.) (Parameter 'password')
+   at SistemaGestaoEscolar.Auth.Domain.ValueObjects.Password.ValidatePassword(String password) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Domain\ValueObjects\Password.cs:line 66
+   at SistemaGestaoEscolar.Auth.Domain.ValueObjects.Password..ctor(String plainTextPassword) in C:\Lindemberg\Projetos\Kiro\src\Modulos\Auth\SistemaGestaoEscolar.Auth.Domain\ValueObjects\Password.cs:line 26
+   at SistemaGestaoEscolar.API.Seeds.DatabaseSeeder.SeedAsync(ApplicationDbContext context) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Seeds\DatabaseSeeder.cs:line 126
+   at SistemaGestaoEscolar.API.Configuration.DatabaseConfiguration.InitializeDatabaseAsync(IServiceProvider serviceProvider, IWebHostEnvironment environment) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Configuration\DatabaseConfiguration.cs:line 51
+   at Program.<Main>$(String[] args) in C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API\Program.cs:line 94
+2025-07-19 18:23:02.173 -03:00 [INF] Iniciando Sistema de Gestão Escolar API
+2025-07-19 18:23:04.223 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:23:04.881 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'DBEscola'
+2025-07-19 18:23:05.052 -03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Usuarios` AS `u`)
+2025-07-19 18:23:05.830 -03:00 [INF] Executed DbCommand (25ms) [Parameters=[@p0='e0337f59-a1b0-486a-bf54-b7823c267c11', @p1=NULL (DbType = DateTime), @p2='2025-07-19T21:23:05.5570699Z' (DbType = DateTime), @p3=NULL (DbType = Guid), @p4='Admin' (Nullable = false) (Size = 100), @p5=NULL (Size = 500), @p6=NULL (DbType = DateTime), @p7='2025-07-19T21:23:05.5573048Z' (Nullable = true) (DbType = DateTime), @p8=NULL (DbType = DateTime), @p9='User' (Nullable = false) (Size = 100), @p10=NULL (DbType = DateTime), @p11='admin@escola.com' (Nullable = false) (Size = 254), @p12='$2a$12$T38mOiJPEUI8GH66CtxSl.8L6XOjEMUgln/qLpq0XC.23LvI5v/v2' (Nullable = false) (Size = 500), @p13='SuperAdmin' (Nullable = false) (Size = 50), @p14='1000', @p15='Super Administrador' (Nullable = false) (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Usuarios` (`Id`, `BloqueadoAte`, `CreatedAt`, `EscolaId`, `PrimeiroNome`, `RefreshToken`, `RefreshTokenExpiraEm`, `UltimaMudancaSenhaEm`, `UltimoLoginEm`, `UltimoNome`, `UpdatedAt`, `Email`, `SenhaHash`, `CodigoPerfil`, `NivelPerfil`, `NomePerfil`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT `Ativo`, `EmailConfirmado`, `TentativasLoginFalhadas`
+FROM `Usuarios`
+WHERE ROW_COUNT() = 1 AND `Id` = @p0;
+2025-07-19 18:23:05.916 -03:00 [INF] User profile is available. Using 'C:\Users\linde\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 18:23:06.114 -03:00 [INF] Now listening on: http://localhost:5001
+2025-07-19 18:23:06.196 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 18:23:06.200 -03:00 [INF] Hosting environment: Development
+2025-07-19 18:23:06.204 -03:00 [INF] Content root path: C:\Lindemberg\Projetos\Kiro\src\SistemaGestaoEscolar.API
+2025-07-19 18:23:06.907 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/index.html - null null
+2025-07-19 18:23:07.344 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/index.html - 200 null text/html;charset=utf-8 451.302ms
+2025-07-19 18:23:07.362 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-19 18:23:07.371 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 9.6679ms
+2025-07-19 18:23:07.381 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/_vs/browserLink - null null
+2025-07-19 18:23:07.432 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.9669ms
+2025-07-19 18:23:07.583 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - null null
+2025-07-19 18:23:07.650 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 67.2129ms
+2025-07-19 18:23:37.734 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/Auth/login - application/json 136
+2025-07-19 18:23:37.758 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-19 18:23:37.762 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:23:37.764 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:23:37.766 -03:00 [INF] CORS policy execution failed.
+2025-07-19 18:23:37.768 -03:00 [INF] Request origin http://localhost:5001 does not have permission to access the resource.
+2025-07-19 18:23:38.048 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:23:38.075 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 18:23:44.537 -03:00 [INF] Iniciando processo de login para email: admin@escola.com
+2025-07-19 18:23:44.608 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-07-19 18:23:44.822 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='admin@escola.com' (Size = 254)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Ativo`, `t`.`BloqueadoAte`, `t`.`CreatedAt`, `t`.`EmailConfirmado`, `t`.`EscolaId`, `t`.`PrimeiroNome`, `t`.`RefreshToken`, `t`.`RefreshTokenExpiraEm`, `t`.`TentativasLoginFalhadas`, `t`.`UltimaMudancaSenhaEm`, `t`.`UltimoLoginEm`, `t`.`UltimoNome`, `t`.`UpdatedAt`, `t`.`Email`, `t`.`CodigoPerfil`, `t`.`NivelPerfil`, `t`.`NomePerfil`, `t`.`SenhaHash`, `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM (
+    SELECT `u`.`Id`, `u`.`Ativo`, `u`.`BloqueadoAte`, `u`.`CreatedAt`, `u`.`EmailConfirmado`, `u`.`EscolaId`, `u`.`PrimeiroNome`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiraEm`, `u`.`TentativasLoginFalhadas`, `u`.`UltimaMudancaSenhaEm`, `u`.`UltimoLoginEm`, `u`.`UltimoNome`, `u`.`UpdatedAt`, `u`.`Email`, `u`.`CodigoPerfil`, `u`.`NivelPerfil`, `u`.`NomePerfil`, `u`.`SenhaHash`
+    FROM `Usuarios` AS `u`
+    WHERE `u`.`Email` = @__normalizedEmail_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `Sessoes` AS `s` ON `t`.`Id` = `s`.`UsuarioId`
+ORDER BY `t`.`Id`
+2025-07-19 18:23:44.889 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__enderecoIp_0='::1' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM `Sessoes` AS `s`
+WHERE `s`.`EnderecoIp` = @__enderecoIp_0
+ORDER BY `s`.`IniciadaEm` DESC
+2025-07-19 18:23:47.899 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='215c8c55-0cc3-4cd1-8d6e-8d70153acbd9', @p1='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0' (Nullable = false) (Size = 1000), @p2='2025-07-19T21:23:47.7202660Z' (DbType = DateTime), @p3='::1' (Nullable = false) (Size = 45), @p4=NULL (DbType = DateTime), @p5='Edge em Windows (Desktop)' (Size = 500), @p6='2025-07-19T21:23:47.7204383Z' (DbType = DateTime), @p7=NULL (Size = 200), @p8='2025-07-19T21:23:47.7204765Z' (DbType = DateTime), @p9=NULL (DbType = DateTime), @p10='e0337f59-a1b0-486a-bf54-b7823c267c11', @p24='e0337f59-a1b0-486a-bf54-b7823c267c11', @p11='True', @p12=NULL (DbType = DateTime), @p13='2025-07-19T21:23:05.5570690' (DbType = DateTime), @p14='False', @p15=NULL (DbType = Guid), @p16='Admin' (Nullable = false) (Size = 100), @p17='X8hmtC8qdOk+a77pVLGUjLGU8+4mzSjopBenMVtWPM5/fwwpVgtcBksUNMoAYPqQBn64q/OPklqr8/qmH5dXog==' (Size = 500), @p18='2025-08-18T21:23:47.8520992Z' (Nullable = true) (DbType = DateTime), @p19='0', @p20='2025-07-19T21:23:05.5573040' (Nullable = true) (DbType = DateTime), @p21='2025-07-19T21:23:47.7196728Z' (Nullable = true) (DbType = DateTime), @p22='User' (Nullable = false) (Size = 100), @p23='2025-07-19T21:23:47.8666623Z' (Nullable = true) (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Sessoes` (`Id`, `AgenteUsuario`, `CreatedAt`, `EnderecoIp`, `FinalizadaEm`, `InfoDispositivo`, `IniciadaEm`, `Localizacao`, `UltimaAtividadeEm`, `UpdatedAt`, `UsuarioId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+SELECT `Ativa`
+FROM `Sessoes`
+WHERE ROW_COUNT() = 1 AND `Id` = @p0;
+
+UPDATE `Usuarios` SET `Ativo` = @p11, `BloqueadoAte` = @p12, `CreatedAt` = @p13, `EmailConfirmado` = @p14, `EscolaId` = @p15, `PrimeiroNome` = @p16, `RefreshToken` = @p17, `RefreshTokenExpiraEm` = @p18, `TentativasLoginFalhadas` = @p19, `UltimaMudancaSenhaEm` = @p20, `UltimoLoginEm` = @p21, `UltimoNome` = @p22, `UpdatedAt` = @p23
+WHERE `Id` = @p24;
+SELECT ROW_COUNT();
+2025-07-19 18:23:47.920 -03:00 [INF] Login realizado com sucesso para usuário "e0337f59-a1b0-486a-bf54-b7823c267c11"
+2025-07-19 18:23:47.928 -03:00 [INF] Login realizado com sucesso para usuário: "e0337f59-a1b0-486a-bf54-b7823c267c11"
+2025-07-19 18:23:47.940 -03:00 [INF] Executing OkObjectResult, writing value of type 'SistemaGestaoEscolar.Auth.Application.DTOs.AuthResponseDto'.
+2025-07-19 18:23:47.971 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 9887.5597ms
+2025-07-19 18:23:47.976 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:23:47.986 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/Auth/login - 200 null application/json; charset=utf-8 10255.7292ms
+2025-07-19 18:24:40.998 -03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5001/api/auth/login - null null
+2025-07-19 18:24:41.020 -03:00 [INF] CORS policy execution successful.
+2025-07-19 18:24:41.025 -03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5001/api/auth/login - 204 null null 26.8141ms
+2025-07-19 18:24:41.036 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5001/api/auth/login - application/json 233
+2025-07-19 18:24:41.043 -03:00 [INF] CORS policy execution successful.
+2025-07-19 18:24:41.046 -03:00 [INF] CORS policy execution successful.
+2025-07-19 18:24:41.051 -03:00 [INF] Executing endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:24:41.055 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SistemaGestaoEscolar.Auth.Application.DTOs.LoginDto) on controller SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController (SistemaGestaoEscolar.Auth.Infrastructure).
+2025-07-19 18:24:44.544 -03:00 [INF] Iniciando processo de login para email: admin@escola.com
+2025-07-19 18:24:44.583 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='admin@escola.com' (Size = 254)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Ativo`, `t`.`BloqueadoAte`, `t`.`CreatedAt`, `t`.`EmailConfirmado`, `t`.`EscolaId`, `t`.`PrimeiroNome`, `t`.`RefreshToken`, `t`.`RefreshTokenExpiraEm`, `t`.`TentativasLoginFalhadas`, `t`.`UltimaMudancaSenhaEm`, `t`.`UltimoLoginEm`, `t`.`UltimoNome`, `t`.`UpdatedAt`, `t`.`Email`, `t`.`CodigoPerfil`, `t`.`NivelPerfil`, `t`.`NomePerfil`, `t`.`SenhaHash`, `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM (
+    SELECT `u`.`Id`, `u`.`Ativo`, `u`.`BloqueadoAte`, `u`.`CreatedAt`, `u`.`EmailConfirmado`, `u`.`EscolaId`, `u`.`PrimeiroNome`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiraEm`, `u`.`TentativasLoginFalhadas`, `u`.`UltimaMudancaSenhaEm`, `u`.`UltimoLoginEm`, `u`.`UltimoNome`, `u`.`UpdatedAt`, `u`.`Email`, `u`.`CodigoPerfil`, `u`.`NivelPerfil`, `u`.`NomePerfil`, `u`.`SenhaHash`
+    FROM `Usuarios` AS `u`
+    WHERE `u`.`Email` = @__normalizedEmail_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `Sessoes` AS `s` ON `t`.`Id` = `s`.`UsuarioId`
+ORDER BY `t`.`Id`
+2025-07-19 18:24:44.602 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__enderecoIp_0='::1' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AgenteUsuario`, `s`.`Ativa`, `s`.`CreatedAt`, `s`.`EnderecoIp`, `s`.`FinalizadaEm`, `s`.`InfoDispositivo`, `s`.`IniciadaEm`, `s`.`Localizacao`, `s`.`UltimaAtividadeEm`, `s`.`UpdatedAt`, `s`.`UsuarioId`
+FROM `Sessoes` AS `s`
+WHERE `s`.`EnderecoIp` = @__enderecoIp_0
+ORDER BY `s`.`IniciadaEm` DESC
+2025-07-19 18:24:45.057 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='b45d5fe4-ace6-4920-a425-5847893b50a2', @p1='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0' (Nullable = false) (Size = 1000), @p2='2025-07-19T21:24:45.0110057Z' (DbType = DateTime), @p3='::1' (Nullable = false) (Size = 45), @p4=NULL (DbType = DateTime), @p5='Edge em Windows (Desktop)' (Size = 500), @p6='2025-07-19T21:24:45.0110073Z' (DbType = DateTime), @p7=NULL (Size = 200), @p8='2025-07-19T21:24:45.0110074Z' (DbType = DateTime), @p9=NULL (DbType = DateTime), @p10='e0337f59-a1b0-486a-bf54-b7823c267c11', @p24='e0337f59-a1b0-486a-bf54-b7823c267c11', @p11='True', @p12=NULL (DbType = DateTime), @p13='2025-07-19T21:23:05.5570690' (DbType = DateTime), @p14='False', @p15=NULL (DbType = Guid), @p16='Admin' (Nullable = false) (Size = 100), @p17='ngC+2pqwyE0ihPQ2nRnhdBt0gS93Km1Bssz3fDX6f6VKSB5OHPAs1teQw+eVi33bcGvzMBhoz7fMDj2k/UPuvA==' (Size = 500), @p18='2025-07-26T21:24:45.0123149Z' (Nullable = true) (DbType = DateTime), @p19='0', @p20='2025-07-19T21:23:05.5573040' (Nullable = true) (DbType = DateTime), @p21='2025-07-19T21:24:45.0109814Z' (Nullable = true) (DbType = DateTime), @p22='User' (Nullable = false) (Size = 100), @p23='2025-07-19T21:24:45.0127021Z' (Nullable = true) (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Sessoes` (`Id`, `AgenteUsuario`, `CreatedAt`, `EnderecoIp`, `FinalizadaEm`, `InfoDispositivo`, `IniciadaEm`, `Localizacao`, `UltimaAtividadeEm`, `UpdatedAt`, `UsuarioId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+SELECT `Ativa`
+FROM `Sessoes`
+WHERE ROW_COUNT() = 1 AND `Id` = @p0;
+
+UPDATE `Usuarios` SET `Ativo` = @p11, `BloqueadoAte` = @p12, `CreatedAt` = @p13, `EmailConfirmado` = @p14, `EscolaId` = @p15, `PrimeiroNome` = @p16, `RefreshToken` = @p17, `RefreshTokenExpiraEm` = @p18, `TentativasLoginFalhadas` = @p19, `UltimaMudancaSenhaEm` = @p20, `UltimoLoginEm` = @p21, `UltimoNome` = @p22, `UpdatedAt` = @p23
+WHERE `Id` = @p24;
+SELECT ROW_COUNT();
+2025-07-19 18:24:45.071 -03:00 [INF] Login realizado com sucesso para usuário "e0337f59-a1b0-486a-bf54-b7823c267c11"
+2025-07-19 18:24:45.073 -03:00 [INF] Login realizado com sucesso para usuário: "e0337f59-a1b0-486a-bf54-b7823c267c11"
+2025-07-19 18:24:45.077 -03:00 [INF] Executing OkObjectResult, writing value of type 'SistemaGestaoEscolar.Auth.Application.DTOs.AuthResponseDto'.
+2025-07-19 18:24:45.110 -03:00 [INF] Executed action SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure) in 4049.5917ms
+2025-07-19 18:24:45.112 -03:00 [INF] Executed endpoint 'SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController.Login (SistemaGestaoEscolar.Auth.Infrastructure)'
+2025-07-19 18:24:45.115 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5001/api/auth/login - 200 null application/json; charset=utf-8 4079.0451ms

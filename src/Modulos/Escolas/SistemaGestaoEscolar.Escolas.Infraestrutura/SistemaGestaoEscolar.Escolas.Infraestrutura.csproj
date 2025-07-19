@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\SistemaGestaoEscolar.Shared.Domain\SistemaGestaoEscolar.Shared.Domain.csproj" />
-    <ProjectReference Include="..\..\Shared\SistemaGestaoEscolar.Shared.Application\SistemaGestaoEscolar.Shared.Application.csproj" />
+    <ProjectReference Include="..\..\..\Shared\SistemaGestaoEscolar.Shared.Domain\SistemaGestaoEscolar.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Shared\SistemaGestaoEscolar.Shared.Application\SistemaGestaoEscolar.Shared.Application.csproj" />
     <ProjectReference Include="..\SistemaGestaoEscolar.Escolas.Dominio\SistemaGestaoEscolar.Escolas.Dominio.csproj" />
     <ProjectReference Include="..\SistemaGestaoEscolar.Escolas.Aplicacao\SistemaGestaoEscolar.Escolas.Aplicacao.csproj" />
   </ItemGroup>
