@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 // PrimeNG Imports
@@ -12,10 +12,11 @@ import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DividerModule } from 'primeng/divider';
 
 // Services
-import { AuthService } from '../../../../core/services/auth.service';
 import { NotificationService } from '../../../../core/services/notification.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 // Models
 import { ResetPasswordRequest } from '../../models/auth.models';
@@ -26,21 +27,25 @@ import { ResetPasswordRequest } from '../../models/auth.models';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     CardModule,
     InputTextModule,
     PasswordModule,
     ButtonModule,
     MessageModule,
     MessagesModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    DividerModule
   ],
   template: `
     <div class="reset-password-container">
-      <div class="reset-password-wrapper">
-        <p-card styleClass="reset-password-card">
+      <div class="reset-password-wrapper fade-in">
+        <p-card styleClass="reset-password-card modern-card">
           <ng-template pTemplate="header">
             <div class="reset-password-header">
-              <img src="assets/images/logo.png" alt="Logo" class="logo" />
+              <div class="logo-container">
+                <i class="pi pi-shield logo-icon"></i>
+              </div>
               <h2>Redefinir Senha</h2>
               <p>Digite sua nova senha</p>
             </div>
@@ -75,6 +80,7 @@ import { ResetPasswordRequest } from '../../models/auth.models';
                   styleClass="w-full"
                   inputStyleClass="w-full"
                   [class.ng-invalid]="isFieldInvalid('newPassword')"
+                  autocomplete="new-password"
                   [promptLabel]="'Digite uma senha'"
                   [weakLabel]="'Fraca'"
                   [mediumLabel]="'Média'"
@@ -102,6 +108,7 @@ import { ResetPasswordRequest } from '../../models/auth.models';
                   styleClass="w-full"
                   inputStyleClass="w-full"
                   [class.ng-invalid]="isFieldInvalid('confirmPassword')"
+                  autocomplete="new-password"
                 ></p-password>
               </span>
               <small 
@@ -126,23 +133,41 @@ import { ResetPasswordRequest } from '../../models/auth.models';
               </ng-template>
             </p-messages>
 
+            <!-- Success Message -->
+            <p-messages 
+              *ngIf="showSuccessMessage" 
+              severity="success" 
+              styleClass="w-full"
+            >
+              <ng-template pTemplate>
+                <div class="flex align-items-center">
+                  <i class="pi pi-check-circle mr-2"></i>
+                  <span>Senha redefinida com sucesso! Redirecionando para o login...</span>
+                </div>
+              </ng-template>
+            </p-messages>
+
             <!-- Submit Button -->
             <p-button
               type="submit"
               label="Redefinir Senha"
               icon="pi pi-check"
-              styleClass="w-full submit-button"
+              styleClass="w-full reset-password-button"
               [loading]="isLoading"
-              [disabled]="resetPasswordForm.invalid || isLoading"
+              [disabled]="resetPasswordForm.invalid || isLoading || showSuccessMessage"
             ></p-button>
 
-            <!-- Back to Login -->
-            <div class="text-center mt-3">
+            <p-divider align="center">
+              <span class="text-sm text-color-secondary">ou</span>
+            </p-divider>
+
+            <!-- Back to Login Link -->
+            <div class="text-center">
               <a 
                 routerLink="/auth/login" 
                 class="back-to-login-link"
               >
-                <i class="pi pi-arrow-left mr-1"></i>
+                <i class="pi pi-arrow-left mr-2"></i>
                 Voltar ao Login
               </a>
             </div>
@@ -164,107 +189,246 @@ import { ResetPasswordRequest } from '../../models/auth.models';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-text) 100%);
+      background: linear-gradient(135deg, var(--p-green-500) 0%, var(--p-green-700) 100%);
       padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reset-password-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
     }
 
     .reset-password-wrapper {
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
+      position: relative;
+      z-index: 1;
     }
 
     .reset-password-card {
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      border: none;
-      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      overflow: hidden;
     }
 
     .reset-password-header {
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 3rem 2rem 2rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      position: relative;
     }
 
-    .logo {
-      height: 60px;
-      margin-bottom: 1rem;
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-icon {
+      font-size: 4rem;
+      color: var(--p-green-500);
+      background: linear-gradient(135deg, var(--p-green-500), var(--p-green-700));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
 
     .reset-password-header h2 {
-      color: var(--primary-color);
+      color: var(--p-surface-800);
       margin: 0 0 0.5rem 0;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
     }
 
     .reset-password-header p {
-      color: var(--text-color-secondary);
+      color: var(--p-surface-600);
       margin: 0;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
     .reset-password-form {
-      padding: 1rem;
+      padding: 2rem;
     }
 
     .field {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
 
     .field-label {
       display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: var(--text-color);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--p-surface-700);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .submit-button {
-      height: 3rem;
+    .reset-password-button {
+      height: 3.5rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--p-green-500), var(--p-green-600));
+      border: none;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .reset-password-button:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--p-green-600), var(--p-green-700));
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+    }
+
+    .reset-password-button:active {
+      transform: translateY(0);
     }
 
     .back-to-login-link {
-      color: var(--primary-color);
+      color: var(--p-primary-600);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
       display: inline-flex;
       align-items: center;
     }
 
+    .back-to-login-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--p-primary-600);
+      transition: width 0.3s ease;
+    }
+
     .back-to-login-link:hover {
-      color: var(--primary-color-text);
-      text-decoration: underline;
+      color: var(--p-primary-700);
+      transform: translateY(-1px);
+    }
+
+    .back-to-login-link:hover::after {
+      width: 100%;
     }
 
     .reset-password-footer {
       margin-top: 2rem;
+      text-align: center;
+    }
+
+    .reset-password-footer p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 400;
     }
 
     .p-error {
       display: block;
-      margin-top: 0.25rem;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
-    .p-input-icon-left > input {
-      padding-left: 2.5rem;
-    }
-
+    .p-input-icon-left > input,
     .p-input-icon-left > .p-password > input {
-      padding-left: 2.5rem;
+      padding-left: 3rem;
+      height: 3rem;
+      border-radius: 12px;
+      border: 2px solid var(--p-surface-300);
+      background: var(--p-surface-0);
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .p-input-icon-left > input:focus,
+    .p-input-icon-left > .p-password > input:focus {
+      border-color: var(--p-green-500);
+      box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .p-input-icon-left > input[readonly] {
+      background: var(--p-surface-100);
+      color: var(--p-surface-600);
+    }
+
+    .p-input-icon-left > i {
+      color: var(--p-surface-500);
+      font-size: 1.1rem;
+      left: 1rem;
+    }
+
+    .p-divider {
+      margin: 2rem 0;
+    }
+
+    .p-divider .p-divider-content {
+      background: transparent;
+      color: var(--p-surface-500);
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
     @media (max-width: 768px) {
+      .reset-password-container {
+        padding: 1rem;
+      }
+      
+      .reset-password-wrapper {
+        max-width: 100%;
+      }
+      
+      .reset-password-header {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+      
+      .logo-icon {
+        font-size: 3rem;
+      }
+      
+      .reset-password-header h2 {
+        font-size: 1.5rem;
+      }
+      
+      .reset-password-form {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
       .reset-password-container {
         padding: 0.5rem;
       }
       
       .reset-password-header {
-        padding: 1.5rem 1rem 0.5rem;
+        padding: 1.5rem 1rem 1rem;
       }
       
-      .logo {
-        height: 50px;
+      .reset-password-form {
+        padding: 1rem;
+      }
+      
+      .field {
+        margin-bottom: 1.5rem;
       }
     }
   `]
@@ -272,37 +436,40 @@ import { ResetPasswordRequest } from '../../models/auth.models';
 export class ResetPasswordComponent implements OnInit, OnDestroy {
   resetPasswordForm: FormGroup;
   isLoading = false;
-  errorMessage = '';
+  showSuccessMessage = false;
+  errorMessage: string | null = null;
   private destroy$ = new Subject<void>();
-  private email = '';
-  private token = '';
+
+  private email: string = '';
+  private token: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
     private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {
     this.resetPasswordForm = this.createForm();
   }
 
   ngOnInit(): void {
     // Get email and token from query parameters
-    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
-      this.email = params['email'] || '';
-      this.token = params['token'] || '';
-      
-      if (!this.email || !this.token) {
-        this.errorMessage = 'Link de recuperação inválido ou expirado';
-        return;
-      }
-      
-      this.resetPasswordForm.patchValue({ email: this.email });
-    });
-
-    // Clear any previous messages
-    this.errorMessage = '';
+    this.route.queryParams
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(params => {
+        this.email = params['email'] || '';
+        this.token = params['token'] || '';
+        
+        if (!this.email || !this.token) {
+          this.notificationService.error('Link de recuperação inválido');
+          this.router.navigate(['/auth/forgot-password']);
+          return;
+        }
+        
+        // Set email in form
+        this.resetPasswordForm.patchValue({ email: this.email });
+      });
   }
 
   ngOnDestroy(): void {
@@ -317,17 +484,19 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(128),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/)
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/)
       ]],
       confirmPassword: ['', [Validators.required]]
-    }, { validators: this.passwordMatchValidator });
+    }, {
+      validators: this.passwordMatchValidator
+    });
   }
 
   private passwordMatchValidator(form: FormGroup) {
-    const password = form.get('newPassword');
+    const newPassword = form.get('newPassword');
     const confirmPassword = form.get('confirmPassword');
     
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
+    if (newPassword && confirmPassword && newPassword.value !== confirmPassword.value) {
       confirmPassword.setErrors({ passwordMismatch: true });
       return { passwordMismatch: true };
     }
@@ -335,35 +504,42 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     return null;
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.resetPasswordForm.valid && !this.isLoading) {
       this.isLoading = true;
-      this.errorMessage = '';
-
+      this.errorMessage = null;
+      
       const request: ResetPasswordRequest = {
         email: this.email,
         token: this.token,
-        newPassword: this.resetPasswordForm.value.newPassword,
-        confirmPassword: this.resetPasswordForm.value.confirmPassword
+        novaSenha: this.resetPasswordForm.value.newPassword,
+        confirmarSenha: this.resetPasswordForm.value.confirmPassword
       };
 
-      this.authService.resetPassword(request)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe({
-          next: () => {
-            this.isLoading = false;
-            this.notificationService.success('Senha redefinida com sucesso!');
-            this.router.navigate(['/auth/login']);
-          },
-          error: (error) => {
-            this.isLoading = false;
-            this.errorMessage = error || 'Erro ao redefinir senha. Tente novamente.';
-          }
-        });
+      try {
+        // Call the API directly since we don't have NgRx actions for this yet
+        await this.authService.resetPassword(request);
+        
+        this.showSuccessMessage = true;
+        this.notificationService.success('Senha redefinida com sucesso!');
+        
+        // Redirect to login after 3 seconds
+        setTimeout(() => {
+          this.router.navigate(['/auth/login']);
+        }, 3000);
+        
+      } catch (error: any) {
+        this.errorMessage = error?.error?.detail || error?.message || 'Erro ao redefinir senha';
+        this.notificationService.error(this.errorMessage || 'Erro desconhecido');
+      } finally {
+        this.isLoading = false;
+      }
     } else {
       this.markFormGroupTouched();
     }
   }
+
+  
 
   isFieldInvalid(fieldName: string): boolean {
     const field = this.resetPasswordForm.get(fieldName);
@@ -377,11 +553,13 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
       const errors = field.errors;
       
       if (errors['required']) {
-        switch (fieldName) {
-          case 'newPassword': return 'Nova senha é obrigatória';
-          case 'confirmPassword': return 'Confirmação de senha é obrigatória';
-          default: return 'Campo obrigatório';
-        }
+        return fieldName === 'email' ? 'Email é obrigatório' : 
+               fieldName === 'newPassword' ? 'Nova senha é obrigatória' : 
+               'Confirmação da senha é obrigatória';
+      }
+      
+      if (errors['email']) {
+        return 'Formato de email inválido';
       }
       
       if (errors['minlength']) {
@@ -397,7 +575,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
       }
       
       if (errors['passwordMismatch']) {
-        return 'As senhas não coincidem';
+        return 'As senhas não conferem';
       }
     }
     

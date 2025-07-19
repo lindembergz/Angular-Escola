@@ -5,12 +5,13 @@ import { Menubar } from 'primeng/menubar';
 import { Button } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { Message } from 'primeng/message';
+import { Toast } from 'primeng/toast';
 import { Subject } from 'rxjs';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Menubar, Button, Message, LoadingSpinnerComponent],
+  imports: [RouterOutlet, CommonModule, Menubar, Button, Message, Toast, LoadingSpinnerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -30,15 +30,15 @@ export const selectAuthError = createSelector(
 
 export const selectUserRole = createSelector(
   selectCurrentUser,
-  (user) => user?.role
+  (user) => user?.codigoPerfil || null
 );
 
 export const selectUserPermissions = createSelector(
   selectCurrentUser,
-  (user) => user?.permissions || []
+  (user) => user?.permissoes || []
 );
 
 export const selectUserSchoolId = createSelector(
   selectCurrentUser,
-  (user) => user?.schoolId
+  (user) => user?.escolaId
 );

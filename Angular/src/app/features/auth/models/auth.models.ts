@@ -4,41 +4,45 @@
 
 export interface User {
   id: string;
-  fullName: string;
+  primeiroNome: string;
+  ultimoNome: string;
+  nomeCompleto: string;
   email: string;
-  role: string;
-  roleName: string;
-  initials: string;
-  emailConfirmed: boolean;
-  lastLoginAt?: string;
-  schoolId?: string;
-  permissions?: string[];
+  codigoPerfil: string;
+  nomePerfil: string;
+  nivelPerfil: number;
+  iniciais: string;
+  ativo: boolean;
+  emailConfirmado: boolean;
+  ultimoLoginEm?: string;
+  escolaId?: string;
+  permissoes?: string[];
 }
 
 export interface LoginCredentials {
   email: string;
-  password: string;
-  rememberMe?: boolean;
+  senha: string;
+  lembrarMe?: boolean;
 }
 
 export interface AuthResponse {
-  accessToken: string;
+  token: string;
   refreshToken: string;
-  tokenType: string;
-  expiresIn: number;
-  expiresAt: string;
-  user: User;
-  requiresPasswordChange: boolean;
-  requiresEmailConfirmation: boolean;
-  permissions: string[];
-  schools: SchoolAccess[];
+  tipoToken: string;
+  expiraEm: number;
+  expiraEm_DateTime: string;
+  usuario: User;
+  requerMudancaSenha: boolean;
+  requerConfirmacaoEmail: boolean;
+  permissoes: string[];
+  escolas: SchoolAccess[];
 }
 
 export interface SchoolAccess {
   id: string;
-  name: string;
-  isPrimary: boolean;
-  permissions: string[];
+  nome: string;
+  ehPrincipal: boolean;
+  permissoes: string[];
 }
 
 export interface RefreshTokenRequest {
@@ -46,33 +50,33 @@ export interface RefreshTokenRequest {
 }
 
 export interface ChangePasswordRequest {
-  currentPassword: string;
-  newPassword: string;
-  confirmPassword: string;
-  invalidateAllSessions?: boolean;
+  senhaAtual: string;
+  novaSenha: string;
+  confirmarSenha: string;
+  invalidarTodasSessoes?: boolean;
 }
 
 export interface ForgotPasswordRequest {
   email: string;
-  callbackUrl?: string;
+  urlCallback?: string;
 }
 
 export interface ResetPasswordRequest {
   email: string;
   token: string;
-  newPassword: string;
-  confirmPassword: string;
+  novaSenha: string;
+  confirmarSenha: string;
 }
 
 export interface PasswordStrength {
-  strength: number;
-  isValid: boolean;
-  errors: string[];
-  suggestions: string[];
-  level: PasswordStrengthLevel;
+  forca: number;
+  ehValida: boolean;
+  erros: string[];
+  sugestoes: string[];
+  nivel: PasswordStrengthLevel;
 }
 
-export type PasswordStrengthLevel = 'VeryWeak' | 'Weak' | 'Fair' | 'Good' | 'Strong' | 'VeryStrong';
+export type PasswordStrengthLevel = 'MuitoFraca' | 'Fraca' | 'Razoavel' | 'Boa' | 'Forte' | 'MuitoForte';
 
 export interface EmailConfirmationRequest {
   email: string;
@@ -184,11 +188,11 @@ export interface EmailAvailabilityResponse {
 }
 
 export interface PasswordStrengthResponse {
-  strength: number;
-  isValid: boolean;
-  errors: string[];
-  suggestions: string[];
-  level: PasswordStrengthLevel;
+  forca: number;
+  ehValida: boolean;
+  erros: string[];
+  sugestoes: string[];
+  nivel: PasswordStrengthLevel;
 }
 
 export interface TokenInfo {
@@ -242,13 +246,13 @@ export enum AuthEventType {
 
 // Extended login request with client info
 export interface LoginRequest extends LoginCredentials {
-  ipAddress?: string;
-  userAgent?: string;
+  agenteUsuario?: string;
+  enderecoIp?: string;
 }
 
 // Extended refresh token request
 export interface ExtendedRefreshTokenRequest extends RefreshTokenRequest {
   accessToken?: string | null;
-  ipAddress?: string;
-  userAgent?: string;
+  agenteUsuario?: string;
+  enderecoIp?: string;
 }

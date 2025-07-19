@@ -18,7 +18,7 @@ import {
   providedIn: 'root'
 })
 export class EscolasService {
-  private readonly apiUrl = environment.apiUrl;
+  private readonly apiUrl = `${environment.apiUrl}/api`;
 
   constructor(private http: HttpClient) {}
 

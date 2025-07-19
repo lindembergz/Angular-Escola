@@ -17,8 +17,8 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
-      exhaustMap(({ credentials }) =>
-        this.authService.login(credentials).pipe(
+      exhaustMap(({ request }) =>
+        this.authService.login(request).pipe(
           map((authResponse) => AuthActions.loginSuccess({ authResponse })),
           catchError((error) =>
             of(AuthActions.loginFailure({ error: error.message || 'Erro no login' }))
@@ -33,7 +33,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
         tap(({ authResponse }) => {
-          this.notificationService.success(`Bem-vindo, ${authResponse.user.fullName}!`);
+          this.notificationService.success(`Bem-vindo, ${authResponse.usuario.nomeCompleto}!`);
           this.router.navigate(['/dashboard']);
         })
       ),

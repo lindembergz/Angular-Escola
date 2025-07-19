@@ -22,7 +22,7 @@ import * as AuthActions from '../../../../store/auth/auth.actions';
 import * as AuthSelectors from '../../../../store/auth/auth.selectors';
 
 // Models
-import { LoginCredentials } from '../../models/auth.models';
+import { LoginRequest } from '../../models/auth.models';
 
 @Component({
   selector: 'app-login',
@@ -42,11 +42,13 @@ import { LoginCredentials } from '../../models/auth.models';
   ],
   template: `
     <div class="login-container">
-      <div class="login-wrapper">
-        <p-card styleClass="login-card">
+      <div class="login-wrapper fade-in">
+        <p-card styleClass="login-card modern-card">
           <ng-template pTemplate="header">
             <div class="login-header">
-              <img src="assets/images/logo.png" alt="Logo" class="logo" />
+              <div class="logo-container">
+                <i class="pi pi-graduation-cap logo-icon"></i>
+              </div>
               <h2>Sistema de Gestão Escolar</h2>
               <p>Faça login para acessar o sistema</p>
             </div>
@@ -165,117 +167,259 @@ import { LoginCredentials } from '../../models/auth.models';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-text) 100%);
+      background: linear-gradient(135deg, var(--p-primary-500) 0%, var(--p-primary-700) 100%);
       padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
     }
 
     .login-wrapper {
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
+      position: relative;
+      z-index: 1;
     }
 
     .login-card {
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      border: none;
-      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      overflow: hidden;
     }
 
     .login-header {
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 3rem 2rem 2rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      position: relative;
     }
 
-    .logo {
-      height: 60px;
-      margin-bottom: 1rem;
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-icon {
+      font-size: 4rem;
+      color: var(--p-primary-500);
+      background: linear-gradient(135deg, var(--p-primary-500), var(--p-primary-700));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
 
     .login-header h2 {
-      color: var(--primary-color);
+      color: var(--p-surface-800);
       margin: 0 0 0.5rem 0;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
     }
 
     .login-header p {
-      color: var(--text-color-secondary);
+      color: var(--p-surface-600);
       margin: 0;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
     .login-form {
-      padding: 1rem;
+      padding: 2rem;
     }
 
     .field {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
 
     .field-label {
       display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: var(--text-color);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--p-surface-700);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .field-checkbox {
       display: flex;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 0.5rem 0;
     }
 
     .checkbox-label {
-      margin-left: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--text-color);
+      margin-left: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--p-surface-600);
+      font-weight: 500;
     }
 
     .login-button {
-      height: 3rem;
+      height: 3.5rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--p-primary-500), var(--p-primary-600));
+      border: none;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .login-button:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--p-primary-600), var(--p-primary-700));
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(33, 150, 243, 0.3);
+    }
+
+    .login-button:active {
+      transform: translateY(0);
     }
 
     .forgot-password-link {
-      color: var(--primary-color);
+      color: var(--p-primary-600);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .forgot-password-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--p-primary-600);
+      transition: width 0.3s ease;
     }
 
     .forgot-password-link:hover {
-      color: var(--primary-color-text);
-      text-decoration: underline;
+      color: var(--p-primary-700);
+      transform: translateY(-1px);
+    }
+
+    .forgot-password-link:hover::after {
+      width: 100%;
     }
 
     .login-footer {
       margin-top: 2rem;
+      text-align: center;
+    }
+
+    .login-footer p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 400;
     }
 
     .p-error {
       display: block;
-      margin-top: 0.25rem;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
-    .p-input-icon-left > input {
-      padding-left: 2.5rem;
-    }
-
+    .p-input-icon-left > input,
     .p-input-icon-left > .p-password > input {
-      padding-left: 2.5rem;
+      padding-left: 3rem;
+      height: 3rem;
+      border-radius: 12px;
+      border: 2px solid var(--p-surface-300);
+      background: var(--p-surface-0);
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .p-input-icon-left > input:focus,
+    .p-input-icon-left > .p-password > input:focus {
+      border-color: var(--p-primary-500);
+      box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .p-input-icon-left > i {
+      color: var(--p-surface-500);
+      font-size: 1.1rem;
+      left: 1rem;
+    }
+
+    .p-checkbox {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .p-divider {
+      margin: 2rem 0;
+    }
+
+    .p-divider .p-divider-content {
+      background: transparent;
+      color: var(--p-surface-500);
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
     @media (max-width: 768px) {
+      .login-container {
+        padding: 1rem;
+      }
+      
+      .login-wrapper {
+        max-width: 100%;
+      }
+      
+      .login-header {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+      
+      .logo-icon {
+        font-size: 3rem;
+      }
+      
+      .login-header h2 {
+        font-size: 1.5rem;
+      }
+      
+      .login-form {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
       .login-container {
         padding: 0.5rem;
       }
       
       .login-header {
-        padding: 1.5rem 1rem 0.5rem;
+        padding: 1.5rem 1rem 1rem;
       }
       
-      .logo {
-        height: 50px;
+      .login-form {
+        padding: 1rem;
+      }
+      
+      .field {
+        margin-bottom: 1.5rem;
       }
     }
   `]
@@ -345,13 +489,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const credentials: LoginCredentials = {
+      const request: LoginRequest = {
         email: this.loginForm.value.email.trim().toLowerCase(),
-        password: this.loginForm.value.password,
-        rememberMe: this.loginForm.value.rememberMe
+        senha: this.loginForm.value.password,
+        lembrarMe: this.loginForm.value.rememberMe,
+        agenteUsuario: navigator.userAgent,
+        enderecoIp: '0.0.0.0' // Placeholder, conforme discutido
       };
 
-      this.store.dispatch(AuthActions.login({ credentials }));
+      this.store.dispatch(AuthActions.login({ request }));
     } else {
       this.markFormGroupTouched();
     }

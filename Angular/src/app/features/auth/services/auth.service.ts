@@ -10,14 +10,21 @@ import { environment } from '../../../../environments/environment';
 import {
   LoginCredentials,
   AuthResponse,
-  User
+  User,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
+  ChangePasswordRequest,
+  EmailAvailabilityResponse,
+  PasswordStrengthResponse,
+  LoginRequest,
+  ExtendedRefreshTokenRequest
 } from '../models/auth.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_BASE = `${environment.apiUrl}/auth`;
+  private readonly API_BASE = `${environment.apiUrl}/api/auth`;
   
   // Subjects para estado reativo
   private currentUserSubject = new BehaviorSubject<User | null>(null);
@@ -64,11 +71,17 @@ export class AuthService {
     this.setLoadingState(true);
     this.clearError();
 
-    return this.http.post<AuthResponse>(`${this.API_BASE}/login`, credentials)
+    const request: LoginRequest = {
+      ...credentials,
+      agenteUsuario: navigator.userAgent,
+      enderecoIp: '0.0.0.0' // Placeholder, as direct client IP is not accessible from frontend
+    };
+
+    return this.http.post<AuthResponse>(`${this.API_BASE}/login`, request)
       .pipe(
         tap(response => {
           this.setAuthData(response);
-          this.notificationService.success(`Bem-vindo, ${response.user.fullName}!`);
+          this.notificationService.success(`Bem-vindo, ${response.usuario.nomeCompleto}!`);
         }),
         catchError(error => {
           const errorMessage = error?.error?.message || error?.message || 'Erro no login';
@@ -112,7 +125,13 @@ export class AuthService {
       return throwError(() => new Error('Refresh token não encontrado'));
     }
 
-    return this.http.post<AuthResponse>(`${this.API_BASE}/refresh`, { refreshToken })
+    const request: ExtendedRefreshTokenRequest = {
+      refreshToken,
+      agenteUsuario: navigator.userAgent,
+      enderecoIp: '0.0.0.0' // Placeholder
+    };
+
+    return this.http.post<AuthResponse>(`${this.API_BASE}/refresh`, request)
       .pipe(
         tap(response => {
           this.setAuthData(response);
@@ -121,6 +140,154 @@ export class AuthService {
           this.clearAuthData();
           return throwError(() => error);
         })
+      );
+  }
+
+  /**
+   * Solicita recuperação de senha
+   */
+  forgotPassword(request: ForgotPasswordRequest): Observable<void> {
+    this.setLoadingState(true);
+    this.clearError();
+
+    return this.http.post<void>(`${this.API_BASE}/forgot-password`, request)
+      .pipe(
+        tap(() => {
+          this.notificationService.success('Se o email existir, você receberá instruções para recuperação');
+        }),
+        catchError(error => {
+          const errorMessage = error?.error?.detail || error?.message || 'Erro ao solicitar recuperação';
+          this.authErrorSubject.next(errorMessage);
+          this.notificationService.error(errorMessage);
+          return throwError(() => error);
+        }),
+        tap(() => this.setLoadingState(false))
+      );
+  }
+
+  /**
+   * Redefine senha usando token de recuperação
+   */
+  resetPassword(request: ResetPasswordRequest): Observable<void> {
+    this.setLoadingState(true);
+    this.clearError();
+
+    return this.http.post<void>(`${this.API_BASE}/reset-password`, request)
+      .pipe(
+        tap(() => {
+          this.notificationService.success('Senha redefinida com sucesso');
+        }),
+        catchError(error => {
+          const errorMessage = error?.error?.detail || error?.message || 'Erro ao redefinir senha';
+          this.authErrorSubject.next(errorMessage);
+          this.notificationService.error(errorMessage);
+          return throwError(() => error);
+        }),
+        tap(() => this.setLoadingState(false))
+      );
+  }
+
+  /**
+   * Confirma email do usuário
+   */
+  confirmEmail(email: string, token: string): Observable<void> {
+    this.setLoadingState(true);
+    this.clearError();
+
+    return this.http.get<void>(`${this.API_BASE}/confirm-email`, {
+      params: { email, token }
+    })
+      .pipe(
+        tap(() => {
+          this.notificationService.success('Email confirmado com sucesso');
+        }),
+        catchError(error => {
+          const errorMessage = error?.error?.detail || error?.message || 'Erro ao confirmar email';
+          this.authErrorSubject.next(errorMessage);
+          this.notificationService.error(errorMessage);
+          return throwError(() => error);
+        }),
+        tap(() => this.setLoadingState(false))
+      );
+  }
+
+  /**
+   * Reenvia confirmação de email
+   */
+  resendEmailConfirmation(email: string): Observable<void> {
+    this.setLoadingState(true);
+    this.clearError();
+
+    return this.http.post<void>(`${this.API_BASE}/resend-confirmation`, email)
+      .pipe(
+        tap(() => {
+          this.notificationService.success('Nova confirmação enviada para seu email');
+        }),
+        catchError(error => {
+          const errorMessage = error?.error?.detail || error?.message || 'Erro ao reenviar confirmação';
+          this.authErrorSubject.next(errorMessage);
+          this.notificationService.error(errorMessage);
+          return throwError(() => error);
+        }),
+        tap(() => this.setLoadingState(false))
+      );
+  }
+
+  /**
+   * Altera senha do usuário
+   */
+  changePassword(request: ChangePasswordRequest): Observable<void> {
+    this.setLoadingState(true);
+    this.clearError();
+
+    return this.http.post<void>(`${this.API_BASE}/change-password`, request)
+      .pipe(
+        tap(() => {
+          this.notificationService.success('Senha alterada com sucesso');
+        }),
+        catchError(error => {
+          const errorMessage = error?.error?.detail || error?.message || 'Erro ao alterar senha';
+          this.authErrorSubject.next(errorMessage);
+          this.notificationService.error(errorMessage);
+          return throwError(() => error);
+        }),
+        tap(() => this.setLoadingState(false))
+      );
+  }
+
+  /**
+   * Verifica disponibilidade de email
+   */
+  checkEmailAvailability(email: string): Observable<EmailAvailabilityResponse> {
+    return this.http.get<EmailAvailabilityResponse>(`${this.API_BASE}/check-email`, {
+      params: { email }
+    });
+  }
+
+  /**
+   * Valida força da senha
+   */
+  validatePasswordStrength(password: string): Observable<PasswordStrengthResponse> {
+    return this.http.post<PasswordStrengthResponse>(`${this.API_BASE}/validate-password`, password);
+  }
+
+  /**
+   * Invalida todas as sessões do usuário
+   */
+  invalidateAllSessions(): Observable<void> {
+    this.setLoadingState(true);
+
+    return this.http.post<void>(`${this.API_BASE}/invalidate-sessions`, {})
+      .pipe(
+        tap(() => {
+          this.notificationService.success('Todas as sessões foram invalidadas');
+        }),
+        catchError(error => {
+          const errorMessage = error?.error?.detail || error?.message || 'Erro ao invalidar sessões';
+          this.notificationService.error(errorMessage);
+          return throwError(() => error);
+        }),
+        tap(() => this.setLoadingState(false))
       );
   }
 
@@ -143,11 +310,13 @@ export class AuthService {
 
   // Métodos privados
   private setAuthData(response: AuthResponse): void {
-    this.storageService.setItem('auth_token', response.accessToken);
+    this.storageService.setItem('auth_token', response.token);
     this.storageService.setItem('refresh_token', response.refreshToken);
-    this.storageService.setItem('current_user', JSON.stringify(response.user));
+    this.storageService.setItem('current_user', JSON.stringify(response.usuario));
+    this.storageService.setItem('user_permissions', JSON.stringify(response.permissoes));
+    this.storageService.setItem('token_expires_at', response.expiraEm_DateTime);
     
-    this.currentUserSubject.next(response.user);
+    this.currentUserSubject.next(response.usuario);
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -155,6 +324,8 @@ export class AuthService {
     this.storageService.removeItem('auth_token');
     this.storageService.removeItem('refresh_token');
     this.storageService.removeItem('current_user');
+    this.storageService.removeItem('user_permissions');
+    this.storageService.removeItem('token_expires_at');
     
     this.currentUserSubject.next(null);
     this.isAuthenticatedSubject.next(false);

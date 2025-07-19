@@ -1,42 +1,49 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CanActivate, CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, map, take } from 'rxjs';
+import { AuthState } from '../../store/auth/auth.reducer';
+import * as AuthSelectors from '../../store/auth/auth.selectors';
+import * as AuthActions from '../../store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  private store = inject(Store<AuthState>);
+  private router = inject(Router);
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    _route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Observable<boolean> {
     return this.checkAuth(state.url);
   }
 
   canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
+    _childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Observable<boolean> {
     return this.checkAuth(state.url);
   }
 
-  private checkAuth(url: string): boolean {
-    const isAuthenticated = this.authService.isAuthenticated();
-    
-    if (isAuthenticated) {
-      return true;
-    } else {
-      // Store the attempted URL for redirecting after login
-      this.router.navigate(['/auth/login'], { 
-        queryParams: { returnUrl: url } 
-      });
-      return false;
-    }
+  private checkAuth(url: string): Observable<boolean> {
+    return this.store.select(AuthSelectors.selectIsAuthenticated).pipe(
+      take(1),
+      map(isAuthenticated => {
+        if (isAuthenticated) {
+          return true;
+        } else {
+          // Try auto login first
+          this.store.dispatch(AuthActions.autoLogin());
+          
+          // Store the attempted URL for redirecting after login
+          this.router.navigate(['/auth/login'], { 
+            queryParams: { returnUrl: url } 
+          });
+          return false;
+        }
+      })
+    );
   }
 }

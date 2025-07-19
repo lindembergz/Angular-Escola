@@ -4,75 +4,17 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { StorageService } from './storage.service';
 import { environment } from '../../../environments/environment';
-
-export interface User {
-  id: string;
-  fullName: string;
-  email: string;
-  role: string;
-  roleName: string;
-  initials: string;
-  emailConfirmed: boolean;
-  lastLoginAt?: string;
-  schoolId?: string;
-}
-
-export interface LoginCredentials {
-  email: string;
-  password: string;
-  rememberMe?: boolean;
-}
-
-export interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
-  tokenType: string;
-  expiresIn: number;
-  expiresAt: string;
-  user: User;
-  requiresPasswordChange: boolean;
-  requiresEmailConfirmation: boolean;
-  permissions: string[];
-  schools: SchoolAccess[];
-}
-
-export interface SchoolAccess {
-  id: string;
-  name: string;
-  isPrimary: boolean;
-  permissions: string[];
-}
-
-export interface RefreshTokenRequest {
-  refreshToken: string;
-}
-
-export interface ChangePasswordRequest {
-  currentPassword: string;
-  newPassword: string;
-  confirmPassword: string;
-  invalidateAllSessions?: boolean;
-}
-
-export interface ForgotPasswordRequest {
-  email: string;
-  callbackUrl?: string;
-}
-
-export interface ResetPasswordRequest {
-  email: string;
-  token: string;
-  newPassword: string;
-  confirmPassword: string;
-}
-
-export interface PasswordStrength {
-  strength: number;
-  isValid: boolean;
-  errors: string[];
-  suggestions: string[];
-  level: 'VeryWeak' | 'Weak' | 'Fair' | 'Good' | 'Strong' | 'VeryStrong';
-}
+import {
+  User,
+  LoginCredentials,
+  AuthResponse,
+  ChangePasswordRequest,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
+  PasswordStrength,
+  LoginRequest,
+  ExtendedRefreshTokenRequest
+} from '../../features/auth/models/auth.models';
 
 @Injectable({
   providedIn: 'root'
@@ -118,7 +60,12 @@ export class AuthService {
    * Realiza login do usuário
    */
   login(credentials: LoginCredentials): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
+    const request: LoginRequest = {
+      ...credentials,
+      agenteUsuario: navigator.userAgent,
+      enderecoIp: '0.0.0.0' // Placeholder, conforme discutido
+    };
+    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, request).pipe(
       tap(response => this.setAuthData(response)),
       catchError(this.handleError)
     );
@@ -149,8 +96,12 @@ export class AuthService {
       return throwError('No refresh token available');
     }
 
-    const request: RefreshTokenRequest = { refreshToken };
-    
+    const request: ExtendedRefreshTokenRequest = {
+      refreshToken,
+      agenteUsuario: navigator.userAgent,
+      enderecoIp: '0.0.0.0' // Placeholder
+    };
+
     return this.http.post<AuthResponse>(`${this.apiUrl}/refresh`, request).pipe(
       tap(response => this.setAuthData(response)),
       catchError(error => {
@@ -250,14 +201,13 @@ export class AuthService {
    * Define os dados de autenticação após login/refresh
    */
   private setAuthData(authResponse: AuthResponse): void {
-    this.storageService.setItem('auth_token', authResponse.accessToken);
+    this.storageService.setItem('auth_token', authResponse.token);
     this.storageService.setItem('refresh_token', authResponse.refreshToken);
-    this.storageService.setItem('current_user', JSON.stringify(authResponse.user));
-    this.storageService.setItem('user_permissions', JSON.stringify(authResponse.permissions));
-    this.storageService.setItem('token_expires_at', authResponse.expiresAt);
+    this.storageService.setItem('current_user', JSON.stringify(authResponse.usuario));
+    this.storageService.setItem('user_permissions', JSON.stringify(authResponse.permissoes));
     
-    this.currentUserSubject.next(authResponse.user);
-    this.permissionsSubject.next(authResponse.permissions);
+    this.currentUserSubject.next(authResponse.usuario);
+    this.permissionsSubject.next(authResponse.permissoes);
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -329,12 +279,12 @@ export class AuthService {
 
   hasRole(role: string): boolean {
     const user = this.getCurrentUser();
-    return user?.role === role;
+    return user?.codigoPerfil === role;
   }
 
   hasAnyRole(roles: string[]): boolean {
     const user = this.getCurrentUser();
-    return user ? roles.includes(user.role) : false;
+    return user ? roles.includes(user.codigoPerfil) : false;
   }
 
   canAccessSchool(schoolId: string): boolean {
@@ -342,24 +292,24 @@ export class AuthService {
     if (!user) return false;
     
     // SuperAdmin pode acessar qualquer escola
-    if (user.role === 'SuperAdmin') return true;
+    if (user.codigoPerfil === 'SuperAdmin') return true;
     
     // Verificar se o usuário tem acesso à escola específica
-    return user.schoolId === schoolId;
+    return user.escolaId === schoolId;
   }
 
   getUserInitials(): string {
     const user = this.getCurrentUser();
-    return user?.initials || '';
+    return user?.iniciais || '';
   }
 
   getUserFullName(): string {
     const user = this.getCurrentUser();
-    return user?.fullName || '';
+    return user?.nomeCompleto || '';
   }
 
   isEmailConfirmed(): boolean {
     const user = this.getCurrentUser();
-    return user?.emailConfirmed || false;
+    return user?.emailConfirmado || false;
   }
 }

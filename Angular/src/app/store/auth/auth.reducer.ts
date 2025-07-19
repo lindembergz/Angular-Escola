@@ -30,8 +30,8 @@ export const authReducer = createReducer(
 
   on(AuthActions.loginSuccess, (state, { authResponse }) => ({
     ...state,
-    user: authResponse.user,
-    token: authResponse.accessToken,
+    user: authResponse.usuario,
+    token: authResponse.token,
     isAuthenticated: true,
     isLoading: false,
     error: null
@@ -84,8 +84,8 @@ export const authReducer = createReducer(
 
   on(AuthActions.refreshTokenSuccess, (state, { authResponse }) => ({
     ...state,
-    user: authResponse.user,
-    token: authResponse.accessToken,
+    user: authResponse.usuario,
+    token: authResponse.token,
     isAuthenticated: true,
     isLoading: false,
     error: null

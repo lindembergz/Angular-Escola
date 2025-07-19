@@ -1,28 +1,23 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { LazyLoadingGuard } from './shared/guards/lazy-loading.guard';
 
 export const routes: Routes = [
-  // Rota padrão - Dashboard
+  // Rota padrão - Redireciona para dashboard se autenticado, senão para login
   {
     path: '',
-    loadComponent: () => import('./features/dashboard/dashboard.component')
-      .then(m => m.DashboardComponent)
-      .catch(error => {
-        console.error('Error loading dashboard:', error);
-        return import('./shared/components/lazy-loading-error/lazy-loading-error.component')
-          .then(m => m.LazyLoadingErrorComponent);
-      }),
-    canActivate: [LazyLoadingGuard]
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
   },
 
-  // Módulo de Autenticação - Lazy Loading
+  // Módulo de Autenticação - Lazy Loading (sem guard)
   {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.routes')
       .then(m => m.authRoutes)
   },
   
-  // Dashboard
+  // Dashboard - Protegido por AuthGuard
   {
     path: 'dashboard',
     loadComponent: () => import('./features/dashboard/dashboard.component')
@@ -32,7 +27,7 @@ export const routes: Routes = [
         return import('./shared/components/lazy-loading-error/lazy-loading-error.component')
           .then(m => m.LazyLoadingErrorComponent);
       }),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo de Escolas - Lazy Loading
@@ -40,7 +35,7 @@ export const routes: Routes = [
     path: 'escolas',
     loadChildren: () => import('./features/escolas/escolas.routes')
       .then(m => m.ESCOLAS_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo de Alunos - Lazy Loading
@@ -48,7 +43,7 @@ export const routes: Routes = [
     path: 'alunos',
     loadChildren: () => import('./features/alunos/alunos.routes')
       .then(m => m.ALUNOS_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo de Professores - Lazy Loading
@@ -56,7 +51,7 @@ export const routes: Routes = [
     path: 'professores',
     loadChildren: () => import('./features/professores/professores.routes')
       .then(m => m.PROFESSORES_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo Acadêmico - Lazy Loading
@@ -64,7 +59,7 @@ export const routes: Routes = [
     path: 'academico',
     loadChildren: () => import('./features/academico/academico.routes')
       .then(m => m.ACADEMICO_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo de Avaliações - Lazy Loading
@@ -72,7 +67,7 @@ export const routes: Routes = [
     path: 'avaliacoes',
     loadChildren: () => import('./features/avaliacoes/avaliacoes.routes')
       .then(m => m.AVALIACOES_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo Financeiro - Lazy Loading
@@ -80,7 +75,7 @@ export const routes: Routes = [
     path: 'financeiro',
     loadChildren: () => import('./features/financeiro/financeiro.routes')
       .then(m => m.FINANCEIRO_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Módulo de Relatórios - Lazy Loading
@@ -88,7 +83,7 @@ export const routes: Routes = [
     path: 'relatorios',
     loadChildren: () => import('./features/relatorios/relatorios.routes')
       .then(m => m.RELATORIOS_ROUTES),
-    canActivate: [LazyLoadingGuard]
+    canActivate: [AuthGuard, LazyLoadingGuard]
   },
   
   // Rota 404 - Página não encontrada
