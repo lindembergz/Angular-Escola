@@ -21,7 +21,7 @@ export class AuthEffects {
         this.authService.login(request).pipe(
           map((authResponse) => AuthActions.loginSuccess({ authResponse })),
           catchError((error) =>
-            of(AuthActions.loginFailure({ error: error.message || 'Erro no login' }))
+            of(AuthActions.loginFailure({ error: error?.error?.detail || error?.error?.message || error?.message || 'Erro no login' }))
           )
         )
       )
@@ -69,7 +69,10 @@ export class AuthEffects {
         ofType(AuthActions.logoutSuccess),
         tap(() => {
           this.notificationService.success('Logout realizado com sucesso');
-          this.router.navigate(['/auth/login']);
+          // Small delay to ensure state is updated before navigation
+          setTimeout(() => {
+            this.router.navigate(['/auth/login']);
+          }, 100);
         })
       ),
     { dispatch: false }

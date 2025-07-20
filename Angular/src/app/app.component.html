@@ -1,33 +1,6 @@
 <div class="layout-wrapper">
-  <!-- Header com Menu Principal -->
-  <header class="layout-header">
-    <p-menubar [model]="menuItems" class="border-none">
-      <ng-template pTemplate="start">
-        <div class="flex align-items-center gap-2">
-          <i class="pi pi-graduation-cap text-2xl text-primary"></i>
-          <span class="font-bold text-xl text-primary">{{ title }}</span>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="end">
-        <div class="flex align-items-center gap-2">
-          <p-button 
-            icon="pi pi-bell" 
-            [text]="true" 
-            [rounded]="true" 
-            severity="secondary"
-            class="p-button-sm">
-          </p-button>
-          <p-button 
-            icon="pi pi-user" 
-            [text]="true" 
-            [rounded]="true" 
-            severity="secondary"
-            class="p-button-sm">
-          </p-button>
-        </div>
-      </ng-template>
-    </p-menubar>
-  </header>
+  <!-- Header com Menu Principal e Logout - Apenas para usuários autenticados -->
+  <app-header *ngIf="isAuthenticated"></app-header>
 
   <!-- Conteúdo Principal -->
   <main class="layout-main">

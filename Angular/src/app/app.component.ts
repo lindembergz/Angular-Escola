@@ -1,17 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Menubar } from 'primeng/menubar';
-import { Button } from 'primeng/button';
-import { MenuItem } from 'primeng/api';
 import { Message } from 'primeng/message';
 import { Toast } from 'primeng/toast';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { HeaderComponent } from './layout/components/header/header.component';
+import { AuthService } from './features/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Menubar, Button, Message, Toast, LoadingSpinnerComponent],
+  imports: [RouterOutlet, CommonModule, Message, Toast, LoadingSpinnerComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,14 +18,23 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'Sistema de Gestão Escolar';
   isNavigating = false;
   errorMessage: string | null = null;
+  isAuthenticated = false;
   
   private destroy$ = new Subject<void>();
   
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
+    // Listen to authentication state changes
+    this.authService.isAuthenticated$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isAuthenticated => {
+        this.isAuthenticated = isAuthenticated;
+      });
+
     // Listen to router events for loading states
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -62,129 +70,4 @@ export class AppComponent implements OnInit, OnDestroy {
   dismissError() {
     this.errorMessage = null;
   }
-  
-  menuItems: MenuItem[] = [
-    {
-      label: 'Dashboard',
-      icon: 'pi pi-home',
-      routerLink: ['/']
-    },
-    {
-      label: 'Escolas',
-      icon: 'pi pi-building',
-      items: [
-        {
-          label: 'Listar Escolas',
-          icon: 'pi pi-list',
-          routerLink: ['/escolas']
-        },
-        {
-          label: 'Nova Escola',
-          icon: 'pi pi-plus',
-          routerLink: ['/escolas/nova']
-        }
-      ]
-    },
-    {
-      label: 'Alunos',
-      icon: 'pi pi-users',
-      items: [
-        {
-          label: 'Listar Alunos',
-          icon: 'pi pi-list',
-          routerLink: ['/alunos']
-        },
-        {
-          label: 'Novo Aluno',
-          icon: 'pi pi-user-plus',
-          routerLink: ['/alunos/novo']
-        }
-      ]
-    },
-    {
-      label: 'Professores',
-      icon: 'pi pi-user',
-      items: [
-        {
-          label: 'Listar Professores',
-          icon: 'pi pi-list',
-          routerLink: ['/professores']
-        },
-        {
-          label: 'Novo Professor',
-          icon: 'pi pi-user-plus',
-          routerLink: ['/professores/novo']
-        }
-      ]
-    },
-    {
-      label: 'Acadêmico',
-      icon: 'pi pi-book',
-      items: [
-        {
-          label: 'Turmas',
-          icon: 'pi pi-users',
-          routerLink: ['/academico/turmas']
-        },
-        {
-          label: 'Disciplinas',
-          icon: 'pi pi-bookmark',
-          routerLink: ['/academico/disciplinas']
-        },
-        {
-          label: 'Horários',
-          icon: 'pi pi-calendar',
-          routerLink: ['/academico/horarios']
-        }
-      ]
-    },
-    {
-      label: 'Avaliações',
-      icon: 'pi pi-chart-bar',
-      items: [
-        {
-          label: 'Notas',
-          icon: 'pi pi-star',
-          routerLink: ['/avaliacoes/notas']
-        },
-        {
-          label: 'Frequência',
-          icon: 'pi pi-check-circle',
-          routerLink: ['/avaliacoes/frequencia']
-        }
-      ]
-    },
-    {
-      label: 'Financeiro',
-      icon: 'pi pi-dollar',
-      items: [
-        {
-          label: 'Mensalidades',
-          icon: 'pi pi-credit-card',
-          routerLink: ['/financeiro/mensalidades']
-        },
-        {
-          label: 'Pagamentos',
-          icon: 'pi pi-money-bill',
-          routerLink: ['/financeiro/pagamentos']
-        }
-      ]
-    },
-    {
-      label: 'Relatórios',
-      icon: 'pi pi-file',
-      items: [
-        {
-          label: 'Acadêmicos',
-          icon: 'pi pi-chart-line',
-          routerLink: ['/relatorios/academicos']
-        },
-        {
-          label: 'Financeiros',
-          icon: 'pi pi-chart-pie',
-          routerLink: ['/relatorios/financeiros']
-        }
-      ]
-    }
-  ];
 }

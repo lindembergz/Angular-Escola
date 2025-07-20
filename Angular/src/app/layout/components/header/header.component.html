@@ -45,13 +45,13 @@
           pRipple
           type="button" 
           class="p-button-text user-btn"
-          [pMenuTriggerFor]="userMenu">
+          (click)="userMenu.toggle($event)">
           <p-avatar 
-            [label]="currentUser.name.charAt(0).toUpperCase()" 
+            [label]="currentUser.iniciais || (currentUser.nomeCompleto ? currentUser.nomeCompleto.charAt(0).toUpperCase() : 'U')" 
             styleClass="user-avatar"
             size="normal">
           </p-avatar>
-          <span class="user-name">{{ currentUser.name }}</span>
+          <span class="user-name">{{ currentUser.nomeCompleto || 'Usuário' }}</span>
           <i class="pi pi-chevron-down"></i>
         </button>
         

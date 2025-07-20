@@ -462,8 +462,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       });
 
-    // Clear any previous auth errors
-    this.store.dispatch(AuthActions.clearAuthError());
+    // Clear auth errors when user starts typing
+    this.loginForm.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.store.dispatch(AuthActions.clearAuthError());
+      });
   }
 
   ngOnDestroy(): void {
@@ -491,7 +495,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.valid) {
       const request: LoginRequest = {
         email: this.loginForm.value.email.trim().toLowerCase(),
-        senha: this.loginForm.value.password,
+        senha: this.loginForm.value.password, // Senha em texto plano - será hasheada pelo backend com BCrypt
         lembrarMe: this.loginForm.value.rememberMe,
         agenteUsuario: navigator.userAgent,
         enderecoIp: '0.0.0.0' // Placeholder, conforme discutido

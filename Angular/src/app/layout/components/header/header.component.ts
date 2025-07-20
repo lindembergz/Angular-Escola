@@ -1,11 +1,22 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
-import { AuthService, User } from '../../../core/services/auth.service';
-import { NotificationService } from '../../../core/services/notification.service';
+import { Menu } from 'primeng/menu';
+import { Avatar } from 'primeng/avatar';
+import { Badge } from 'primeng/badge';
+import { Tooltip } from 'primeng/tooltip';
+import { Ripple } from 'primeng/ripple';
+import { AuthService } from '../../../features/auth/services/auth.service';
+import { User } from '../../../features/auth/models/auth.models';
+import * as AuthActions from '../../../store/auth/auth.actions';
+import { AppState } from '../../../store/app.state';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule, Menu, Avatar, Badge, Tooltip, Ripple],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -17,8 +28,8 @@ export class HeaderComponent {
 
   constructor(
     private authService: AuthService,
-    private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) {
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
@@ -62,8 +73,7 @@ export class HeaderComponent {
   }
 
   private logout(): void {
-    this.authService.logout();
-    this.notificationService.success('Logout realizado com sucesso');
-    this.router.navigate(['/login']);
+    // Dispatch logout action through NgRx
+    this.store.dispatch(AuthActions.logout());
   }
 }

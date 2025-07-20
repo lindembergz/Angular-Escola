@@ -81,10 +81,9 @@ export class AuthService {
       .pipe(
         tap(response => {
           this.setAuthData(response);
-          this.notificationService.success(`Bem-vindo, ${response.usuario.nomeCompleto}!`);
         }),
         catchError(error => {
-          const errorMessage = error?.error?.message || error?.message || 'Erro no login';
+          const errorMessage = error?.error?.detail || error?.error?.message || error?.message || 'Erro no login';
           this.authErrorSubject.next(errorMessage);
           this.notificationService.error(errorMessage);
           return throwError(() => error);
@@ -103,7 +102,6 @@ export class AuthService {
       .pipe(
         tap(() => {
           this.clearAuthData();
-          this.notificationService.success('Logout realizado com sucesso');
         }),
         catchError(error => {
           // Mesmo com erro na API, fazer logout local
