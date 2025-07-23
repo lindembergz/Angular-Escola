@@ -64,6 +64,14 @@ export class NotificationService {
     });
   }
 
+  showError(message: string, title?: string, duration?: number): void {
+    this.error(message, title, duration);
+  }
+
+  showSuccess(message: string, title?: string, duration?: number): void {
+    this.success(message, title, duration);
+  }
+
   clear(): void {
     this.messageService.clear();
   }

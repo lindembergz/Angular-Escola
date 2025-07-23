@@ -26,7 +26,7 @@ export interface QueryParams {
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = environment.apiUrl || 'http://localhost:5000/api';
+  private readonly baseUrl = `${environment.apiUrl}/api` || 'http://localhost:5001/api';
 
   constructor(private http: HttpClient) {}
 
@@ -80,7 +80,7 @@ export class ApiService {
   }
 
   // Download file
-  downloadFile(endpoint: string, filename?: string): Observable<Blob> {
+  downloadFile(endpoint: string, _filename?: string): Observable<Blob> {
     const headers = new HttpHeaders({
       'Accept': 'application/octet-stream'
     });

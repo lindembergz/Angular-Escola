@@ -33,6 +33,13 @@ export const ALUNOS_ROUTES: Routes = [
     canActivate: [LazyLoadingGuard]
   },
   {
+    path: 'responsavel-dashboard',
+    loadComponent: () => withLazyLoadErrorHandler(
+      import('./pages/responsavel-dashboard/responsavel-dashboard.component').then(m => m.ResponsavelDashboardComponent)
+    ),
+    canActivate: [LazyLoadingGuard]
+  },
+  {
     path: ':id',
     loadComponent: () => withLazyLoadErrorHandler(
       import('./pages/aluno-detail/aluno-detail.component').then(m => m.AlunoDetailComponent)

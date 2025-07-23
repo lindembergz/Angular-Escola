@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { reducers, metaReducers } from './store/app.state';
 import { AuthEffects } from './store/auth/auth.effects';
+import { AlunosEffects } from './store/alunos/alunos.effects';
 import { environment } from '../environments/environment';
 
 // Interceptors
@@ -33,7 +34,7 @@ export const appConfig: ApplicationConfig = {
     
     // NgRx Store
     provideStore(reducers, { metaReducers }),
-    provideEffects([AuthEffects]),
+    provideEffects([AuthEffects, AlunosEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production,

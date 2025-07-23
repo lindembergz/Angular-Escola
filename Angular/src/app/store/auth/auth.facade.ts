@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../app.state';
-import { User, LoginCredentials } from '../../core/services/auth.service';
+import { User, LoginCredentials, LoginRequest } from '../../features/auth/models/auth.models';
 import * as AuthActions from './auth.actions';
 import * as AuthSelectors from './auth.selectors';
 
@@ -11,20 +11,34 @@ import * as AuthSelectors from './auth.selectors';
 })
 export class AuthFacade {
   // Selectors
-  currentUser$ = this.store.select(AuthSelectors.selectCurrentUser);
-  isAuthenticated$ = this.store.select(AuthSelectors.selectIsAuthenticated);
-  authToken$ = this.store.select(AuthSelectors.selectAuthToken);
-  isLoading$ = this.store.select(AuthSelectors.selectAuthLoading);
-  error$ = this.store.select(AuthSelectors.selectAuthError);
-  userRole$ = this.store.select(AuthSelectors.selectUserRole);
-  userPermissions$ = this.store.select(AuthSelectors.selectUserPermissions);
-  userSchoolId$ = this.store.select(AuthSelectors.selectUserSchoolId);
+  readonly currentUser$;
+  readonly isAuthenticated$;
+  readonly authToken$;
+  readonly isLoading$;
+  readonly error$;
+  readonly userRole$;
+  readonly userPermissions$;
+  readonly userSchoolId$;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {
+    this.currentUser$ = this.store.select(AuthSelectors.selectCurrentUser);
+    this.isAuthenticated$ = this.store.select(AuthSelectors.selectIsAuthenticated);
+    this.authToken$ = this.store.select(AuthSelectors.selectAuthToken);
+    this.isLoading$ = this.store.select(AuthSelectors.selectAuthLoading);
+    this.error$ = this.store.select(AuthSelectors.selectAuthError);
+    this.userRole$ = this.store.select(AuthSelectors.selectUserRole);
+    this.userPermissions$ = this.store.select(AuthSelectors.selectUserPermissions);
+    this.userSchoolId$ = this.store.select(AuthSelectors.selectUserSchoolId);
+  }
 
   // Actions
   login(credentials: LoginCredentials): void {
-    this.store.dispatch(AuthActions.login({ credentials }));
+    const request: LoginRequest = {
+      ...credentials,
+      agenteUsuario: navigator.userAgent,
+      enderecoIp: '0.0.0.0'
+    };
+    this.store.dispatch(AuthActions.login({ request }));
   }
 
   logout(): void {
@@ -55,7 +69,7 @@ export class AuthFacade {
   hasRole(role: string): Observable<boolean> {
     return this.store.select(state => {
       const user = AuthSelectors.selectCurrentUser(state);
-      return user?.role === role || false;
+      return user?.codigoPerfil === role || false;
     });
   }
 

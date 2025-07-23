@@ -1,0 +1,80 @@
+:host {
+  .p-dialog {
+    .p-dialog-header {
+      background: var(--primary-color);
+      color: white;
+      
+      .p-dialog-title {
+        font-weight: 600;
+      }
+    }
+    
+    .p-dialog-content {
+      padding: 1.5rem;
+    }
+    
+    .p-dialog-footer {
+      padding: 1rem 1.5rem;
+      background: var(--surface-50);
+      border-top: 1px solid var(--surface-200);
+    }
+  }
+
+  .field {
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .p-error {
+      font-size: 0.875rem;
+      color: var(--red-500);
+      
+      .pi {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .text-muted {
+    color: var(--text-color-secondary);
+    font-size: 0.875rem;
+  }
+
+  .text-primary {
+    color: var(--primary-color);
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  // Custom dropdown styling
+  ::ng-deep {
+    .p-dropdown {
+      .p-dropdown-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+    
+    .p-dropdown-panel {
+      .p-dropdown-item {
+        padding: 0.75rem;
+        
+        &:hover {
+          background: var(--primary-50);
+        }
+      }
+    }
+  }
+}
