@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemaGestaoEscolar.Escolas.Infraestrutura.Contexto;
 using SistemaGestaoEscolar.Auth.Infrastructure.Mappings;
 using SistemaGestaoEscolar.Auth.Domain.Entities;
+using SistemaGestaoEscolar.Alunos.Infraestrutura.Persistencia.Entidades;
 
 namespace SistemaGestaoEscolar.API.Configuration;
 
@@ -15,6 +16,11 @@ public class ApplicationDbContext : DbContext
     public DbSet<User> Usuarios { get; set; } = null!;
     public DbSet<Session> Sessoes { get; set; } = null!;
 
+    // DbSets for Alunos module
+    public DbSet<AlunoEntity> Alunos { get; set; } = null!;
+    public DbSet<ResponsavelEntity> Responsaveis { get; set; } = null!;
+    public DbSet<MatriculaEntity> Matriculas { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -24,6 +30,9 @@ public class ApplicationDbContext : DbContext
         
         // Apply Auth module configurations manually since we can't reference AuthDbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SistemaGestaoEscolar.Auth.Infrastructure.Mappings.UserMapping).Assembly);
+        
+        // Apply Alunos module configurations
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SistemaGestaoEscolar.Alunos.Infraestrutura.Persistencia.Configuracoes.AlunoEntityConfiguration).Assembly);
 
         // Configure global settings for MySQL
         ConfigureGlobalSettings(modelBuilder);

@@ -31,6 +31,9 @@
     <ProjectReference Include="..\Modulos\Auth\SistemaGestaoEscolar.Auth.Domain\SistemaGestaoEscolar.Auth.Domain.csproj" />
     <ProjectReference Include="..\Modulos\Auth\SistemaGestaoEscolar.Auth.Application\SistemaGestaoEscolar.Auth.Application.csproj" />
     <ProjectReference Include="..\Modulos\Auth\SistemaGestaoEscolar.Auth.Infrastructure\SistemaGestaoEscolar.Auth.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modulos\Alunos\SistemaGestaoEscolar.Alunos.Dominio\SistemaGestaoEscolar.Alunos.Dominio.csproj" />
+    <ProjectReference Include="..\Modulos\Alunos\SistemaGestaoEscolar.Alunos.Aplicacao\SistemaGestaoEscolar.Alunos.Aplicacao.csproj" />
+    <ProjectReference Include="..\Modulos\Alunos\SistemaGestaoEscolar.Alunos.Infraestrutura\SistemaGestaoEscolar.Alunos.Infraestrutura.csproj" />
   </ItemGroup>
 
 </Project>

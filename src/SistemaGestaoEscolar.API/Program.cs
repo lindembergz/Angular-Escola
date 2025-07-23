@@ -2,11 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using SistemaGestaoEscolar.API.Configuration;
 using SistemaGestaoEscolar.API.Middleware;
+using SistemaGestaoEscolar.Alunos.Infraestrutura.Configuracao;
 using SistemaGestaoEscolar.Auth.Application;
 using SistemaGestaoEscolar.Auth.Infrastructure;
 using SistemaGestaoEscolar.Escolas.Infraestrutura.Configuracao;
 using SistemaGestaoEscolar.Shared.Infrastructure.Configuration;
 using SistemaGestaoEscolar.Shared.Infrastructure.Middleware;
+using SistemaGestaoEscolar.Shared.Infrastructure.Authorization;
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -33,6 +35,28 @@ try
             Version = "v1",
             Description = "API para Sistema de Gestão Escolar com arquitetura modular"
         });
+        
+        // Resolver conflitos de nomes de DTOs entre módulos
+        c.CustomSchemaIds(type => 
+        {
+            var typeName = type.Name;
+            var namespaceParts = type.Namespace?.Split('.') ?? Array.Empty<string>();
+            
+            // Se for um DTO de um módulo específico, incluir o nome do módulo no schema ID
+            // Formato: SistemaGestaoEscolar.{Modulo}.Aplicacao.{DTOs|Queries|Commands}
+            if (namespaceParts.Length >= 3 && namespaceParts[0] == "SistemaGestaoEscolar")
+            {
+                var moduleName = namespaceParts[1]; // Ex: "Alunos", "Escolas", "Auth"
+                
+                // Verificar se é um módulo conhecido (não Shared)
+                if (moduleName != "Shared" && moduleName != "API")
+                {
+                    return $"{moduleName}{typeName}";
+                }
+            }
+            
+            return typeName;
+        });
     });
 
     // Configure Database
@@ -54,6 +78,9 @@ try
     builder.Services.AddHealthChecks()
         .AddDbContextCheck<ApplicationDbContext>();
 
+    // Configure centralized API security (JWT, Authorization, Middleware)
+    builder.Services.AddApiSecurity(builder.Configuration);
+
     // Configure shared infrastructure
     builder.Services.AddSharedInfrastructure();
 
@@ -61,6 +88,7 @@ try
     builder.Services.AddAuthApplication();
     builder.Services.AddAuthInfrastructure(builder.Configuration);
     builder.Services.AdicionarModuloEscolas(builder.Configuration);
+    builder.Services.AddCompleteAlunosModule();
 
     var app = builder.Build();
 
@@ -75,23 +103,40 @@ try
         });
     }
 
-    // Add custom middleware
+    // Add custom middleware in correct order
     app.UseMiddleware<ValidationMiddleware>();
     app.UseMiddleware<ErrorHandlingMiddleware>();
 
     app.UseHttpsRedirection();
     app.UseCors("AllowAngularApp");
-
+    
     app.UseAuthInfrastructure();
 
-    app.UseAuthentication();
-    app.UseAuthorization();
+    // Configure centralized security middleware pipeline
+    app.UseApiSecurity();
 
     app.MapControllers();
     app.MapHealthChecks("/health");
 
-    // Initialize database
-    await DatabaseConfiguration.InitializeDatabaseAsync(app.Services, app.Environment);
+    // Initialize database (skip in test environment)
+    if (!app.Environment.IsEnvironment("Testing"))
+    {
+        await DatabaseConfiguration.InitializeDatabaseAsync(app.Services, app.Environment);
+    }
+
+    // Validate security configuration (skip in test environment)
+    if (!app.Environment.IsEnvironment("Testing"))
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+            if (!SecurityConfiguration.ValidateSecurityConfiguration(scope.ServiceProvider, logger))
+            {
+                Log.Fatal("Configuração de segurança inválida. Aplicação não pode iniciar.");
+                return;
+            }
+        }
+    }
 
     app.Run();
 }
@@ -103,3 +148,6 @@ finally
 {
     Log.CloseAndFlush();
 }
+
+// Make Program class accessible for testing
+public partial class Program { }

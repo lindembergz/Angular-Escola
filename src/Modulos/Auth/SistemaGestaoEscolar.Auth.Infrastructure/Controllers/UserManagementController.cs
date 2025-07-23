@@ -8,6 +8,7 @@ using SistemaGestaoEscolar.Auth.Domain.Entities;
 using SistemaGestaoEscolar.Auth.Domain.Repositories;
 using SistemaGestaoEscolar.Auth.Domain.Services;
 using SistemaGestaoEscolar.Auth.Domain.ValueObjects;
+using SistemaGestaoEscolar.Shared.Infrastructure.Authorization;
 using System.Security.Claims;
 
 namespace SistemaGestaoEscolar.Auth.Infrastructure.Controllers;
@@ -45,7 +46,7 @@ public class UserManagementController : ControllerBase
     /// <param name="createUserDto">Dados do usuário a ser criado</param>
     /// <returns>Informações do usuário criado</returns>
     [HttpPost]
-    [Authorize(Policy = "Admin")]
+    [Authorize(Policy = AuthorizationPolicies.UserManagement)]
     [ProducesResponseType(typeof(UserInfoDto), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
@@ -154,7 +155,7 @@ public class UserManagementController : ControllerBase
     /// <param name="id">ID do usuário</param>
     /// <returns>Informações do usuário</returns>
     [HttpGet("{id:guid}")]
-    [Authorize(Policy = "SchoolStaff")]
+    [Authorize(Policy = AuthorizationPolicies.SchoolStaff)]
     [ProducesResponseType(typeof(UserInfoDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
@@ -222,7 +223,7 @@ public class UserManagementController : ControllerBase
     /// <param name="schoolId">Filtro por escola</param>
     /// <returns>Lista paginada de usuários</returns>
     [HttpGet]
-    [Authorize(Policy = "SchoolStaff")]
+    [Authorize(Policy = AuthorizationPolicies.SchoolStaff)]
     [ProducesResponseType(typeof(PagedResult<UserInfoDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetUsers(
         [FromQuery] int page = 1,
@@ -314,7 +315,7 @@ public class UserManagementController : ControllerBase
     /// <param name="updateUserDto">Dados para atualização</param>
     /// <returns>Informações atualizadas do usuário</returns>
     [HttpPut("{id:guid}")]
-    [Authorize(Policy = "Admin")]
+    [Authorize(Policy = AuthorizationPolicies.UserManagement)]
     [ProducesResponseType(typeof(UserInfoDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
@@ -398,7 +399,7 @@ public class UserManagementController : ControllerBase
     /// <param name="activate">True para ativar, false para desativar</param>
     /// <returns>Confirmação da operação</returns>
     [HttpPatch("{id:guid}/status")]
-    [Authorize(Policy = "Admin")]
+    [Authorize(Policy = AuthorizationPolicies.UserManagement)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ToggleUserStatus(Guid id, [FromBody] bool activate)
@@ -451,7 +452,7 @@ public class UserManagementController : ControllerBase
     /// <param name="id">ID do usuário</param>
     /// <returns>Confirmação da operação</returns>
     [HttpPost("{id:guid}/unlock")]
-    [Authorize(Policy = "Admin")]
+    [Authorize(Policy = AuthorizationPolicies.UserManagement)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UnlockUser(Guid id)

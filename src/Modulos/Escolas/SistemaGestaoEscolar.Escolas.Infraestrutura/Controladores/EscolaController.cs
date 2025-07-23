@@ -1,12 +1,15 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SistemaGestaoEscolar.Escolas.Aplicacao.DTOs;
 using SistemaGestaoEscolar.Escolas.Aplicacao.Servicos;
+using SistemaGestaoEscolar.Shared.Infrastructure.Authorization;
 
 namespace SistemaGestaoEscolar.Escolas.Infraestrutura.Controladores;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = AuthorizationPolicies.SchoolManagement)]
 public class EscolaController : ControllerBase
 {
     private readonly IServicoAplicacaoEscola _servicoAplicacao;

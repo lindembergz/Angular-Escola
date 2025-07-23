@@ -75,113 +75,8 @@ public static class DependencyInjection
         services.AddScoped<IValidator<ForgotPasswordDto>, ForgotPasswordDtoValidator>();
         services.AddScoped<IValidator<ResetPasswordDto>, ResetPasswordDtoValidator>();
 
-        // Configurar autenticação JWT
-        services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        })
-        .AddJwtBearer(options =>
-        {
-            var jwtSecret = configuration["Jwt:Secret"];
-            if (string.IsNullOrWhiteSpace(jwtSecret))
-            {
-                throw new InvalidOperationException("JWT Secret não configurado");
-            }
-
-            var key = Encoding.UTF8.GetBytes(jwtSecret);
-
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = true,
-                ValidIssuer = configuration["Jwt:Issuer"] ?? "SistemaGestaoEscolar",
-                ValidateAudience = true,
-                ValidAudience = configuration["Jwt:Audience"] ?? "SistemaGestaoEscolar.Users",
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero,
-                RequireExpirationTime = true,
-                RequireSignedTokens = true
-            };
-
-            // Configurar eventos para logging e auditoria
-            options.Events = new JwtBearerEvents
-            {
-                OnAuthenticationFailed = context =>
-                {
-                    var logger = context.HttpContext.RequestServices
-                        .GetRequiredService<ILogger<JwtBearerEvents>>();
-                    
-                    logger.LogWarning("Falha na autenticação JWT: {Exception}", context.Exception.Message);
-                    
-                    return Task.CompletedTask;
-                },
-                OnTokenValidated = context =>
-                {
-                    var logger = context.HttpContext.RequestServices
-                        .GetRequiredService<ILogger<JwtBearerEvents>>();
-                    
-                    var userId = context.Principal?.Identity?.Name;
-                    logger.LogDebug("Token JWT validado para usuário: {UserId}", userId);
-                    
-                    return Task.CompletedTask;
-                },
-                OnChallenge = context =>
-                {
-                    var logger = context.HttpContext.RequestServices
-                        .GetRequiredService<ILogger<JwtBearerEvents>>();
-                    
-                    logger.LogDebug("Desafio de autenticação JWT: {Error}", context.Error);
-                    
-                    return Task.CompletedTask;
-                }
-            };
-
-            // Configurar para aceitar tokens de diferentes fontes
-            options.IncludeErrorDetails = configuration.GetValue<bool>("Development:IncludeJwtErrorDetails");
-        });
-
-        // Configurar autorização
-        services.AddAuthorization(options =>
-        {
-            // Políticas baseadas em papéis
-            options.AddPolicy("SuperAdmin", policy => 
-                policy.RequireRole("SuperAdmin"));
-            
-            options.AddPolicy("Admin", policy => 
-                policy.RequireRole("SuperAdmin", "Admin"));
-            
-            options.AddPolicy("SchoolStaff", policy => 
-                policy.RequireRole("SuperAdmin", "Admin", "Director", "Coordinator", "Secretary", "Teacher"));
-            
-            options.AddPolicy("AcademicAccess", policy => 
-                policy.RequireClaim("permission", "academic.read"));
-            
-            options.AddPolicy("FinancialAccess", policy => 
-                policy.RequireClaim("permission", "financial.read"));
-            
-            options.AddPolicy("ReportsAccess", policy => 
-                policy.RequireClaim("permission", "reports.generate"));
-            
-            options.AddPolicy("SystemConfig", policy => 
-                policy.RequireClaim("permission", "system.configure"));
-
-            // Política para usuários com email confirmado
-            options.AddPolicy("EmailConfirmed", policy =>
-                policy.RequireClaim("email_confirmed", "true"));
-
-            // Política para acesso a escola específica
-            options.AddPolicy("SchoolAccess", policy =>
-                policy.RequireAssertion(context =>
-                {
-                    var schoolIdClaim = context.User.FindFirst("school_id");
-                    return schoolIdClaim != null || 
-                           context.User.IsInRole("SuperAdmin") || 
-                           context.User.IsInRole("Admin");
-                }));
-        });
+        // Nota: A configuração de autenticação JWT foi movida para SecurityConfiguration (shared infrastructure)
+        // para evitar duplicação e centralizar a configuração de segurança
 
         // Configurar cache para sessões (se Redis estiver configurado)
         var redisConnectionString = configuration.GetConnectionString("Redis");
@@ -223,14 +118,15 @@ public static class DependencyInjection
     }
 
     /// <summary>
-    /// Configura o middleware de autenticação
+    /// Configura o middleware específico do módulo de autenticação
     /// </summary>
     public static IApplicationBuilder UseAuthInfrastructure(this IApplicationBuilder app)
     {
-        // Ordem importante dos middlewares
+        // Configurar CORS específico para autenticação
         app.UseCors("AuthPolicy");
-        app.UseAuthentication();
-        app.UseAuthorization();
+        
+        // Nota: UseAuthentication() e UseAuthorization() são configurados centralmente
+        // através do SecurityConfiguration.UseApiSecurity()
         
         return app;
     }

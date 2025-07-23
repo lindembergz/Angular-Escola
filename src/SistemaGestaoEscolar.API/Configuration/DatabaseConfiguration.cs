@@ -32,6 +32,9 @@ public static class DatabaseConfiguration
             options.LogTo(Console.WriteLine, LogLevel.Information);
         });
 
+        // Registrar DbContext genérico para resolver dependências dos repositórios
+        services.AddScoped<DbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+
         return services;
     }
 
