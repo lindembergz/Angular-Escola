@@ -4,9 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Message } from 'primeng/message';
 import { Toast } from 'primeng/toast';
 import { Subject, takeUntil } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { HeaderComponent } from './layout/components/header/header.component';
 import { AuthService } from './features/auth/services/auth.service';
+import { AuthState } from './store/auth/auth.reducer';
+import * as AuthActions from './store/auth/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -24,10 +27,14 @@ export class AppComponent implements OnInit, OnDestroy {
   
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<AuthState>
   ) {}
 
   ngOnInit() {
+    // Initialize auto-login on app start
+    this.store.dispatch(AuthActions.autoLogin());
+
     // Listen to authentication state changes
     this.authService.isAuthenticated$
       .pipe(takeUntil(this.destroy$))

@@ -27,7 +27,7 @@ export const autoLogin = createAction('[Auth] Auto Login');
 
 export const autoLoginSuccess = createAction(
   '[Auth] Auto Login Success',
-  props<{ user: User }>()
+  props<{ user: User; token: string }>()
 );
 
 export const autoLoginFailure = createAction('[Auth] Auto Login Failure');

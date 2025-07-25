@@ -86,7 +86,7 @@ export class AuthEffects {
         const token = this.authService.getToken();
         
         if (user && token) {
-          return of(AuthActions.autoLoginSuccess({ user }));
+          return of(AuthActions.autoLoginSuccess({ user, token }));
         } else {
           return of(AuthActions.autoLoginFailure());
         }

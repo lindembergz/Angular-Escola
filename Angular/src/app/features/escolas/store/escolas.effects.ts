@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
@@ -7,11 +7,10 @@ import * as EscolasActions from './escolas.actions';
 
 @Injectable()
 export class EscolasEffects {
+  private actions$ = inject(Actions);
+  private escolasService = inject(EscolasService);
 
-  constructor(
-    private actions$: Actions,
-    private escolasService: EscolasService
-  ) {}
+  constructor() {}
 
   // Load Escolas Effect
   loadEscolas$ = createEffect(() =>

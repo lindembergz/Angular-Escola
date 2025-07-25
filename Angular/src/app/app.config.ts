@@ -18,6 +18,7 @@ import { routes } from './app.routes';
 import { reducers, metaReducers } from './store/app.state';
 import { AuthEffects } from './store/auth/auth.effects';
 import { AlunosEffects } from './store/alunos/alunos.effects';
+import { ProfessoresEffects } from './store/professores/professores.effects';
 import { environment } from '../environments/environment';
 
 // Interceptors
@@ -34,7 +35,7 @@ export const appConfig: ApplicationConfig = {
     
     // NgRx Store
     provideStore(reducers, { metaReducers }),
-    provideEffects([AuthEffects, AlunosEffects]),
+    provideEffects([AuthEffects, AlunosEffects, ProfessoresEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production,
