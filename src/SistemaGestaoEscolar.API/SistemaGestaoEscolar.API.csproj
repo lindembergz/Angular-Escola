@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modulos\Academico\SistemaGestaoEscolar.Academico.Aplicacao\SistemaGestaoEscolar.Academico.Aplicacao.csproj" />
+    <ProjectReference Include="..\Modulos\Academico\SistemaGestaoEscolar.Academico.Dominio\SistemaGestaoEscolar.Academico.Dominio.csproj" />
+    <ProjectReference Include="..\Modulos\Academico\SistemaGestaoEscolar.Academico.Infraestrutura\SistemaGestaoEscolar.Academico.Infraestrutura.csproj" />
     <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Domain\SistemaGestaoEscolar.Shared.Domain.csproj" />
     <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Application\SistemaGestaoEscolar.Shared.Application.csproj" />
     <ProjectReference Include="..\Shared\SistemaGestaoEscolar.Shared.Infrastructure\SistemaGestaoEscolar.Shared.Infrastructure.csproj" />
@@ -34,6 +37,13 @@
     <ProjectReference Include="..\Modulos\Alunos\SistemaGestaoEscolar.Alunos.Dominio\SistemaGestaoEscolar.Alunos.Dominio.csproj" />
     <ProjectReference Include="..\Modulos\Alunos\SistemaGestaoEscolar.Alunos.Aplicacao\SistemaGestaoEscolar.Alunos.Aplicacao.csproj" />
     <ProjectReference Include="..\Modulos\Alunos\SistemaGestaoEscolar.Alunos.Infraestrutura\SistemaGestaoEscolar.Alunos.Infraestrutura.csproj" />
+    <ProjectReference Include="..\Modulos\Professores\SistemaGestaoEscolar.Professores.Dominio\SistemaGestaoEscolar.Professores.Dominio.csproj" />
+    <ProjectReference Include="..\Modulos\Professores\SistemaGestaoEscolar.Professores.Aplicacao\SistemaGestaoEscolar.Professores.Aplicacao.csproj" />
+    <ProjectReference Include="..\Modulos\Professores\SistemaGestaoEscolar.Professores.Infraestrutura\SistemaGestaoEscolar.Professores.Infraestrutura.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="logs\" />
   </ItemGroup>
 
 </Project>

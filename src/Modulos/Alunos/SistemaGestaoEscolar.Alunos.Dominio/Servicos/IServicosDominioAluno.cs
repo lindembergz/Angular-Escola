@@ -1,6 +1,7 @@
 using SistemaGestaoEscolar.Alunos.Dominio.Entidades;
 using SistemaGestaoEscolar.Alunos.Dominio.ObjetosDeValor;
 
+
 namespace SistemaGestaoEscolar.Alunos.Dominio.Servicos;
 
 /// <summary>

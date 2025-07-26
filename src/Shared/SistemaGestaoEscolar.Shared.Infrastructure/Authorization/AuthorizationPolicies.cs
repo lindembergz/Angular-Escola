@@ -90,4 +90,9 @@ public static class AuthorizationPolicies
     /// Política para gerenciamento de redes escolares
     /// </summary>
     public const string NetworkManagement = "NetworkManagement";
+
+    /// <summary>
+    /// Política para gerenciamento de professores
+    /// </summary>
+    public const string TeacherManagement = "TeacherManagement";
 }

@@ -38,7 +38,7 @@ public class CriarAlunoCommandHandler : IRequestHandler<CriarAlunoCommand, Criar
 
             // Criar objetos de valor
             var nome = new NomeAluno(request.Nome);
-            var cpf = new CPF(request.Cpf);
+            var cpf = new Cpf(request.Cpf);
             var dataNascimento = new DataNascimento(request.DataNascimento);
             var endereco = new Endereco(
                 request.Logradouro,
@@ -49,9 +49,7 @@ public class CriarAlunoCommandHandler : IRequestHandler<CriarAlunoCommand, Criar
                 request.Cep,
                 request.Complemento);
             var genero = Genero.Criar(request.Genero);
-            var deficiencia = request.TipoDeficiencia.HasValue && !string.IsNullOrWhiteSpace(request.DescricaoDeficiencia)
-                ? Deficiencia.Criar(request.TipoDeficiencia.Value, request.DescricaoDeficiencia)
-                : Deficiencia.Nenhuma();
+            var deficiencia = Deficiencia.Criar(request.TipoDeficiencia, request.DescricaoDeficiencia ?? string.Empty);
 
             // Criar aluno
             var aluno = new Aluno(
@@ -128,7 +126,7 @@ public class CriarAlunoCommandHandler : IRequestHandler<CriarAlunoCommand, Criar
         {
             try
             {
-                var cpf = new CPF(command.Cpf);
+                var cpf = new Cpf(command.Cpf);
                 if (await _repositorioAluno.ExisteCpfAsync(cpf))
                     erros.Add("CPF já está cadastrado");
             }
@@ -177,7 +175,7 @@ public class CriarAlunoCommandHandler : IRequestHandler<CriarAlunoCommand, Criar
     private static async Task<Responsavel> CriarResponsavel(CriarResponsavelDto dto)
     {
         var nome = new NomeAluno(dto.Nome);
-        var cpf = new CPF(dto.Cpf);
+        var cpf = new Cpf(dto.Cpf);
         var tipo = (TipoResponsavel)dto.Tipo;
 
         Endereco? endereco = null;

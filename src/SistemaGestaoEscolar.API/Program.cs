@@ -6,9 +6,11 @@ using SistemaGestaoEscolar.Alunos.Infraestrutura.Configuracao;
 using SistemaGestaoEscolar.Auth.Application;
 using SistemaGestaoEscolar.Auth.Infrastructure;
 using SistemaGestaoEscolar.Escolas.Infraestrutura.Configuracao;
+using SistemaGestaoEscolar.Professores.Infraestrutura.Configuracao;
 using SistemaGestaoEscolar.Shared.Infrastructure.Configuration;
 using SistemaGestaoEscolar.Shared.Infrastructure.Middleware;
 using SistemaGestaoEscolar.Shared.Infrastructure.Authorization;
+using SistemaGestaoEscolar.Academico.Infraestrutura.Configuracao;
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -89,6 +91,8 @@ try
     builder.Services.AddAuthInfrastructure(builder.Configuration);
     builder.Services.AdicionarModuloEscolas(builder.Configuration);
     builder.Services.AddCompleteAlunosModule();
+    builder.Services.AddProfessoresModule();
+    builder.Services.AddCompleteAcademicoModule();
 
     var app = builder.Build();
 
@@ -103,17 +107,12 @@ try
         });
     }
 
-    // Add custom middleware in correct order
-    app.UseMiddleware<ValidationMiddleware>();
-    app.UseMiddleware<ErrorHandlingMiddleware>();
-
     app.UseHttpsRedirection();
     app.UseCors("AllowAngularApp");
-    
-    app.UseAuthInfrastructure();
 
     // Configure centralized security middleware pipeline
     app.UseApiSecurity();
+    app.UseAuthInfrastructure();
 
     app.MapControllers();
     app.MapHealthChecks("/health");

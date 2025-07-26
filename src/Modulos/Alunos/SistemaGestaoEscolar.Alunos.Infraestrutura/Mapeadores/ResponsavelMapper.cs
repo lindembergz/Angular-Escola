@@ -39,7 +39,7 @@ public static class ResponsavelMapper
     public static Responsavel ToDomain(ResponsavelEntity entity)
     {
         var nome = new NomeAluno(entity.Nome);
-        var cpf = new CPF(entity.Cpf);
+        var cpf = new Cpf(entity.Cpf);
         var tipo = (TipoResponsavel)entity.Tipo;
 
         Endereco? endereco = null;

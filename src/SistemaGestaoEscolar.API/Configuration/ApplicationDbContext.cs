@@ -3,6 +3,8 @@ using SistemaGestaoEscolar.Escolas.Infraestrutura.Contexto;
 using SistemaGestaoEscolar.Auth.Infrastructure.Mappings;
 using SistemaGestaoEscolar.Auth.Domain.Entities;
 using SistemaGestaoEscolar.Alunos.Infraestrutura.Persistencia.Entidades;
+using SistemaGestaoEscolar.Professores.Infraestrutura.Persistencia.Entidades;
+using SistemaGestaoEscolar.Academico.Infraestrutura.Persistencia.Entidades;
 
 namespace SistemaGestaoEscolar.API.Configuration;
 
@@ -21,6 +23,17 @@ public class ApplicationDbContext : DbContext
     public DbSet<ResponsavelEntity> Responsaveis { get; set; } = null!;
     public DbSet<MatriculaEntity> Matriculas { get; set; } = null!;
 
+    // DbSets for Professores module
+    public DbSet<ProfessorEntity> Professores { get; set; } = null!;
+    public DbSet<TituloAcademicoEntity> TitulosAcademicos { get; set; } = null!;
+    public DbSet<ProfessorDisciplinaEntity> ProfessorDisciplinas { get; set; } = null!;
+
+    // DbSets for Academico module
+    public DbSet<TurmaEntity> Turmas { get; set; } = null!;
+    public DbSet<DisciplinaEntity> Disciplinas { get; set; } = null!;
+    public DbSet<HorarioEntity> Horarios { get; set; } = null!;
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -33,6 +46,12 @@ public class ApplicationDbContext : DbContext
         
         // Apply Alunos module configurations
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SistemaGestaoEscolar.Alunos.Infraestrutura.Persistencia.Configuracoes.AlunoEntityConfiguration).Assembly);
+        
+        // Apply Professores module configurations
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SistemaGestaoEscolar.Professores.Infraestrutura.Persistencia.Configuracoes.ProfessorEntityConfiguration).Assembly);
+
+        // Apply Academico module configurations
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SistemaGestaoEscolar.Academico.Infraestrutura.Persistencia.Configuracao.TurmaConfiguration).Assembly);
 
         // Configure global settings for MySQL
         ConfigureGlobalSettings(modelBuilder);

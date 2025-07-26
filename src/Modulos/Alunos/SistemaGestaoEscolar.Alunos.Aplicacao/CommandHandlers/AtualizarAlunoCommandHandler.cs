@@ -90,7 +90,7 @@ public class AtualizarAlunoCommandHandler : IRequestHandler<AtualizarAlunoComman
 
                     var responsavel = new Responsavel(
                         new NomeAluno(responsavelRequest.Nome),
-                        new CPF(responsavelRequest.Cpf),
+                        new Cpf(responsavelRequest.Cpf),
                         responsavelRequest.Telefone,
                         (TipoResponsavel)responsavelRequest.Tipo,
                         responsavelRequest.Email,

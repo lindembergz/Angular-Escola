@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\SistemaGestaoEscolar.Shared.Application\SistemaGestaoEscolar.Shared.Application.csproj" />
+    <ProjectReference Include="..\..\..\Shared\SistemaGestaoEscolar.Shared.Domain\SistemaGestaoEscolar.Shared.Domain.csproj" />
+    <ProjectReference Include="..\SistemaGestaoEscolar.Academico.Dominio\SistemaGestaoEscolar.Academico.Dominio.csproj" />
+
+  </ItemGroup>
+
+</Project>

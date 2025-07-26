@@ -1,5 +1,525 @@
 [
   {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "CriarAluno",
+    "RelativePath": "api/alunos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.CriarAlunoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.CriarAlunoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "ObterAlunos",
+    "RelativePath": "api/alunos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SchoolId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Active",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinAge",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxAge",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "City",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "State",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "HasActiveEnrollment",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TamanhoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroNome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroEscola",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroAtivo",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdadeMinima",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdadeMaxima",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroCidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroEstado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PossuiMatriculaAtiva",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Queries.ObterAlunosResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "AtualizarAluno",
+    "RelativePath": "api/alunos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.AtualizarAlunoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.AtualizarAlunoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "ObterAlunoPorId",
+    "RelativePath": "api/alunos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Queries.ObterAlunoDetalheResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "ObterAlunoCompleto",
+    "RelativePath": "api/alunos/{id}/completo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Queries.ObterAlunoDetalheResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "MatricularAluno",
+    "RelativePath": "api/alunos/{id}/matricular",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.MatricularAlunoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.MatricularAlunoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "TransferirAluno",
+    "RelativePath": "api/alunos/{id}/transferir",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.TransferirAlunoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Commands.TransferirAlunoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "BuscarAlunos",
+    "RelativePath": "api/alunos/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Queries.ObterAlunosResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "ObterAlunosPorEscola",
+    "RelativePath": "api/alunos/escola/{escolaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SchoolId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Active",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinAge",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxAge",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "City",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "State",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "HasActiveEnrollment",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TamanhoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroNome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroEscola",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroAtivo",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdadeMinima",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdadeMaxima",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroCidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroEstado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PossuiMatriculaAtiva",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Queries.ObterAlunosResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "ObterOpcoes",
+    "RelativePath": "api/alunos/opcoes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.OpcoesAlunoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores.AlunoController",
+    "Method": "ObterAlunosPorTurma",
+    "RelativePath": "api/alunos/turma/{turmaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "turmaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "TurmaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "AnoLetivo",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ApenasAtivos",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "FiltroNome",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Alunos.Aplicacao.Queries.ObterAlunosPorTurmaResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "SistemaGestaoEscolar.Auth.Infrastructure.Controllers.AuthController",
     "Method": "ChangePassword",
     "RelativePath": "api/Auth/change-password",
@@ -380,6 +900,253 @@
     ]
   },
   {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "CriarDisciplina",
+    "RelativePath": "api/disciplinas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.CriarDisciplinaCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "ObterDisciplinas",
+    "RelativePath": "api/disciplinas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "EscolaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "Ativa",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "AtualizarDisciplina",
+    "RelativePath": "api/disciplinas/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.AtualizarDisciplinaCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "ObterDisciplinaPorId",
+    "RelativePath": "api/disciplinas/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "InativarDisciplina",
+    "RelativePath": "api/disciplinas/{id}/inativar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "AdicionarPreRequisito",
+    "RelativePath": "api/disciplinas/{id}/pre-requisitos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.AdicionarPreRequisitoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "RemoverPreRequisito",
+    "RelativePath": "api/disciplinas/{id}/pre-requisitos/{preRequisitoId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "preRequisitoId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "ReativarDisciplina",
+    "RelativePath": "api/disciplinas/{id}/reativar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "ObterEstatisticas",
+    "RelativePath": "api/disciplinas/estatisticas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "ObterDisciplinasObrigatorias",
+    "RelativePath": "api/disciplinas/obrigatorias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "PesquisarDisciplinas",
+    "RelativePath": "api/disciplinas/pesquisar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.DisciplinaController",
+    "Method": "ObterDisciplinasPorSerie",
+    "RelativePath": "api/disciplinas/serie",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TipoSerie",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "AnoSerie",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "EscolaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SistemaGestaoEscolar.Escolas.Infraestrutura.Controladores.EscolaController",
     "Method": "CriarEscola",
     "RelativePath": "api/Escola",
@@ -689,6 +1456,676 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaGestaoEscolar.Escolas.Aplicacao.DTOs.EscolaRespostaDto, SistemaGestaoEscolar.Escolas.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "CriarHorario",
+    "RelativePath": "api/horarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.CriarHorarioCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "AtualizarHorario",
+    "RelativePath": "api/horarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.AtualizarHorarioCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ObterHorarioPorId",
+    "RelativePath": "api/horarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "AlterarProfessor",
+    "RelativePath": "api/horarios/{id}/alterar-professor",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.AlterarProfessorHorarioCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "AlterarSala",
+    "RelativePath": "api/horarios/{id}/alterar-sala",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.AlterarSalaHorarioCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "CancelarHorario",
+    "RelativePath": "api/horarios/{id}/cancelar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ReativarHorario",
+    "RelativePath": "api/horarios/{id}/reativar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ObterHorariosPorDia",
+    "RelativePath": "api/horarios/dia-semana/{diaSemana}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "diaSemana",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "escolaId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ObterHorariosDisciplina",
+    "RelativePath": "api/horarios/disciplina/{disciplinaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "disciplinaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "anoLetivo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "semestre",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ObterEstatisticas",
+    "RelativePath": "api/horarios/estatisticas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "anoLetivo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "semestre",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ObterHorariosProfessor",
+    "RelativePath": "api/horarios/professor/{professorId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "professorId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "anoLetivo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "semestre",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "ObterGradeHorariaTurma",
+    "RelativePath": "api/horarios/turma/{turmaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "turmaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "anoLetivo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "semestre",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.HorarioController",
+    "Method": "VerificarConflitos",
+    "RelativePath": "api/horarios/verificar-conflitos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Queries.VerificarConflitosHorarioQuery",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "CriarProfessor",
+    "RelativePath": "api/professores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Commands.CriarProfessorCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ListarProfessores",
+    "RelativePath": "api/professores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "EscolaId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Ativo",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TamanhoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Queries.PaginatedResult\u00601[[SistemaGestaoEscolar.Professores.Aplicacao.Queries.ProfessorResumoDto, SistemaGestaoEscolar.Professores.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "AtualizarProfessor",
+    "RelativePath": "api/professores/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Commands.AtualizarProfessorCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ObterProfessorPorId",
+    "RelativePath": "api/professores/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Queries.ProfessorDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "DesativarProfessor",
+    "RelativePath": "api/professores/{id}/desativar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Commands.DesativarProfessorCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "AtribuirDisciplina",
+    "RelativePath": "api/professores/{id}/disciplinas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "SistemaGestaoEscolar.Professores.Infraestrutura.DTOs.AtribuirDisciplinaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "RemoverDisciplina",
+    "RelativePath": "api/professores/{id}/disciplinas/{disciplinaId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "disciplinaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ObterProfessoresAtivos",
+    "RelativePath": "api/professores/ativos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "tamanhoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Queries.PaginatedResult\u00601[[SistemaGestaoEscolar.Professores.Aplicacao.Queries.ProfessorResumoDto, SistemaGestaoEscolar.Professores.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "BuscarProfessores",
+    "RelativePath": "api/professores/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "escolaId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "tamanhoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Queries.PaginatedResult\u00601[[SistemaGestaoEscolar.Professores.Aplicacao.Queries.ProfessorResumoDto, SistemaGestaoEscolar.Professores.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "DebugClaims",
+    "RelativePath": "api/professores/debug/claims",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ObterDisciplinasDisponiveis",
+    "RelativePath": "api/professores/disciplinas-disponiveis/{escolaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaGestaoEscolar.Professores.Aplicacao.Queries.DisciplinaDisponivelDto, SistemaGestaoEscolar.Professores.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ObterProfessoresPorEscola",
+    "RelativePath": "api/professores/escola/{escolaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "tamanhoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ativo",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Aplicacao.Queries.PaginatedResult\u00601[[SistemaGestaoEscolar.Professores.Aplicacao.Queries.ProfessorResumoDto, SistemaGestaoEscolar.Professores.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ObterEstatisticas",
+    "RelativePath": "api/professores/escola/{escolaId}/estatisticas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escolaId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.EstatisticasProfessorResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.ProfessorController",
+    "Method": "ObterOpcoes",
+    "RelativePath": "api/professores/opcoes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaGestaoEscolar.Professores.Infraestrutura.Controladores.OpcoesProfessorResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1034,6 +2471,191 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "CriarTurma",
+    "RelativePath": "api/turmas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.CriarTurmaCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "ObterTurmas",
+    "RelativePath": "api/turmas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UnidadeEscolarId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "AtualizarTurma",
+    "RelativePath": "api/turmas/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.AtualizarTurmaCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "ObterTurmaPorId",
+    "RelativePath": "api/turmas/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "InativarTurma",
+    "RelativePath": "api/turmas/{id}/inativar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "MatricularAluno",
+    "RelativePath": "api/turmas/{id}/matricular",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "SistemaGestaoEscolar.Academico.Aplicacao.Commands.MatricularAlunoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "ReativarTurma",
+    "RelativePath": "api/turmas/{id}/reativar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "ObterTurmasPorAnoLetivo",
+    "RelativePath": "api/turmas/ano-letivo/{anoLetivo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "anoLetivo",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "unidadeEscolarId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "ObterEstatisticas",
+    "RelativePath": "api/turmas/estatisticas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "unidadeEscolarId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGestaoEscolar.Academico.Infraestrutura.Controladores.TurmaController",
+    "Method": "ObterTurmasComVagas",
+    "RelativePath": "api/turmas/vagas-disponiveis",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "unidadeEscolarId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "SistemaGestaoEscolar.Auth.Infrastructure.Controllers.UserManagementController",

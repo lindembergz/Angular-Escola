@@ -156,5 +156,14 @@ public static class AuthorizationConfiguration
             policy.RequireAssertion(context =>
                 context.User.IsInRole("SuperAdmin") ||
                 context.User.IsInRole("Admin")));
+
+        // Gerenciamento de professores
+        options.AddPolicy(AuthorizationPolicies.TeacherManagement, policy =>
+            policy.RequireAssertion(context =>
+                context.User.IsInRole("SuperAdmin") ||
+                context.User.IsInRole("Admin") ||
+                context.User.IsInRole("Director") ||
+                context.User.IsInRole("Coordinator") ||
+                context.User.IsInRole("Secretary")));
     }
 }

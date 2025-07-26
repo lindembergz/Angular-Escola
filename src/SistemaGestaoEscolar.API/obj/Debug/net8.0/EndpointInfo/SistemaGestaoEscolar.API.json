@@ -6,6 +6,886 @@
     "version": "v1"
   },
   "paths": {
+    "/api/alunos": {
+      "post": {
+        "tags": [
+          "Aluno"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosCriarAlunoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosCriarAlunoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosCriarAlunoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosCriarAlunoResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosCriarAlunoResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosCriarAlunoResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SchoolId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Active",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "MinAge",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "MaxAge",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "City",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "State",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "HasActiveEnrollment",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Pagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TamanhoPagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FiltroNome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "FiltroEscola",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "FiltroAtivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "IdadeMinima",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdadeMaxima",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FiltroCidade",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "FiltroEstado",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PossuiMatriculaAtiva",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/{id}": {
+      "put": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosAtualizarAlunoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosAtualizarAlunoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosAtualizarAlunoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosAtualizarAlunoResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosAtualizarAlunoResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosAtualizarAlunoResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunoDetalheResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunoDetalheResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunoDetalheResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/{id}/transferir": {
+      "post": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosTransferirAlunoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosTransferirAlunoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosTransferirAlunoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosTransferirAlunoResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosTransferirAlunoResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosTransferirAlunoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/{id}/matricular": {
+      "post": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosMatricularAlunoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosMatricularAlunoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunosMatricularAlunoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosMatricularAlunoResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosMatricularAlunoResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosMatricularAlunoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/turma/{turmaId}": {
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "turmaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "TurmaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "AnoLetivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ApenasAtivos",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "FiltroNome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosPorTurmaResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosPorTurmaResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosPorTurmaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/{id}/completo": {
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunoDetalheResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunoDetalheResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunoDetalheResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/buscar": {
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/escola/{escolaId}": {
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SchoolId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Active",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "MinAge",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "MaxAge",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "City",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "State",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "HasActiveEnrollment",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Pagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TamanhoPagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FiltroNome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "FiltroEscola",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "FiltroAtivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "IdadeMinima",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdadeMaxima",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FiltroCidade",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "FiltroEstado",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PossuiMatriculaAtiva",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosObterAlunosResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alunos/opcoes": {
+      "get": {
+        "tags": [
+          "Aluno"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosOpcoesAlunoResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosOpcoesAlunoResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosOpcoesAlunoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Auth/login": {
       "post": {
         "tags": [
@@ -15,17 +895,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginDto"
+                "$ref": "#/components/schemas/AuthLoginDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginDto"
+                "$ref": "#/components/schemas/AuthLoginDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginDto"
+                "$ref": "#/components/schemas/AuthLoginDto"
               }
             }
           }
@@ -36,7 +916,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponseDto"
+                  "$ref": "#/components/schemas/AuthAuthResponseDto"
                 }
               }
             }
@@ -105,17 +985,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshTokenDto"
+                "$ref": "#/components/schemas/AuthRefreshTokenDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshTokenDto"
+                "$ref": "#/components/schemas/AuthRefreshTokenDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshTokenDto"
+                "$ref": "#/components/schemas/AuthRefreshTokenDto"
               }
             }
           }
@@ -126,7 +1006,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponseDto"
+                  "$ref": "#/components/schemas/AuthAuthResponseDto"
                 }
               }
             }
@@ -163,17 +1043,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChangePasswordDto"
+                "$ref": "#/components/schemas/AuthChangePasswordDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChangePasswordDto"
+                "$ref": "#/components/schemas/AuthChangePasswordDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ChangePasswordDto"
+                "$ref": "#/components/schemas/AuthChangePasswordDto"
               }
             }
           }
@@ -214,17 +1094,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ForgotPasswordDto"
+                "$ref": "#/components/schemas/AuthForgotPasswordDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ForgotPasswordDto"
+                "$ref": "#/components/schemas/AuthForgotPasswordDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ForgotPasswordDto"
+                "$ref": "#/components/schemas/AuthForgotPasswordDto"
               }
             }
           }
@@ -265,17 +1145,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ResetPasswordDto"
+                "$ref": "#/components/schemas/AuthResetPasswordDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ResetPasswordDto"
+                "$ref": "#/components/schemas/AuthResetPasswordDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ResetPasswordDto"
+                "$ref": "#/components/schemas/AuthResetPasswordDto"
               }
             }
           }
@@ -389,7 +1269,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfoDto"
+                  "$ref": "#/components/schemas/AuthUserInfoDto"
                 }
               }
             }
@@ -476,7 +1356,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PasswordStrengthDto"
+                  "$ref": "#/components/schemas/AuthPasswordStrengthDto"
                 }
               }
             }
@@ -516,26 +1396,26 @@
         }
       }
     },
-    "/api/Escola": {
+    "/api/disciplinas": {
       "post": {
         "tags": [
-          "Escola"
+          "Disciplina"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarEscolaDto"
+                "$ref": "#/components/schemas/AcademicoCriarDisciplinaCommand"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarEscolaDto"
+                "$ref": "#/components/schemas/AcademicoCriarDisciplinaCommand"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarEscolaDto"
+                "$ref": "#/components/schemas/AcademicoCriarDisciplinaCommand"
               }
             }
           }
@@ -546,17 +1426,423 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "type": "string",
+                  "format": "uuid"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "type": "string",
+                  "format": "uuid"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "EscolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Ativa",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/{id}": {
+      "put": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarDisciplinaCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarDisciplinaCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarDisciplinaCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/serie": {
+      "get": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "TipoSerie",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "AnoSerie",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "EscolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/obrigatorias": {
+      "get": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/pesquisar": {
+      "get": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/{id}/pre-requisitos": {
+      "post": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAdicionarPreRequisitoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAdicionarPreRequisitoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAdicionarPreRequisitoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/{id}/pre-requisitos/{preRequisitoId}": {
+      "delete": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "preRequisitoId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/{id}/inativar": {
+      "patch": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/{id}/reativar": {
+      "patch": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/disciplinas/estatisticas": {
+      "get": {
+        "tags": [
+          "Disciplina"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Escola": {
+      "post": {
+        "tags": [
+          "Escola"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EscolasCriarEscolaDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EscolasCriarEscolaDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EscolasCriarEscolaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               }
             }
@@ -575,7 +1861,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -583,7 +1869,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -591,7 +1877,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               }
@@ -623,17 +1909,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               }
             }
@@ -660,17 +1946,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarEscolaDto"
+                "$ref": "#/components/schemas/EscolasCriarEscolaDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarEscolaDto"
+                "$ref": "#/components/schemas/EscolasCriarEscolaDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarEscolaDto"
+                "$ref": "#/components/schemas/EscolasCriarEscolaDto"
               }
             }
           }
@@ -681,17 +1967,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EscolaRespostaDto"
+                  "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                 }
               }
             }
@@ -734,7 +2020,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -742,7 +2028,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -750,7 +2036,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               }
@@ -783,7 +2069,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -791,7 +2077,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -799,7 +2085,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               }
@@ -831,7 +2117,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -839,7 +2125,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -847,7 +2133,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               }
@@ -1076,26 +2362,26 @@
         }
       }
     },
-    "/api/RedeEscolar": {
+    "/api/horarios": {
       "post": {
         "tags": [
-          "RedeEscolar"
+          "Horario"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarRedeEscolarDto"
+                "$ref": "#/components/schemas/AcademicoCriarHorarioCommand"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarRedeEscolarDto"
+                "$ref": "#/components/schemas/AcademicoCriarHorarioCommand"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarRedeEscolarDto"
+                "$ref": "#/components/schemas/AcademicoCriarHorarioCommand"
               }
             }
           }
@@ -1106,17 +2392,1167 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "type": "string",
+                  "format": "uuid"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "type": "string",
+                  "format": "uuid"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/horarios/{id}": {
+      "put": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarHorarioCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarHorarioCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarHorarioCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/turma/{turmaId}": {
+      "get": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "turmaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "anoLetivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "semestre",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/professor/{professorId}": {
+      "get": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "professorId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "anoLetivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "semestre",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/disciplina/{disciplinaId}": {
+      "get": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "disciplinaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "anoLetivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "semestre",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/dia-semana/{diaSemana}": {
+      "get": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "diaSemana",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "$ref": "#/components/schemas/DayOfWeek"
+            }
+          },
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/verificar-conflitos": {
+      "post": {
+        "tags": [
+          "Horario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoVerificarConflitosHorarioQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoVerificarConflitosHorarioQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoVerificarConflitosHorarioQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/{id}/cancelar": {
+      "patch": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/{id}/reativar": {
+      "patch": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/{id}/alterar-professor": {
+      "patch": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAlterarProfessorHorarioCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAlterarProfessorHorarioCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAlterarProfessorHorarioCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/{id}/alterar-sala": {
+      "patch": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAlterarSalaHorarioCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAlterarSalaHorarioCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAlterarSalaHorarioCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/horarios/estatisticas": {
+      "get": {
+        "tags": [
+          "Horario"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "anoLetivo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "semestre",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/professores": {
+      "post": {
+        "tags": [
+          "Professor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresCriarProfessorCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresCriarProfessorCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresCriarProfessorCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "EscolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Ativo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Nome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Pagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TamanhoPagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/{id}": {
+      "put": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresAtualizarProfessorCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresAtualizarProfessorCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresAtualizarProfessorCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresProfessorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresProfessorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresProfessorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/{id}/desativar": {
+      "post": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresDesativarProfessorCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresDesativarProfessorCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresDesativarProfessorCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/professores/{id}/disciplinas": {
+      "post": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresAtribuirDisciplinaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresAtribuirDisciplinaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessoresAtribuirDisciplinaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/professores/{id}/disciplinas/{disciplinaId}": {
+      "delete": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "disciplinaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/professores/escola/{escolaId}": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "tamanhoPagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "ativo",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "nome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/ativos": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "tamanhoPagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "nome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/buscar": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "escolaId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "tamanhoPagina",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresPaginatedResult`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/opcoes": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresOpcoesProfessorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresOpcoesProfessorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresOpcoesProfessorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/debug/claims": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/professores/disciplinas-disponiveis/{escolaId}": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProfessoresDisciplinaDisponivelDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProfessoresDisciplinaDisponivelDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProfessoresDisciplinaDisponivelDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/professores/escola/{escolaId}/estatisticas": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "escolaId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresEstatisticasProfessorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresEstatisticasProfessorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfessoresEstatisticasProfessorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RedeEscolar": {
+      "post": {
+        "tags": [
+          "RedeEscolar"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EscolasCriarRedeEscolarDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EscolasCriarRedeEscolarDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EscolasCriarRedeEscolarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               }
             }
@@ -1135,7 +3571,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                    "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                   }
                 }
               },
@@ -1143,7 +3579,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                    "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                   }
                 }
               },
@@ -1151,7 +3587,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                    "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                   }
                 }
               }
@@ -1183,17 +3619,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               }
             }
@@ -1220,17 +3656,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarRedeEscolarDto"
+                "$ref": "#/components/schemas/EscolasCriarRedeEscolarDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarRedeEscolarDto"
+                "$ref": "#/components/schemas/EscolasCriarRedeEscolarDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CriarRedeEscolarDto"
+                "$ref": "#/components/schemas/EscolasCriarRedeEscolarDto"
               }
             }
           }
@@ -1241,17 +3677,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                 }
               }
             }
@@ -1294,7 +3730,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                    "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                   }
                 }
               },
@@ -1302,7 +3738,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                    "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                   }
                 }
               },
@@ -1310,7 +3746,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RedeEscolarRespostaDto"
+                    "$ref": "#/components/schemas/EscolasRedeEscolarRespostaDto"
                   }
                 }
               }
@@ -1442,7 +3878,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -1450,7 +3886,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               },
@@ -1458,7 +3894,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EscolaRespostaDto"
+                    "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
                   }
                 }
               }
@@ -1542,17 +3978,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdicionarUnidadeEscolarDto"
+                "$ref": "#/components/schemas/EscolasAdicionarUnidadeEscolarDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdicionarUnidadeEscolarDto"
+                "$ref": "#/components/schemas/EscolasAdicionarUnidadeEscolarDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AdicionarUnidadeEscolarDto"
+                "$ref": "#/components/schemas/EscolasAdicionarUnidadeEscolarDto"
               }
             }
           }
@@ -1563,17 +3999,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnidadeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasUnidadeEscolarRespostaDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnidadeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasUnidadeEscolarRespostaDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnidadeEscolarRespostaDto"
+                  "$ref": "#/components/schemas/EscolasUnidadeEscolarRespostaDto"
                 }
               }
             }
@@ -1647,6 +4083,313 @@
         }
       }
     },
+    "/api/turmas": {
+      "post": {
+        "tags": [
+          "Turma"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoCriarTurmaCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoCriarTurmaCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoCriarTurmaCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "UnidadeEscolarId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/{id}": {
+      "put": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarTurmaCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarTurmaCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoAtualizarTurmaCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/{id}/matricular": {
+      "post": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoMatricularAlunoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoMatricularAlunoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcademicoMatricularAlunoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/ano-letivo/{anoLetivo}": {
+      "get": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "anoLetivo",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "unidadeEscolarId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/vagas-disponiveis": {
+      "get": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "unidadeEscolarId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/{id}/inativar": {
+      "patch": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/{id}/reativar": {
+      "patch": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/turmas/estatisticas": {
+      "get": {
+        "tags": [
+          "Turma"
+        ],
+        "parameters": [
+          {
+            "name": "unidadeEscolarId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/UserManagement": {
       "post": {
         "tags": [
@@ -1656,17 +4399,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "$ref": "#/components/schemas/AuthCreateUserDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "$ref": "#/components/schemas/AuthCreateUserDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "$ref": "#/components/schemas/AuthCreateUserDto"
               }
             }
           }
@@ -1677,7 +4420,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfoDto"
+                  "$ref": "#/components/schemas/AuthUserInfoDto"
                 }
               }
             }
@@ -1771,7 +4514,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfoDtoPagedResult"
+                  "$ref": "#/components/schemas/AuthPagedResult`1"
                 }
               }
             }
@@ -1802,7 +4545,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfoDto"
+                  "$ref": "#/components/schemas/AuthUserInfoDto"
                 }
               }
             }
@@ -1849,17 +4592,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateUserDto"
+                "$ref": "#/components/schemas/AuthUpdateUserDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateUserDto"
+                "$ref": "#/components/schemas/AuthUpdateUserDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateUserDto"
+                "$ref": "#/components/schemas/AuthUpdateUserDto"
               }
             }
           }
@@ -1870,7 +4613,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserInfoDto"
+                  "$ref": "#/components/schemas/AuthUserInfoDto"
                 }
               }
             }
@@ -1988,7 +4731,1795 @@
   },
   "components": {
     "schemas": {
-      "AdicionarUnidadeEscolarDto": {
+      "AcademicoAdicionarPreRequisitoCommand": {
+        "type": "object",
+        "properties": {
+          "disciplinaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "preRequisitoId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoAlterarProfessorHorarioCommand": {
+        "type": "object",
+        "properties": {
+          "horarioId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "novoProfessorId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoAlterarSalaHorarioCommand": {
+        "type": "object",
+        "properties": {
+          "horarioId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "novaSala": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoAtualizarDisciplinaCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargaHoraria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "obrigatoria": {
+            "type": "boolean"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoAtualizarHorarioCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "professorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sala": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoAtualizarTurmaCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "capacidadeMaxima": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoCriarDisciplinaCommand": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigo": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargaHoraria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipoSerie": {
+            "$ref": "#/components/schemas/AcademicoTipoSerie"
+          },
+          "anoSerie": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "obrigatoria": {
+            "type": "boolean"
+          },
+          "escolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoCriarHorarioCommand": {
+        "type": "object",
+        "properties": {
+          "turmaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "disciplinaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "professorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "diaDaSemana": {
+            "$ref": "#/components/schemas/DayOfWeek"
+          },
+          "horaInicio": {
+            "type": "string",
+            "format": "time"
+          },
+          "horaFim": {
+            "type": "string",
+            "format": "time"
+          },
+          "sala": {
+            "type": "string",
+            "nullable": true
+          },
+          "anoLetivo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "semestre": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoCriarTurmaCommand": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoSerie": {
+            "$ref": "#/components/schemas/AcademicoTipoSerie"
+          },
+          "anoSerie": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipoTurno": {
+            "$ref": "#/components/schemas/AcademicoTipoTurno"
+          },
+          "horaInicioTurno": {
+            "type": "string",
+            "format": "time"
+          },
+          "horaFimTurno": {
+            "type": "string",
+            "format": "time"
+          },
+          "capacidadeMaxima": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unidadeEscolarId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoMatricularAlunoCommand": {
+        "type": "object",
+        "properties": {
+          "alunoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "turmaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "dataMatricula": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AcademicoTipoSerie": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AcademicoTipoTurno": {
+        "enum": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AcademicoVerificarConflitosHorarioQuery": {
+        "type": "object",
+        "properties": {
+          "professorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sala": {
+            "type": "string",
+            "nullable": true
+          },
+          "diaSemana": {
+            "$ref": "#/components/schemas/DayOfWeek"
+          },
+          "horaInicio": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "horaFim": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "anoLetivo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "semestre": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "excluirHorarioId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosAlunoDetalheDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "faixaEtariaEscolar": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/AlunosEnderecoDto"
+          },
+          "genero": {
+            "$ref": "#/components/schemas/AlunosGeneroDto"
+          },
+          "deficiencia": {
+            "$ref": "#/components/schemas/AlunosDeficienciaDto"
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "escolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nomeEscola": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "responsaveis": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosResponsavelDto"
+            },
+            "nullable": true
+          },
+          "matriculas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosMatriculaDto"
+            },
+            "nullable": true
+          },
+          "matriculaAtiva": {
+            "$ref": "#/components/schemas/AlunosMatriculaDto"
+          },
+          "pendencias": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosAlunoResumoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "generoDescricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "possuiDeficiencia": {
+            "type": "boolean"
+          },
+          "deficienciaDescricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "possuiMatriculaAtiva": {
+            "type": "boolean"
+          },
+          "nomeTurmaAtual": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantidadeResponsaveis": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosAlunoTurmaDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "matriculaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "numeroMatricula": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataMatricula": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "statusMatricula": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsaveis": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosResponsavelResumoDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosAtualizarAlunoCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "logradouro": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          },
+          "genero": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tipoDeficiencia": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "descricaoDeficiencia": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsaveis": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosCriarResponsavelRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosAtualizarAlunoResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataAtualizacao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosCriarAlunoCommand": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "logradouro": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          },
+          "genero": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tipoDeficiencia": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "descricaoDeficiencia": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "escolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "responsaveis": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosCriarResponsavelDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosCriarAlunoResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroMatricula": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "responsaveis": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosCriarResponsavelDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profissao": {
+            "type": "string",
+            "nullable": true
+          },
+          "localTrabalho": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefoneTrabalho": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsavelFinanceiro": {
+            "type": "boolean"
+          },
+          "responsavelAcademico": {
+            "type": "boolean"
+          },
+          "autorizadoBuscar": {
+            "type": "boolean"
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "logradouro": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosCriarResponsavelRequest": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profissao": {
+            "type": "string",
+            "nullable": true
+          },
+          "localTrabalho": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefoneTrabalho": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsavelFinanceiro": {
+            "type": "boolean"
+          },
+          "responsavelAcademico": {
+            "type": "boolean"
+          },
+          "autorizadoBuscar": {
+            "type": "boolean"
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "logradouro": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosDeficienciaDto": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tipoDescricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "possuiDeficiencia": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosEnderecoDto": {
+        "type": "object",
+        "properties": {
+          "logradouro": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          },
+          "cepFormatado": {
+            "type": "string",
+            "nullable": true
+          },
+          "enderecoCompleto": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosGeneroDto": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosMatriculaDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "turmaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nomeTurma": {
+            "type": "string",
+            "nullable": true
+          },
+          "anoLetivo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numeroMatricula": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataMatricula": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dataCancelamento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "motivoCancelamento": {
+            "type": "string",
+            "nullable": true
+          },
+          "ativa": {
+            "type": "boolean"
+          },
+          "statusDescricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "diasMatriculado": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosMatricularAlunoCommand": {
+        "type": "object",
+        "properties": {
+          "alunoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "turmaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "anoLetivo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosMatricularAlunoResponse": {
+        "type": "object",
+        "properties": {
+          "matriculaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "alunoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nomeAluno": {
+            "type": "string",
+            "nullable": true
+          },
+          "turmaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "anoLetivo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numeroMatricula": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataMatricula": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosObterAlunoDetalheResponse": {
+        "type": "object",
+        "properties": {
+          "aluno": {
+            "$ref": "#/components/schemas/AlunosAlunoDetalheDto"
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosObterAlunosPorTurmaResponse": {
+        "type": "object",
+        "properties": {
+          "alunos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosAlunoTurmaDto"
+            },
+            "nullable": true
+          },
+          "turmaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nomeTurma": {
+            "type": "string",
+            "nullable": true
+          },
+          "anoLetivo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAlunos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alunosAtivos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alunosInativos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosObterAlunosResponse": {
+        "type": "object",
+        "properties": {
+          "alunos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosAlunoResumoDto"
+            },
+            "nullable": true
+          },
+          "totalRegistros": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPaginas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paginaAtual": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tamanhoPagina": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosOpcaoDto": {
+        "type": "object",
+        "properties": {
+          "valor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosOpcoesAlunoResponse": {
+        "type": "object",
+        "properties": {
+          "generos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosOpcaoDto"
+            },
+            "nullable": true
+          },
+          "tiposDeficiencia": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlunosOpcaoDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosResponsavelDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDescricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "profissao": {
+            "type": "string",
+            "nullable": true
+          },
+          "localTrabalho": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefoneTrabalho": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsavelFinanceiro": {
+            "type": "boolean"
+          },
+          "responsavelAcademico": {
+            "type": "boolean"
+          },
+          "autorizadoBuscar": {
+            "type": "boolean"
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/AlunosEnderecoDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosResponsavelResumoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDescricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsavelFinanceiro": {
+            "type": "boolean"
+          },
+          "responsavelAcademico": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosTransferirAlunoCommand": {
+        "type": "object",
+        "properties": {
+          "alunoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "novaEscolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "motivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataTransferencia": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlunosTransferirAlunoResponse": {
+        "type": "object",
+        "properties": {
+          "alunoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nomeAluno": {
+            "type": "string",
+            "nullable": true
+          },
+          "escolaAnteriorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "novaEscolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "motivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataTransferencia": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthAuthResponseDto": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiraEm": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expiraEm_DateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/AuthUserInfoDto"
+          },
+          "requerMudancaSenha": {
+            "type": "boolean"
+          },
+          "requerConfirmacaoEmail": {
+            "type": "boolean"
+          },
+          "permissoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "escolas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuthSchoolAccessDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthChangePasswordDto": {
+        "required": [
+          "confirmarSenha",
+          "novaSenha",
+          "senhaAtual"
+        ],
+        "type": "object",
+        "properties": {
+          "senhaAtual": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "novaSenha": {
+            "minLength": 8,
+            "type": "string"
+          },
+          "confirmarSenha": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "invalidarTodasSessoes": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthCreateUserDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthForgotPasswordDto": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 254,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "urlCallback": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthLoginDto": {
+        "required": [
+          "email",
+          "senha"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "senha": {
+            "minLength": 6,
+            "type": "string"
+          },
+          "lembrarMe": {
+            "type": "boolean"
+          },
+          "enderecoIp": {
+            "type": "string",
+            "nullable": true
+          },
+          "agenteUsuario": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthNivelForcaSenha": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AuthPagedResult`1": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuthUserInfoDto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthPasswordStrengthDto": {
+        "type": "object",
+        "properties": {
+          "forca": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ehValida": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "sugestoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "nivel": {
+            "$ref": "#/components/schemas/AuthNivelForcaSenha"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthRefreshTokenDto": {
+        "required": [
+          "refreshToken"
+        ],
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "tokenAcesso": {
+            "type": "string",
+            "nullable": true
+          },
+          "enderecoIp": {
+            "type": "string",
+            "nullable": true
+          },
+          "agenteUsuario": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthResetPasswordDto": {
+        "required": [
+          "confirmarSenha",
+          "email",
+          "novaSenha",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "token": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "novaSenha": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "confirmarSenha": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthSchoolAccessDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "ehPrincipal": {
+            "type": "boolean"
+          },
+          "permissoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthUpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthUserInfoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "primeiroNome": {
+            "type": "string",
+            "nullable": true
+          },
+          "ultimoNome": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeCompleto": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigoPerfil": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomePerfil": {
+            "type": "string",
+            "nullable": true
+          },
+          "nivelPerfil": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "iniciais": {
+            "type": "string",
+            "nullable": true
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "emailConfirmado": {
+            "type": "boolean"
+          },
+          "ultimoLoginEm": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "escolaId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "permissoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DayOfWeek": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EscolasAdicionarUnidadeEscolarDto": {
         "type": "object",
         "properties": {
           "escolaId": {
@@ -2000,7 +6531,7 @@
             "nullable": true
           },
           "endereco": {
-            "$ref": "#/components/schemas/EnderecoDto"
+            "$ref": "#/components/schemas/EscolasEnderecoDto"
           },
           "tipo": {
             "type": "string",
@@ -2036,113 +6567,7 @@
         },
         "additionalProperties": false
       },
-      "AuthResponseDto": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string",
-            "nullable": true
-          },
-          "refreshToken": {
-            "type": "string",
-            "nullable": true
-          },
-          "tipoToken": {
-            "type": "string",
-            "nullable": true
-          },
-          "expiraEm": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "expiraEm_DateTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "usuario": {
-            "$ref": "#/components/schemas/UserInfoDto"
-          },
-          "requerMudancaSenha": {
-            "type": "boolean"
-          },
-          "requerConfirmacaoEmail": {
-            "type": "boolean"
-          },
-          "permissoes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "escolas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SchoolAccessDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ChangePasswordDto": {
-        "required": [
-          "confirmarSenha",
-          "novaSenha",
-          "senhaAtual"
-        ],
-        "type": "object",
-        "properties": {
-          "senhaAtual": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "novaSenha": {
-            "minLength": 8,
-            "type": "string"
-          },
-          "confirmarSenha": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "invalidarTodasSessoes": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateUserDto": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "role": {
-            "type": "string",
-            "nullable": true
-          },
-          "schoolId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "CriarEscolaDto": {
+      "EscolasCriarEscolaDto": {
         "type": "object",
         "properties": {
           "nome": {
@@ -2154,7 +6579,7 @@
             "nullable": true
           },
           "endereco": {
-            "$ref": "#/components/schemas/EnderecoDto"
+            "$ref": "#/components/schemas/EscolasEnderecoDto"
           },
           "tipo": {
             "type": "string",
@@ -2168,7 +6593,7 @@
         },
         "additionalProperties": false
       },
-      "CriarRedeEscolarDto": {
+      "EscolasCriarRedeEscolarDto": {
         "type": "object",
         "properties": {
           "nome": {
@@ -2180,12 +6605,12 @@
             "nullable": true
           },
           "enderecoSede": {
-            "$ref": "#/components/schemas/EnderecoDto"
+            "$ref": "#/components/schemas/EscolasEnderecoDto"
           }
         },
         "additionalProperties": false
       },
-      "EnderecoDto": {
+      "EscolasEnderecoDto": {
         "type": "object",
         "properties": {
           "logradouro": {
@@ -2219,7 +6644,7 @@
         },
         "additionalProperties": false
       },
-      "EscolaRespostaDto": {
+      "EscolasEscolaRespostaDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -2235,7 +6660,7 @@
             "nullable": true
           },
           "endereco": {
-            "$ref": "#/components/schemas/EnderecoDto"
+            "$ref": "#/components/schemas/EscolasEnderecoDto"
           },
           "tipo": {
             "type": "string",
@@ -2260,132 +6685,14 @@
           "unidades": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UnidadeEscolarRespostaDto"
+              "$ref": "#/components/schemas/EscolasUnidadeEscolarRespostaDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ForgotPasswordDto": {
-        "required": [
-          "email"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "maxLength": 254,
-            "minLength": 0,
-            "type": "string",
-            "format": "email"
-          },
-          "urlCallback": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "LoginDto": {
-        "required": [
-          "email",
-          "senha"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "minLength": 1,
-            "type": "string",
-            "format": "email"
-          },
-          "senha": {
-            "minLength": 6,
-            "type": "string"
-          },
-          "lembrarMe": {
-            "type": "boolean"
-          },
-          "enderecoIp": {
-            "type": "string",
-            "nullable": true
-          },
-          "agenteUsuario": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "NivelForcaSenha": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "PasswordStrengthDto": {
-        "type": "object",
-        "properties": {
-          "forca": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ehValida": {
-            "type": "boolean"
-          },
-          "erros": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "sugestoes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "nivel": {
-            "$ref": "#/components/schemas/NivelForcaSenha"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ProblemDetails": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "detail": {
-            "type": "string",
-            "nullable": true
-          },
-          "instance": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": { }
-      },
-      "RedeEscolarRespostaDto": {
+      "EscolasRedeEscolarRespostaDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -2401,7 +6708,7 @@
             "nullable": true
           },
           "enderecoSede": {
-            "$ref": "#/components/schemas/EnderecoDto"
+            "$ref": "#/components/schemas/EscolasEnderecoDto"
           },
           "dataCriacao": {
             "type": "string",
@@ -2425,93 +6732,14 @@
           "escolas": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EscolaRespostaDto"
+              "$ref": "#/components/schemas/EscolasEscolaRespostaDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "RefreshTokenDto": {
-        "required": [
-          "refreshToken"
-        ],
-        "type": "object",
-        "properties": {
-          "refreshToken": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "tokenAcesso": {
-            "type": "string",
-            "nullable": true
-          },
-          "enderecoIp": {
-            "type": "string",
-            "nullable": true
-          },
-          "agenteUsuario": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ResetPasswordDto": {
-        "required": [
-          "confirmarSenha",
-          "email",
-          "novaSenha",
-          "token"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "minLength": 1,
-            "type": "string",
-            "format": "email"
-          },
-          "token": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "novaSenha": {
-            "maxLength": 128,
-            "minLength": 8,
-            "type": "string"
-          },
-          "confirmarSenha": {
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "SchoolAccessDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "nome": {
-            "type": "string",
-            "nullable": true
-          },
-          "ehPrincipal": {
-            "type": "boolean"
-          },
-          "permissoes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UnidadeEscolarRespostaDto": {
+      "EscolasUnidadeEscolarRespostaDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -2523,7 +6751,7 @@
             "nullable": true
           },
           "endereco": {
-            "$ref": "#/components/schemas/EnderecoDto"
+            "$ref": "#/components/schemas/EscolasEnderecoDto"
           },
           "tipo": {
             "type": "string",
@@ -2589,40 +6817,59 @@
         },
         "additionalProperties": false
       },
-      "UpdateUserDto": {
+      "ProblemDetails": {
         "type": "object",
         "properties": {
-          "firstName": {
+          "type": {
             "type": "string",
             "nullable": true
           },
-          "lastName": {
+          "title": {
             "type": "string",
             "nullable": true
           },
-          "role": {
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "ProfessoresAtribuirDisciplinaRequest": {
+        "type": "object",
+        "properties": {
+          "disciplinaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cargaHorariaSemanal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "observacoes": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "UserInfoDto": {
+      "ProfessoresAtualizarProfessorCommand": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
           },
-          "primeiroNome": {
-            "type": "string",
-            "nullable": true
-          },
-          "ultimoNome": {
-            "type": "string",
-            "nullable": true
-          },
-          "nomeCompleto": {
+          "nome": {
             "type": "string",
             "nullable": true
           },
@@ -2630,73 +6877,476 @@
             "type": "string",
             "nullable": true
           },
-          "codigoPerfil": {
+          "telefone": {
             "type": "string",
             "nullable": true
           },
-          "nomePerfil": {
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresCriarProfessorCommand": {
+        "type": "object",
+        "properties": {
+          "nome": {
             "type": "string",
             "nullable": true
           },
-          "nivelPerfil": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "iniciais": {
+          "cpf": {
             "type": "string",
             "nullable": true
           },
-          "ativo": {
-            "type": "boolean"
-          },
-          "emailConfirmado": {
-            "type": "boolean"
-          },
-          "ultimoLoginEm": {
+          "registro": {
             "type": "string",
-            "format": "date-time",
             "nullable": true
+          },
+          "dataNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dataContratacao": {
+            "type": "string",
+            "format": "date-time"
           },
           "escolaId": {
             "type": "string",
-            "format": "uuid",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
             "nullable": true
           },
-          "permissoes": {
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "titulos": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/ProfessoresCriarTituloAcademicoDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "UserInfoDtoPagedResult": {
+      "ProfessoresCriarTituloAcademicoDto": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "$ref": "#/components/schemas/ProfessoresTipoTitulo"
+          },
+          "curso": {
+            "type": "string",
+            "nullable": true
+          },
+          "instituicao": {
+            "type": "string",
+            "nullable": true
+          },
+          "anoFormatura": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresDesativarProfessorCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "motivo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresDisciplinaDisponivelDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigo": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargaHoraria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serie": {
+            "type": "string",
+            "nullable": true
+          },
+          "obrigatoria": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresDisciplinaDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "disciplinaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cargaHorariaSemanal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dataAtribuicao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ativa": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresEstatisticasProfessorResponse": {
+        "type": "object",
+        "properties": {
+          "totalProfessores": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "professoresAtivos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "professoresInativos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cargaHorariaMedia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "professoresComTituloSuperior": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresOpcaoDto": {
+        "type": "object",
+        "properties": {
+          "valor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresOpcoesProfessorResponse": {
+        "type": "object",
+        "properties": {
+          "tiposTitulo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfessoresOpcaoDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresPaginatedResult`1": {
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserInfoDto"
+              "$ref": "#/components/schemas/ProfessoresProfessorResumoDto"
             },
             "nullable": true
           },
-          "totalCount": {
+          "totalItems": {
             "type": "integer",
             "format": "int32"
           },
-          "page": {
+          "pagina": {
             "type": "integer",
             "format": "int32"
           },
-          "pageSize": {
+          "tamanhoPagina": {
             "type": "integer",
             "format": "int32"
           },
-          "totalPages": {
+          "totalPaginas": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresProfessorDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "registro": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dataContratacao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "escolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observacoes": {
+            "type": "string",
+            "nullable": true
+          },
+          "idade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tempoServico": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cargaHorariaTotal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "titulos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfessoresTituloAcademicoQueryDto"
+            },
+            "nullable": true
+          },
+          "disciplinas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfessoresDisciplinaDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresProfessorResumoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "registro": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "escolaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "cargaHorariaTotal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maiorTitulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantidadeDisciplinas": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessoresTipoTitulo": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ProfessoresTituloAcademicoQueryDto": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "nullable": true
+          },
+          "curso": {
+            "type": "string",
+            "nullable": true
+          },
+          "instituicao": {
+            "type": "string",
+            "nullable": true
+          },
+          "anoFormatura": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeSpan": {
+        "type": "object",
+        "properties": {
+          "ticks": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "hours": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "milliseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "microseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "nanoseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "totalDays": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalHours": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMilliseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMicroseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalNanoseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMinutes": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalSeconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
           }
         },
         "additionalProperties": false

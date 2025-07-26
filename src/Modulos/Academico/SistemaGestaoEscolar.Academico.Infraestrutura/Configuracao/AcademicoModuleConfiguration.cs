@@ -1,0 +1,42 @@
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using SistemaGestaoEscolar.Academico.Aplicacao.Commands;
+using SistemaGestaoEscolar.Academico.Dominio.Repositorios;
+using SistemaGestaoEscolar.Academico.Dominio.Servicos;
+using SistemaGestaoEscolar.Academico.Infraestrutura.Repositorios;
+using SistemaGestaoEscolar.Academico.Infraestrutura.Validadores;
+
+namespace SistemaGestaoEscolar.Academico.Infraestrutura.Configuracao;
+
+public static class AcademicoModuleConfiguration
+{
+    public static IServiceCollection AddAcademicoModule(this IServiceCollection services)
+    {
+        // Registrar repositórios Write (MySQL)
+        services.AddScoped<IRepositorioTurma, RepositorioTurmaMySql>();
+        services.AddScoped<IRepositorioDisciplina, RepositorioDisciplinaMySql>();
+        services.AddScoped<IRepositorioHorario, RepositorioHorarioMySql>();
+
+        // Registrar repositório Read (para CQRS)
+        services.AddScoped<ReadModelRepositoryAcademico>();
+
+        // Registrar serviços de domínio
+        services.AddScoped<IServicosDominioTurma, ServicosDominioTurma>();
+        services.AddScoped<IServicosDominioHorario, ServicosDominioHorario>();
+
+        // Registrar validadores
+        services.AddScoped<IValidator<CriarTurmaCommand>, CriarTurmaCommandValidator>();
+        services.AddScoped<IValidator<CriarDisciplinaCommand>, CriarDisciplinaCommandValidator>();
+        services.AddScoped<IValidator<CriarHorarioCommand>, CriarHorarioCommandValidator>();
+
+        // Registrar handlers de comando e query (MediatR fará isso automaticamente via assembly scanning)
+        // Mas podemos registrar explicitamente se necessário
+
+        return services;
+    }
+
+    public static IServiceCollection AddCompleteAcademicoModule(this IServiceCollection services)
+    {
+        return services.AddAcademicoModule();
+    }
+}

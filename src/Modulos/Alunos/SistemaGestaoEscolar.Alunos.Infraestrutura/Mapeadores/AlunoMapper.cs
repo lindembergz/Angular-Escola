@@ -41,7 +41,7 @@ public static class AlunoMapper
     public static Aluno ToDomain(AlunoEntity entity)
     {
         var nome = new NomeAluno(entity.Nome);
-        var cpf = new CPF(entity.Cpf);
+        var cpf = new Cpf(entity.Cpf);
         var dataNascimento = new DataNascimento(entity.DataNascimento);
         var endereco = new Endereco(
             entity.Logradouro,

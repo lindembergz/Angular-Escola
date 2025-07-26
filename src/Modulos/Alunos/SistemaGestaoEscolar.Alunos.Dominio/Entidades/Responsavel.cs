@@ -1,3 +1,4 @@
+
 using SistemaGestaoEscolar.Alunos.Dominio.ObjetosDeValor;
 using SistemaGestaoEscolar.Shared.Domain.Entities;
 using SistemaGestaoEscolar.Shared.Domain.ValueObjects;
@@ -8,7 +9,7 @@ public class Responsavel : BaseEntity
 {
     public new Guid Id { get; private set; }
     public NomeAluno Nome { get; private set; } = null!;
-    public CPF Cpf { get; private set; } = null!;
+    public Cpf Cpf { get; private set; } = null!;
     public string Telefone { get; private set; } = string.Empty;
     public string? Email { get; private set; }
     public Endereco? Endereco { get; private set; }
@@ -25,7 +26,7 @@ public class Responsavel : BaseEntity
 
     public Responsavel(
         NomeAluno nome,
-        CPF cpf,
+        Cpf cpf,
         string telefone,
         TipoResponsavel tipo,
         string? email = null,

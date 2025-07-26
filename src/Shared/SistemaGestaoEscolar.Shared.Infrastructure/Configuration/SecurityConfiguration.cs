@@ -188,11 +188,10 @@ public static class SecurityConfiguration
     /// <returns>Application builder configurado</returns>
     public static IApplicationBuilder UseApiSecurity(this IApplicationBuilder app)
     {
+        app.UseSession();
+
         // Middleware de segurança (tratamento de erros e logging)
         app.UseSecurityMiddleware();
-
-        // Session para tracking de segurança
-        app.UseSession();
 
         // Autenticação e autorização
         app.UseAuthentication();

@@ -1,3 +1,4 @@
+
 using SistemaGestaoEscolar.Alunos.Dominio.ObjetosDeValor;
 using SistemaGestaoEscolar.Alunos.Dominio.Eventos;
 using SistemaGestaoEscolar.Shared.Domain.Entities;
@@ -10,7 +11,7 @@ public class Aluno : AggregateRoot
 {
     public new Guid Id { get; private set; }
     public NomeAluno Nome { get; private set; } = null!;
-    public CPF Cpf { get; private set; } = null!;
+    public Cpf Cpf { get; private set; } = null!;
     public DataNascimento DataNascimento { get; private set; } = null!;
     public Endereco Endereco { get; private set; } = null!;
     public Genero Genero { get; private set; } = null!;
@@ -32,7 +33,7 @@ public class Aluno : AggregateRoot
 
     public Aluno(
         NomeAluno nome,
-        CPF cpf,
+        Cpf cpf,
         DataNascimento dataNascimento,
         Endereco endereco,
         Guid escolaId,
@@ -47,8 +48,8 @@ public class Aluno : AggregateRoot
         Cpf = cpf ?? throw new ArgumentNullException(nameof(cpf));
         DataNascimento = dataNascimento ?? throw new ArgumentNullException(nameof(dataNascimento));
         Endereco = endereco ?? throw new ArgumentNullException(nameof(endereco));
-        Genero = genero ?? ObjetosDeValor.Genero.NaoInformado; // Padrão: Não Informado
-        Deficiencia = deficiencia ?? ObjetosDeValor.Deficiencia.Nenhuma(); // Padrão: Nenhuma deficiência
+        Genero = genero ?? Genero.NaoInformado; // Padrão: Não Informado
+        Deficiencia = deficiencia ?? Deficiencia.Nenhuma(); // Padrão: Nenhuma deficiência
         EscolaId = escolaId == Guid.Empty ? throw new ArgumentException("EscolaId não pode ser vazio") : escolaId;
         Telefone = string.IsNullOrWhiteSpace(telefone) ? null : telefone.Trim();
         Email = string.IsNullOrWhiteSpace(email) ? null : email.Trim().ToLower();

@@ -4,6 +4,7 @@ using SistemaGestaoEscolar.Alunos.Dominio.ObjetosDeValor;
 using SistemaGestaoEscolar.Alunos.Dominio.Repositorios;
 using SistemaGestaoEscolar.Alunos.Infraestrutura.Mapeadores;
 using SistemaGestaoEscolar.Alunos.Infraestrutura.Persistencia.Entidades;
+using SistemaGestaoEscolar.Shared.Domain.ValueObjects;
 
 namespace SistemaGestaoEscolar.Alunos.Infraestrutura.Repositorios;
 
@@ -24,7 +25,7 @@ public class RepositorioAlunoMySql : IRepositorioAluno
         return entity != null ? AlunoMapper.ToDomain(entity) : null;
     }
 
-    public async Task<Aluno?> ObterPorCpfAsync(CPF cpf)
+    public async Task<Aluno?> ObterPorCpfAsync(Cpf cpf)
     {
         var entity = await _alunos.FirstOrDefaultAsync(a => a.Cpf == cpf.Numero);
         return entity != null ? AlunoMapper.ToDomain(entity) : null;
@@ -87,7 +88,7 @@ public class RepositorioAlunoMySql : IRepositorioAluno
         return alunos.Where(a => a.ObterFaixaEtariaEscolar() == faixaEtaria);
     }
 
-    public async Task<bool> ExisteCpfAsync(CPF cpf)
+    public async Task<bool> ExisteCpfAsync(Cpf cpf)
     {
         return await _alunos.AnyAsync(a => a.Cpf == cpf.Numero);
     }
@@ -314,7 +315,7 @@ public class RepositorioAlunoMySql : IRepositorioAluno
 
     public async Task<IEnumerable<Aluno>> BuscarAvancadaAsync(
         string? nome = null,
-        CPF? cpf = null,
+        Cpf? cpf = null,
         Guid? escolaId = null,
         int? idadeMinima = null,
         int? idadeMaxima = null,
@@ -404,7 +405,7 @@ public class RepositorioAlunoMySql : IRepositorioAluno
         return entities.Select(AlunoMapper.ToDomain);
     }
 
-    public async Task<IEnumerable<Aluno>> ObterPorCpfResponsavelAsync(CPF cpfResponsavel)
+    public async Task<IEnumerable<Aluno>> ObterPorCpfResponsavelAsync(Cpf cpfResponsavel)
     {
         var entities = await _alunos
             .Include(a => a.Responsaveis)
