@@ -1,7 +1,9 @@
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaGestaoEscolar.Alunos.Aplicacao.Commands;
+using SistemaGestaoEscolar.Alunos.Aplicacao.DTOs;
 using SistemaGestaoEscolar.Alunos.Aplicacao.Queries;
 using SistemaGestaoEscolar.Shared.Infrastructure.Authorization;
 
@@ -13,10 +15,12 @@ namespace SistemaGestaoEscolar.Alunos.Infraestrutura.Controladores;
 public class AlunoController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IValidator<MatricularAlunoRequest> _matricularAlunoRequestValidator;
 
-    public AlunoController(IMediator mediator)
+    public AlunoController(IMediator mediator, IValidator<MatricularAlunoRequest> matricularAlunoRequestValidator)
     {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        _matricularAlunoRequestValidator = matricularAlunoRequestValidator ?? throw new ArgumentNullException(nameof(matricularAlunoRequestValidator));
     }
 
     /// <summary>
@@ -71,10 +75,30 @@ public class AlunoController : ControllerBase
     /// Matricular aluno em uma turma
     /// </summary>
     [HttpPost("{id}/matricular")]
-    public async Task<ActionResult<MatricularAlunoResponse>> MatricularAluno(Guid id, [FromBody] MatricularAlunoCommand command)
+    public async Task<ActionResult<MatricularAlunoResponse>> MatricularAluno(Guid id, [FromBody] MatricularAlunoRequest request)
     {
-        if (id != command.AlunoId)
-            return BadRequest("ID da URL não confere com o ID do comando");
+        // Validar o request usando FluentValidation
+        var validationResult = await _matricularAlunoRequestValidator.ValidateAsync(request);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new MatricularAlunoResponse
+            {
+                Sucesso = false,
+                Erros = validationResult.Errors.Select(e => e.ErrorMessage).ToList()
+            });
+        }
+
+        // Converter string para Guid (já validado pelo validator)
+        var turmaGuid = Guid.Parse(request.TurmaId);
+
+        // Converter request para command
+        var command = new MatricularAlunoCommand
+        {
+            AlunoId = id,
+            TurmaId = turmaGuid,
+            AnoLetivo = request.AnoLetivo,
+            Observacoes = request.Observacoes
+        };
 
         var response = await _mediator.Send(command);
         

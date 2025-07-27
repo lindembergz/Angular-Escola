@@ -30,6 +30,7 @@ public class MatricularAlunoCommandHandler : IRequestHandler<MatricularAlunoComm
         {
             // Buscar aluno existente
             var aluno = await _repositorioAluno.ObterComMatriculasPorIdAsync(request.AlunoId);
+
             if (aluno == null)
             {
                 response.Erros.Add("Aluno não encontrado");

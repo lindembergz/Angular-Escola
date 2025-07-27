@@ -203,6 +203,7 @@ public class RepositorioAlunoMySql : IRepositorioAluno
     {
         var entity = await _alunos
             .Include(a => a.Matriculas)
+            .Include(r=> r.Responsaveis)
             .FirstOrDefaultAsync(a => a.Id == id);
         
         return entity != null ? AlunoMapper.ToDomain(entity) : null;
@@ -324,7 +325,9 @@ public class RepositorioAlunoMySql : IRepositorioAluno
         bool? ativo = null,
         bool? possuiMatriculaAtiva = null)
     {
-        var query = _alunos.AsQueryable();
+        var query = _alunos
+            .Include(a => a.Responsaveis) // Always include responsaveis for correct count
+            .AsQueryable();
 
         if (!string.IsNullOrEmpty(nome))
             query = query.Where(a => EF.Functions.Like(a.Nome, $"%{nome}%"));
@@ -385,6 +388,8 @@ public class RepositorioAlunoMySql : IRepositorioAluno
         var total = await query.CountAsync();
 
         var entities = await query
+            .Include(a => a.Responsaveis) // Include responsaveis to fix count issue
+            .Include(a => a.Matriculas)   // Include matriculas for active enrollment check
             .OrderBy(a => a.Nome)
             .Skip((pagina - 1) * tamanhoPagina)
             .Take(tamanhoPagina)

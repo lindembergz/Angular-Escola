@@ -76,6 +76,9 @@ public static class AlunoMapper
         SetPrivateProperty(aluno, "CreatedAt", entity.CreatedAt);
         SetPrivateProperty(aluno, "UpdatedAt", entity.UpdatedAt!);
 
+        // Limpar responsáveis existentes (criados pelo construtor)
+        aluno.LimparResponsaveis();
+
         // Adicionar responsáveis
         foreach (var responsavelEntity in entity.Responsaveis)
         {

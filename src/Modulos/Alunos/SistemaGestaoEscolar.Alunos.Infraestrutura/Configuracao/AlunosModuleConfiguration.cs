@@ -1,6 +1,7 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaGestaoEscolar.Alunos.Aplicacao.Commands;
+using SistemaGestaoEscolar.Alunos.Aplicacao.DTOs;
 using SistemaGestaoEscolar.Alunos.Dominio.Repositorios;
 using SistemaGestaoEscolar.Alunos.Dominio.Servicos;
 using SistemaGestaoEscolar.Alunos.Infraestrutura.Repositorios;
@@ -41,6 +42,7 @@ public static class AlunosModuleConfiguration
         services.AddScoped<IValidator<AtualizarAlunoCommand>, AtualizarAlunoCommandValidator>();
         services.AddScoped<IValidator<MatricularAlunoCommand>, MatricularAlunoCommandValidator>();
         services.AddScoped<IValidator<TransferirAlunoCommand>, TransferirAlunoCommandValidator>();
+        services.AddScoped<IValidator<MatricularAlunoRequest>, MatricularAlunoRequestValidator>();
 
         return services;
     }
