@@ -14,18 +14,85 @@ public class ReadModelRepositoryAcademico
     }
 
     // Turma Read Models
+    public async Task<(IEnumerable<TurmaResumoReadDto> turmas, int totalItems)> ObterTurmasComFiltrosAsync(
+        Guid? escolaId = null,
+        int? anoLetivo = null,
+        string? serie = null,
+        string? turno = null,
+        bool? ativa = null,
+        int page = 1,
+        int pageSize = 10)
+    {
+        var query = _context.Set<TurmaEntity>().AsQueryable();
+
+        // Aplicar filtros
+        if (escolaId.HasValue)
+            query = query.Where(t => t.EscolaId == escolaId.Value);
+
+        if (anoLetivo.HasValue)
+            query = query.Where(t => t.AnoLetivo == anoLetivo.Value);
+
+        if (!string.IsNullOrEmpty(serie))
+        {
+            // Filtrar por série - precisa converter a string de volta para os valores do enum
+            query = query.Where(t => ObterDescricaoSerie(t.TipoSerie, t.AnoSerie).Contains(serie));
+        }
+
+        if (!string.IsNullOrEmpty(turno))
+        {
+            // Filtrar por turno
+            var tipoTurno = turno.ToLower() switch
+            {
+                "matutino" => 1,
+                "vespertino" => 2,
+                "noturno" => 3,
+                "integral" => 4,
+                _ => -1
+            };
+            if (tipoTurno > 0)
+                query = query.Where(t => t.TipoTurno == tipoTurno);
+        }
+
+        if (ativa.HasValue)
+            query = query.Where(t => t.Ativa == ativa.Value);
+
+        var totalItems = await query.CountAsync();
+
+        var turmas = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Select(t => new TurmaResumoReadDto
+            {
+                Id = t.Id.ToString(),
+                Nome = t.Nome,
+                Serie = ObterDescricaoSerie(t.TipoSerie, t.AnoSerie),
+                Turno = ObterDescricaoTurno(t.TipoTurno),
+                AnoLetivo = t.AnoLetivo,
+                CapacidadeMaxima = t.CapacidadeMaxima,
+                AlunosMatriculados = t.TurmaAlunos.Count(ta => ta.Ativa),
+                Ativa = t.Ativa
+            })
+            .OrderBy(t => t.Serie)
+            .ThenBy(t => t.Nome)
+            .ToListAsync();
+
+        return (turmas, totalItems);
+    }
+
     public async Task<IEnumerable<TurmaResumoReadDto>> ObterTurmasResumoAsync(Guid unidadeEscolarId)
     {
         return await _context.Set<TurmaEntity>()
             .Where(t => t.EscolaId == unidadeEscolarId && t.Ativa)
             .Select(t => new TurmaResumoReadDto
             {
-                Id = t.Id,
+                Id = t.Id.ToString(),
                 Nome = t.Nome,
-                Serie = t.AnoSerie, // Using int as per existing DTO
+                Serie = ObterDescricaoSerie(t.TipoSerie, t.AnoSerie),
                 Turno = ObterDescricaoTurno(t.TipoTurno),
+                AnoLetivo = t.AnoLetivo,
                 CapacidadeMaxima = t.CapacidadeMaxima,
-                AlunosMatriculados = t.TurmaAlunos.Count(ta => ta.Ativa)
+                AlunosMatriculados = t.TurmaAlunos.Count(ta => ta.Ativa),
+                Ativa = t.Ativa
             })
             .OrderBy(t => t.Serie)
             .ThenBy(t => t.Nome)

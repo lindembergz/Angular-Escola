@@ -19,6 +19,10 @@ export const ACADEMICO_ROUTES: Routes = [
     loadComponent: () => import('./pages/turma-detail/turma-detail.component').then(m => m.TurmaDetailComponent)
   },
   {
+    path: 'turmas/:id/editar',
+    loadComponent: () => import('./pages/turma-form/turma-form.component').then(m => m.TurmaFormComponent)
+  },
+  {
     path: 'disciplinas',
     loadComponent: () => import('./pages/disciplinas-list/disciplinas-list.component').then(m => m.DisciplinasListComponent)
   },

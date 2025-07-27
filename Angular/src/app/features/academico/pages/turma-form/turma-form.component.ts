@@ -160,9 +160,9 @@ import { Turma, CriarTurmaRequest, AtualizarTurmaRequest, OpcoesTurma } from '..
               </small>
             </div>
 
-            <div class="col-12 md:col-6" *ngIf="!isEditMode">
+            <div class="col-12 md:col-6">
               <label for="escolaId" class="block text-900 font-medium mb-2">
-                Escola <span class="text-red-500">*</span>
+                Escola <span class="text-red-500" *ngIf="!isEditMode">*</span>
               </label>
               <p-dropdown
                 id="escolaId"
@@ -174,7 +174,7 @@ import { Turma, CriarTurmaRequest, AtualizarTurmaRequest, OpcoesTurma } from '..
               </p-dropdown>
               <small 
                 class="p-error block mt-1" 
-                *ngIf="turmaForm.get('escolaId')?.invalid && turmaForm.get('escolaId')?.touched">
+                *ngIf="turmaForm.get('escolaId')?.invalid && turmaForm.get('escolaId')?.touched && !isEditMode">
                 Escola é obrigatória
               </small>
             </div>
@@ -241,7 +241,8 @@ export class TurmaFormComponent implements OnInit, OnDestroy {
   turnoOptions: any[] = [];
   anoLetivoOptions: any[] = [];
   escolaOptions: any[] = [
-    { label: 'Escola Principal', value: '1' } // Mock - em produção viria do backend
+    { label: 'Escola Principal', value: '00000000-0000-0000-0000-000000000000' },
+    { label: 'Escola Secundária', value: '00000000-0000-0000-0000-000000000001' }
   ];
 
   constructor(
@@ -270,7 +271,15 @@ export class TurmaFormComponent implements OnInit, OnDestroy {
     this.carregarOpcoes();
     
     if (this.isEditMode && this.turmaId) {
-      this.carregarTurma();
+      // Aguardar as opções serem carregadas antes de carregar a turma
+      this.opcoesTurma$
+        .pipe(
+          takeUntil(this.destroy$),
+          filter(opcoes => !!opcoes)
+        )
+        .subscribe(() => {
+          this.carregarTurma();
+        });
     }
   }
 
@@ -282,11 +291,13 @@ export class TurmaFormComponent implements OnInit, OnDestroy {
 
   private verificarModoEdicao(): void {
     this.turmaId = this.route.snapshot.paramMap.get('id');
-    this.isEditMode = !!this.turmaId;
+    this.isEditMode = !!this.turmaId && this.route.snapshot.url.some(segment => segment.path === 'editar');
     
-    if (!this.isEditMode) {
-      // Remove o campo escolaId das validações no modo de edição
-      this.turmaForm.removeControl('escolaId');
+    if (this.isEditMode) {
+      // No modo de edição, desabilitar o campo escola e remover validação obrigatória
+      this.turmaForm.get('escolaId')?.disable();
+      this.turmaForm.get('escolaId')?.clearValidators();
+      this.turmaForm.get('escolaId')?.updateValueAndValidity();
     }
   }
 
@@ -300,12 +311,15 @@ export class TurmaFormComponent implements OnInit, OnDestroy {
           this.serieOptions = opcoes.series.map(serie => ({ label: serie, value: serie }));
           this.turnoOptions = opcoes.turnos.map(turno => ({ label: turno, value: turno }));
           this.anoLetivoOptions = opcoes.anosLetivos.map(ano => ({ label: ano.toString(), value: ano }));
+          
+          console.log('Opções de série carregadas:', this.serieOptions);
         }
       });
   }
 
   private carregarTurma(): void {
     if (this.turmaId) {
+      console.log('Carregando turma com ID:', this.turmaId);
       this.store.dispatch(AcademicoActions.loadTurma({ id: this.turmaId }));
       
       this.selectedTurma$
@@ -315,13 +329,26 @@ export class TurmaFormComponent implements OnInit, OnDestroy {
         )
         .subscribe(turma => {
           if (turma) {
+            console.log('Turma carregada:', turma);
+            console.log('Opções disponíveis:', {
+              series: this.serieOptions,
+              turnos: this.turnoOptions,
+              escolas: this.escolaOptions
+            });
+            
+            // Mapear a série do backend para o formato do frontend
+            const serieValue = this.mapearSerieBackendParaFrontend(turma.serie);
+            
             this.turmaForm.patchValue({
               nome: turma.nome,
-              serie: turma.serie,
+              serie: serieValue,
               turno: turma.turno,
               anoLetivo: turma.anoLetivo,
-              capacidadeMaxima: turma.capacidadeMaxima
+              capacidadeMaxima: turma.capacidadeMaxima,
+              escolaId: turma.escolaId
             });
+            
+            console.log('Formulário após patchValue:', this.turmaForm.value);
           }
         });
     }
@@ -359,5 +386,25 @@ export class TurmaFormComponent implements OnInit, OnDestroy {
 
   voltar(): void {
     this.router.navigate(['/academico/turmas']);
+  }
+
+  private mapearSerieBackendParaFrontend(serieBackend: string): string {
+    // Mapear séries do formato backend para frontend
+    const mapeamento: { [key: string]: string } = {
+      '1º Ano Fundamental': '1º Ano',
+      '2º Ano Fundamental': '2º Ano',
+      '3º Ano Fundamental': '3º Ano',
+      '4º Ano Fundamental': '4º Ano',
+      '5º Ano Fundamental': '5º Ano',
+      '6º Ano Fundamental': '6º Ano',
+      '7º Ano Fundamental': '7º Ano',
+      '8º Ano Fundamental': '8º Ano',
+      '9º Ano Fundamental': '9º Ano',
+      '1º Ano Médio': '1º EM',
+      '2º Ano Médio': '2º EM',
+      '3º Ano Médio': '3º EM'
+    };
+
+    return mapeamento[serieBackend] || serieBackend;
   }
 }

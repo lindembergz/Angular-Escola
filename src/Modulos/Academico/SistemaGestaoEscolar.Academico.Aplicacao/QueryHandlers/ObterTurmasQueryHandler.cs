@@ -1,40 +1,44 @@
 
 using MediatR;
 using SistemaGestaoEscolar.Academico.Aplicacao.DTOs;
+using SistemaGestaoEscolar.Academico.Aplicacao.Interfaces;
 using SistemaGestaoEscolar.Academico.Aplicacao.Queries;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-// Usando um repositório de leitura fictício por enquanto
-// Em uma implementação real, isso viria da camada de Infraestrutura
-using SistemaGestaoEscolar.Academico.Dominio.Repositorios; 
-using SistemaGestaoEscolar.Shared.Domain.ValueObjects;
 
 namespace SistemaGestaoEscolar.Academico.Aplicacao.QueryHandlers
 {
-    public class ObterTurmasQueryHandler : IRequestHandler<ObterTurmasQuery, IEnumerable<TurmaResumoReadDto>>
+    public class ObterTurmasQueryHandler : IRequestHandler<ObterTurmasQuery, ObterTurmasResponse>
     {
-        private readonly IRepositorioTurma _repositorioTurma; // Simulação, idealmente seria um IReadRepository
+        private readonly ITurmaQueryService _turmaQueryService;
 
-        public ObterTurmasQueryHandler(IRepositorioTurma repositorioTurma)
+        public ObterTurmasQueryHandler(ITurmaQueryService turmaQueryService)
         {
-            _repositorioTurma = repositorioTurma;
+            _turmaQueryService = turmaQueryService;
         }
 
-        public async Task<IEnumerable<TurmaResumoReadDto>> Handle(ObterTurmasQuery request, CancellationToken cancellationToken)
+        public async Task<ObterTurmasResponse> Handle(ObterTurmasQuery request, CancellationToken cancellationToken)
         {
-            var turmas = await _repositorioTurma.ObterTodasPorUnidadeEscolarAsync(request.UnidadeEscolarId);
+            var (turmas, totalItems) = await _turmaQueryService.ObterTurmasComFiltrosAsync(
+                escolaId: request.EscolaId,
+                anoLetivo: request.AnoLetivo,
+                serie: request.Serie,
+                turno: request.Turno,
+                ativa: request.Ativa,
+                page: request.Page,
+                pageSize: request.PageSize
+            );
 
-            return turmas.Select(t => new TurmaResumoReadDto
+            var totalPages = (int)Math.Ceiling((double)totalItems / request.PageSize);
+
+            return new ObterTurmasResponse
             {
-                Id = t.Id,
-                Nome = t.Nome.Valor,
-                Serie = t.Serie.Ano,
-                Turno = t.Turno.Descricao,
-                AlunosMatriculados = t.AlunosMatriculados.Count,
-                CapacidadeMaxima = t.CapacidadeMaxima
-            });
+                Turmas = turmas,
+                TotalItems = totalItems,
+                Page = request.Page,
+                PageSize = request.PageSize,
+                TotalPages = totalPages
+            };
         }
+
+
     }
 }

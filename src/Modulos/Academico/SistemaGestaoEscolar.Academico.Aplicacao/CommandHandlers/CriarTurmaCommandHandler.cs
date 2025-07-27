@@ -29,11 +29,12 @@ namespace SistemaGestaoEscolar.Academico.Aplicacao.CommandHandlers
                 serie,
                 turno,
                 request.CapacidadeMaxima,
-                DateTime.Now.Year, // AnoLetivo
+                request.AnoLetivo,
                 request.UnidadeEscolarId
             );
 
             await _repositorioTurma.AdicionarAsync(turma);
+            await _repositorioTurma.SaveChangesAsync();
 
             return turma.Id;
         }

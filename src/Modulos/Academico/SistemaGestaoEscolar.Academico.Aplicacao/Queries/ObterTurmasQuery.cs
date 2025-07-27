@@ -1,12 +1,26 @@
 
 using MediatR;
 using SistemaGestaoEscolar.Academico.Aplicacao.DTOs;
-using System.Collections.Generic;
 
 namespace SistemaGestaoEscolar.Academico.Aplicacao.Queries
 {
-    public class ObterTurmasQuery : IRequest<IEnumerable<TurmaResumoReadDto>>
+    public class ObterTurmasQuery : IRequest<ObterTurmasResponse>
     {
-        public Guid UnidadeEscolarId { get; set; }
+        public Guid? EscolaId { get; set; }
+        public int Page { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
+        public int? AnoLetivo { get; set; }
+        public string? Serie { get; set; }
+        public string? Turno { get; set; }
+        public bool? Ativa { get; set; }
+    }
+
+    public class ObterTurmasResponse
+    {
+        public IEnumerable<TurmaResumoReadDto> Turmas { get; set; } = new List<TurmaResumoReadDto>();
+        public int TotalItems { get; set; }
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+        public int TotalPages { get; set; }
     }
 }

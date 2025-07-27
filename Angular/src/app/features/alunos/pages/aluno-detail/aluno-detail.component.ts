@@ -14,16 +14,10 @@ import { TableModule } from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TooltipModule } from 'primeng/tooltip';
 import { ChipModule } from 'primeng/chip';
-import { DialogModule } from 'primeng/dialog';
-import { DropdownModule } from 'primeng/dropdown';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { InputTextarea } from 'primeng/inputtextarea';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { AlunosFacade } from '../../../../store/alunos/alunos.facade';
-import { Aluno, MatricularAlunoRequest } from '../../models/aluno.model';
+import { Aluno } from '../../models/aluno.model';
 import { AlunoIdHelperComponent } from '../../components/aluno-id-helper/aluno-id-helper.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatricularAlunoModalComponent } from '../../components/matricular-aluno-modal/matricular-aluno-modal.component';
 
 @Component({
   selector: 'app-aluno-detail',
@@ -31,7 +25,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule,
     CardModule,
     ButtonModule,
     TagModule,
@@ -41,11 +34,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     ProgressSpinnerModule,
     TooltipModule,
     ChipModule,
-    DialogModule,
-    DropdownModule,
-    InputNumberModule,
-    InputTextarea,
-    AlunoIdHelperComponent
+    AlunoIdHelperComponent,
+    MatricularAlunoModalComponent
   ],
   template: `
     <div class="aluno-detail-container">
@@ -473,116 +463,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
       </div>
 
       <!-- Matriculation Modal -->
-      <p-dialog 
-        header="Matricular Aluno" 
-        [(visible)]="showMatricularModal" 
-        [style]="{width: '500px'}" 
-        [modal]="true"
-        [draggable]="false" 
-        [resizable]="false"
-        (onHide)="onMatricularCancel()">
-        
-        <div class="p-fluid">
-          <div class="mb-4">
-            <h4 class="text-primary mb-2">Matricular: {{ aluno?.nome }}</h4>
-            <p class="text-muted">Preencha os dados abaixo para realizar a matrícula do aluno.</p>
-          </div>
-          
-          <form [formGroup]="matriculaForm" (ngSubmit)="onMatricularSubmit()">
-            <div class="field mb-3">
-              <label for="turmaId" class="font-semibold">Turma *</label>
-              <p-dropdown 
-                id="turmaId" 
-                formControlName="turmaId"
-                [options]="turmasMock"
-                optionLabel="nome"
-                optionValue="id"
-                placeholder="Selecione uma turma"
-                [filter]="true"
-                filterBy="nome"
-                [showClear]="true"
-                styleClass="w-full">
-                <ng-template pTemplate="selectedItem" let-selectedOption>
-                  <div class="flex align-items-center gap-2" *ngIf="selectedOption">
-                    <i class="pi pi-users text-primary"></i>
-                    <span>{{ selectedOption.nome }}</span>
-                  </div>
-                </ng-template>
-                <ng-template pTemplate="item" let-turma>
-                  <div class="flex align-items-center gap-2">
-                    <i class="pi pi-users text-primary"></i>
-                    <div>
-                      <div class="font-semibold">{{ turma.nome }}</div>
-                      <div class="text-sm text-muted">{{ turma.serie }} - {{ turma.anoLetivo }}</div>
-                    </div>
-                  </div>
-                </ng-template>
-              </p-dropdown>
-              <small 
-                *ngIf="matriculaForm.get('turmaId')?.invalid && matriculaForm.get('turmaId')?.touched" 
-                class="p-error block mt-1">
-                <i class="pi pi-exclamation-triangle mr-1"></i>
-                Turma é obrigatória
-              </small>
-            </div>
-
-            <div class="field mb-3">
-              <label for="anoLetivo" class="font-semibold">Ano Letivo *</label>
-              <p-inputNumber 
-                id="anoLetivo" 
-                formControlName="anoLetivo"
-                [min]="2020"
-                [max]="2050"
-                [useGrouping]="false"
-                styleClass="w-full">
-              </p-inputNumber>
-              <small 
-                *ngIf="matriculaForm.get('anoLetivo')?.invalid && matriculaForm.get('anoLetivo')?.touched" 
-                class="p-error block mt-1">
-                <i class="pi pi-exclamation-triangle mr-1"></i>
-                <span *ngIf="matriculaForm.get('anoLetivo')?.errors?.['required']">Ano letivo é obrigatório</span>
-                <span *ngIf="matriculaForm.get('anoLetivo')?.errors?.['min'] || matriculaForm.get('anoLetivo')?.errors?.['max']">
-                  Ano letivo deve estar entre 2020 e 2050
-                </span>
-              </small>
-            </div>
-
-            <div class="field mb-4">
-              <label for="observacoes" class="font-semibold">Observações</label>
-              <textarea 
-                pInputTextarea 
-                id="observacoes" 
-                formControlName="observacoes"
-                rows="3"
-                placeholder="Observações sobre a matrícula (opcional)"
-                styleClass="w-full">
-              </textarea>
-              <small class="text-muted">Campo opcional para observações adicionais</small>
-            </div>
-          </form>
-        </div>
-
-        <ng-template pTemplate="footer">
-          <div class="flex justify-content-end gap-2">
-            <p-button 
-              label="Cancelar" 
-              icon="pi pi-times" 
-              [text]="true"
-              severity="secondary"
-              (onClick)="onMatricularCancel()"
-              [disabled]="loading$ | async">
-            </p-button>
-            <p-button 
-              label="Matricular" 
-              icon="pi pi-check" 
-              severity="success"
-              [disabled]="!matriculaForm.valid || (loading$ | async)"
-              [loading]="loading$ | async"
-              (onClick)="onMatricularSubmit()">
-            </p-button>
-          </div>
-        </ng-template>
-      </p-dialog>
+      <app-matricular-aluno-modal
+        [alunoId]="alunoId!"
+        [alunoNome]="aluno?.nome || ''"
+        [visible]="showMatricularModal"
+        (close)="onMatricularCancel()">
+      </app-matricular-aluno-modal>
     </div>
   `,
   styles: [`
@@ -629,13 +515,6 @@ export class AlunoDetailComponent implements OnInit, OnDestroy {
 
   // Matriculation modal
   showMatricularModal = false;
-  matriculaForm!: FormGroup;
-  turmasMock = [
-    { id: 'turma-1', nome: '1º Ano A', serie: '1º Ano', anoLetivo: 2024 },
-    { id: 'turma-2', nome: '1º Ano B', serie: '1º Ano', anoLetivo: 2024 },
-    { id: 'turma-3', nome: '2º Ano A', serie: '2º Ano', anoLetivo: 2024 },
-    { id: 'turma-4', nome: '3º Ano A', serie: '3º Ano', anoLetivo: 2024 }
-  ];
 
   // Observables
   loading$;
@@ -643,12 +522,10 @@ export class AlunoDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private alunosFacade: AlunosFacade,
-    private fb: FormBuilder
+    private alunosFacade: AlunosFacade
   ) {
     this.loading$ = this.alunosFacade.loading$;
     this.error$ = this.alunosFacade.error$;
-    this.initializeMatriculaForm();
   }
 
   ngOnInit(): void {
@@ -678,39 +555,13 @@ export class AlunoDetailComponent implements OnInit, OnDestroy {
     return guidRegex.test(id);
   }
 
-  private initializeMatriculaForm(): void {
-    this.matriculaForm = this.fb.group({
-      turmaId: ['', Validators.required],
-      anoLetivo: [new Date().getFullYear(), [Validators.required, Validators.min(2020), Validators.max(2050)]],
-      observacoes: ['']
-    });
-  }
-
   // Matriculation methods
   matricularAluno(): void {
     this.showMatricularModal = true;
   }
 
-  onMatricularSubmit(): void {
-    if (this.matriculaForm.valid && this.alunoId) {
-      const request: MatricularAlunoRequest = {
-        turmaId: this.matriculaForm.value.turmaId,
-        anoLetivo: this.matriculaForm.value.anoLetivo,
-        observacoes: this.matriculaForm.value.observacoes || undefined
-      };
-
-      this.alunosFacade.matricularAluno(this.alunoId, request);
-      this.onMatricularCancel();
-    }
-  }
-
   onMatricularCancel(): void {
     this.showMatricularModal = false;
-    this.matriculaForm.reset({
-      turmaId: '',
-      anoLetivo: new Date().getFullYear(),
-      observacoes: ''
-    });
   }
 
   retry(): void {

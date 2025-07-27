@@ -7,9 +7,9 @@ import { Subject, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { HeaderComponent } from './layout/components/header/header.component';
-import { AuthService } from './features/auth/services/auth.service';
 import { AuthState } from './store/auth/auth.reducer';
 import * as AuthActions from './store/auth/auth.actions';
+import * as AuthSelectors from './store/auth/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, OnDestroy {
   
   constructor(
     private router: Router,
-    private authService: AuthService,
     private store: Store<AuthState>
   ) {}
 
@@ -35,11 +34,19 @@ export class AppComponent implements OnInit, OnDestroy {
     // Initialize auto-login on app start
     this.store.dispatch(AuthActions.autoLogin());
 
-    // Listen to authentication state changes
-    this.authService.isAuthenticated$
+    // Listen to authentication state from store
+    this.store.select(AuthSelectors.selectIsAuthenticated)
       .pipe(takeUntil(this.destroy$))
       .subscribe(isAuthenticated => {
         this.isAuthenticated = isAuthenticated;
+        // Force change detection when authentication state changes
+        if (!isAuthenticated) {
+          // Ensure we're on login page when not authenticated
+          const currentUrl = this.router.url;
+          if (!currentUrl.startsWith('/auth')) {
+            this.router.navigate(['/auth/login']);
+          }
+        }
       });
 
     // Listen to router events for loading states

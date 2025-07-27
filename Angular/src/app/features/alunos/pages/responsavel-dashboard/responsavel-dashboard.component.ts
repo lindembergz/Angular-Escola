@@ -20,6 +20,7 @@ import { DividerModule } from 'primeng/divider';
 import { AlunosFacade } from '../../../../store/alunos/alunos.facade';
 import { AuthFacade } from '../../../../store/auth/auth.facade';
 import { AlunoResumo } from '../../models/aluno.model';
+import { AlunosService } from '../../services/alunos.service';
 
 interface NotificacaoResponsavel {
   id: string;
@@ -383,7 +384,8 @@ export class ResponsavelDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private alunosFacade: AlunosFacade,
-    private authFacade: AuthFacade
+    private authFacade: AuthFacade,
+    private alunosService: AlunosService
   ) {
     this.loading$ = this.alunosFacade.loading$;
     this.currentUser$ = this.authFacade.currentUser$;
@@ -391,7 +393,6 @@ export class ResponsavelDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadData();
-    this.loadMockData(); // Remove this when real API is available
   }
 
   ngOnDestroy(): void {
@@ -412,116 +413,22 @@ export class ResponsavelDashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  private loadMeusFilhos(_responsavelId: string): void {
-    // This should call: this.alunosService.obterAlunosPorResponsavel(responsavelId)
-    // For now, using mock data
+  private loadMeusFilhos(responsavelId: string): void {
+    // Call the service to get children by responsible person ID
+    this.alunosService.obterAlunosPorResponsavel(responsavelId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (alunos: AlunoResumo[]) => {
+          this.meusFilhos = alunos || [];
+        },
+        error: (error: any) => {
+          console.error('Erro ao carregar filhos:', error);
+          this.meusFilhos = [];
+        }
+      });
   }
 
-  private loadMockData(): void {
-    // Mock data for demonstration
-    this.meusFilhos = [
-      {
-        id: '1',
-        nome: 'Ana Silva Santos',
-        cpf: '123.456.789-01',
-        dataNascimento: new Date('2010-05-15'),
-        idade: 13,
-        generoDescricao: 'Feminino',
-        possuiDeficiencia: false,
-        telefone: '(11) 99999-9999',
-        email: 'ana@email.com',
-        cidade: 'São Paulo',
-        estado: 'SP',
-        ativo: true,
-        possuiMatriculaAtiva: true,
-        nomeTurmaAtual: '8º Ano A',
-        quantidadeResponsaveis: 2,
-        dataCadastro: new Date('2023-01-15')
-      },
-      {
-        id: '2',
-        nome: 'João Silva Santos',
-        cpf: '123.456.789-02',
-        dataNascimento: new Date('2012-08-20'),
-        idade: 11,
-        generoDescricao: 'Masculino',
-        possuiDeficiencia: false,
-        telefone: '(11) 99999-9999',
-        email: 'joao@email.com',
-        cidade: 'São Paulo',
-        estado: 'SP',
-        ativo: true,
-        possuiMatriculaAtiva: true,
-        nomeTurmaAtual: '6º Ano B',
-        quantidadeResponsaveis: 2,
-        dataCadastro: new Date('2023-01-15')
-      }
-    ];
 
-    this.notificacoes = [
-      {
-        id: '1',
-        tipo: 'academica',
-        titulo: 'Notas do Bimestre Disponíveis',
-        descricao: 'As notas do 2º bimestre já estão disponíveis para consulta.',
-        data: new Date(),
-        lida: false,
-        prioridade: 'media',
-        alunoId: '1',
-        nomeAluno: 'Ana Silva Santos'
-      },
-      {
-        id: '2',
-        tipo: 'financeira',
-        titulo: 'Mensalidade Vencendo',
-        descricao: 'A mensalidade de março vence em 3 dias.',
-        data: new Date(Date.now() - 86400000),
-        lida: false,
-        prioridade: 'alta',
-        alunoId: '2',
-        nomeAluno: 'João Silva Santos'
-      },
-      {
-        id: '3',
-        tipo: 'evento',
-        titulo: 'Reunião de Pais',
-        descricao: 'Reunião de pais e mestres agendada para próxima semana.',
-        data: new Date(Date.now() - 172800000),
-        lida: true,
-        prioridade: 'media',
-        alunoId: '1',
-        nomeAluno: 'Ana Silva Santos'
-      }
-    ];
-
-    this.eventosProximos = [
-      {
-        id: '1',
-        titulo: 'Reunião de Pais - 8º Ano',
-        descricao: 'Reunião para discussão do desempenho acadêmico',
-        data: new Date(Date.now() + 604800000), // +7 days
-        tipo: 'reuniao',
-        turmaId: '1',
-        nomeTurma: '8º Ano A'
-      },
-      {
-        id: '2',
-        titulo: 'Prova de Matemática',
-        descricao: 'Avaliação bimestral de matemática',
-        data: new Date(Date.now() + 1209600000), // +14 days
-        tipo: 'prova',
-        turmaId: '2',
-        nomeTurma: '6º Ano B'
-      },
-      {
-        id: '3',
-        titulo: 'Festa Junina',
-        descricao: 'Festa tradicional da escola com apresentações',
-        data: new Date(Date.now() + 2592000000), // +30 days
-        tipo: 'evento'
-      }
-    ];
-  }
 
   get notificacoesNaoLidas(): NotificacaoResponsavel[] {
     return this.notificacoes.filter(n => !n.lida);

@@ -1,39 +1,88 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+// PrimeNG Imports
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextarea } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+
 import { AlunosFacade } from '../../../../store/alunos/alunos.facade';
 import { MatricularAlunoRequest } from '../../models/aluno.model';
-
-// Mock interface for Turma - this should come from the Turmas module when implemented
-interface Turma {
-  id: string;
-  nome: string;
-  serie: string;
-  anoLetivo: number;
-}
+import { AppState } from '../../../../store/app.state';
+import * as AcademicoActions from '../../../../store/academico/academico.actions';
+import * as AcademicoSelectors from '../../../../store/academico/academico.selectors';
+import { Turma } from '../../../academico/models/turma.model';
 
 @Component({
   selector: 'app-matricular-aluno-modal',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    DialogModule,
+    DropdownModule,
+    InputNumberModule,
+    InputTextarea,
+    ButtonModule
+  ],
   templateUrl: './matricular-aluno-modal.component.html',
   styleUrls: ['./matricular-aluno-modal.component.scss']
 })
-export class MatricularAlunoModalComponent implements OnInit {
+export class MatricularAlunoModalComponent implements OnInit, OnDestroy, OnChanges {
   @Input() alunoId!: string;
   @Input() alunoNome!: string;
   @Input() visible: boolean = false;
   @Output() close = new EventEmitter<void>();
 
   matriculaForm!: FormGroup;
-  turmas: Turma[] = []; // This should come from TurmasFacade when implemented
+  turmas$: Observable<Turma[]>;
+  loading$: Observable<boolean>;
   loading = false;
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
-    private alunosFacade: AlunosFacade
-  ) {}
+    private alunosFacade: AlunosFacade,
+    private store: Store<AppState>
+  ) {
+    // Usar apenas turmas ativas para matrícula
+    this.turmas$ = this.store.select(AcademicoSelectors.selectTurmasAtivas);
+    this.loading$ = this.store.select(AcademicoSelectors.selectLoading);
+    
+    // Debug: verificar o estado completo do academico
+    this.store.select(AcademicoSelectors.selectAcademicoState).subscribe(state => {
+      console.log('🏛️ Estado completo do academico:', state);
+    });
+  }
 
   ngOnInit(): void {
     this.initializeForm();
-    this.loadTurmas();
+    
+    // Debug: verificar se as turmas estão chegando
+    this.turmas$.pipe(takeUntil(this.destroy$)).subscribe(turmas => {
+      console.log('🏫 Turmas recebidas no modal:', turmas);
+      console.log('🏫 Quantidade de turmas:', turmas?.length || 0);
+    });
+  }
+
+  ngOnChanges(): void {
+    // Carregar turmas quando o modal ficar visível
+    if (this.visible) {
+      console.log('👁️ Modal ficou visível, carregando turmas...');
+      this.loadTurmas();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   private initializeForm(): void {
@@ -45,19 +94,18 @@ export class MatricularAlunoModalComponent implements OnInit {
   }
 
   private loadTurmas(): void {
-    // Mock data - this should come from TurmasFacade when implemented
-    this.turmas = [
-      { id: '1', nome: '1º Ano A', serie: '1º Ano', anoLetivo: 2024 },
-      { id: '2', nome: '1º Ano B', serie: '1º Ano', anoLetivo: 2024 },
-      { id: '3', nome: '2º Ano A', serie: '2º Ano', anoLetivo: 2024 },
-      { id: '4', nome: '3º Ano A', serie: '3º Ano', anoLetivo: 2024 }
-    ];
+    // Load active turmas from the store
+    console.log('🔄 Carregando turmas ativas para o ano:', new Date().getFullYear());
+    this.store.dispatch(AcademicoActions.loadTurmas({
+      ativa: true,
+      anoLetivo: new Date().getFullYear()
+    }));
   }
 
   onSubmit(): void {
     if (this.matriculaForm.valid && !this.loading) {
       this.loading = true;
-      
+
       const request: MatricularAlunoRequest = {
         turmaId: this.matriculaForm.value.turmaId,
         anoLetivo: this.matriculaForm.value.anoLetivo,
@@ -65,14 +113,16 @@ export class MatricularAlunoModalComponent implements OnInit {
       };
 
       this.alunosFacade.matricularAluno(this.alunoId, request);
-      
+
       // Subscribe to loading state to close modal when operation completes
-      this.alunosFacade.loading$.subscribe(loading => {
-        if (!loading && this.loading) {
-          this.loading = false;
-          this.onCancel();
-        }
-      });
+      this.alunosFacade.loading$
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(loading => {
+          if (!loading && this.loading) {
+            this.loading = false;
+            this.onCancel();
+          }
+        });
     }
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
@@ -12,15 +12,14 @@ import * as AcademicoActions from './academico.actions';
 
 @Injectable()
 export class AcademicoEffects {
+  private actions$ = inject(Actions);
+  private turmaService = inject(TurmaService);
+  private disciplinaService = inject(DisciplinaService);
+  private horarioService = inject(HorarioService);
+  private router = inject(Router);
+  private messageService = inject(MessageService);
 
-  constructor(
-    private actions$: Actions,
-    private turmaService: TurmaService,
-    private disciplinaService: DisciplinaService,
-    private horarioService: HorarioService,
-    private router: Router,
-    private messageService: MessageService
-  ) {}
+  constructor() {}
 
   // Turmas Effects
   loadTurmas$ = createEffect(() =>

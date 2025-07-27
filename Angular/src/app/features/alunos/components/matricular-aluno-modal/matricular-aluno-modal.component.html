@@ -1,32 +1,24 @@
-<p-dialog 
-  header="Matricular Aluno" 
-  [(visible)]="visible" 
-  [style]="{width: '500px'}" 
-  [modal]="true"
-  [draggable]="false" 
-  [resizable]="false"
-  (onHide)="onCancel()">
-  
+<p-dialog header="Matricular Aluno teste" [(visible)]="visible" [style]="{width: '500px'}" [modal]="true"
+  [draggable]="false" [resizable]="false" (onHide)="onCancel()">
+
   <div class="p-fluid">
     <div class="mb-4">
       <h4 class="text-primary mb-2">Matricular: {{ alunoNome }}</h4>
       <p class="text-muted">Preencha os dados abaixo para realizar a matrícula do aluno.</p>
     </div>
-    
+
     <form [formGroup]="matriculaForm" (ngSubmit)="onSubmit()">
+      <!-- Debug: mostrar quantidade de turmas -->
+      <div class="mb-2 text-sm text-muted">
+        Debug: {{ (turmas$ | async)?.length || 0 }} turmas carregadas
+      </div>
+
       <div class="field mb-3">
         <label for="turmaId" class="font-semibold">Turma *</label>
-        <p-dropdown 
-          id="turmaId" 
-          formControlName="turmaId"
-          [options]="turmas"
-          optionLabel="nome"
-          optionValue="id"
-          placeholder="Selecione uma turma"
-          [filter]="true"
-          filterBy="nome"
-          [showClear]="true"
-          styleClass="w-full">
+
+        <p-dropdown id="turmaId" formControlName="turmaId" [options]="(turmas$ | async) || []" optionLabel="nome"
+          optionValue="id" placeholder="Selecione uma turma" [filter]="true" filterBy="nome" [showClear]="true"
+          [loading]="loading$ | async" styleClass="w-full">
           <ng-template pTemplate="selectedItem" let-selectedOption>
             <div class="flex align-items-center gap-2" *ngIf="selectedOption">
               <i class="pi pi-users text-primary"></i>
@@ -43,9 +35,7 @@
             </div>
           </ng-template>
         </p-dropdown>
-        <small 
-          *ngIf="turmaIdControl?.invalid && turmaIdControl?.touched" 
-          class="p-error block mt-1">
+        <small *ngIf="turmaIdControl?.invalid && turmaIdControl?.touched" class="p-error block mt-1">
           <i class="pi pi-exclamation-triangle mr-1"></i>
           Turma é obrigatória
         </small>
@@ -53,17 +43,10 @@
 
       <div class="field mb-3">
         <label for="anoLetivo" class="font-semibold">Ano Letivo *</label>
-        <p-inputNumber 
-          id="anoLetivo" 
-          formControlName="anoLetivo"
-          [min]="2020"
-          [max]="2050"
-          [useGrouping]="false"
+        <p-inputNumber id="anoLetivo" formControlName="anoLetivo" [min]="2020" [max]="2050" [useGrouping]="false"
           styleClass="w-full">
         </p-inputNumber>
-        <small 
-          *ngIf="anoLetivoControl?.invalid && anoLetivoControl?.touched" 
-          class="p-error block mt-1">
+        <small *ngIf="anoLetivoControl?.invalid && anoLetivoControl?.touched" class="p-error block mt-1">
           <i class="pi pi-exclamation-triangle mr-1"></i>
           <span *ngIf="anoLetivoControl?.errors?.['required']">Ano letivo é obrigatório</span>
           <span *ngIf="anoLetivoControl?.errors?.['min'] || anoLetivoControl?.errors?.['max']">
@@ -74,13 +57,8 @@
 
       <div class="field mb-4">
         <label for="observacoes" class="font-semibold">Observações</label>
-        <textarea 
-          pInputTextarea 
-          id="observacoes" 
-          formControlName="observacoes"
-          rows="3"
-          placeholder="Observações sobre a matrícula (opcional)"
-          styleClass="w-full">
+        <textarea pInputTextarea id="observacoes" formControlName="observacoes" rows="3"
+          placeholder="Observações sobre a matrícula (opcional)" styleClass="w-full">
         </textarea>
         <small class="text-muted">Campo opcional para observações adicionais</small>
       </div>
@@ -89,21 +67,11 @@
 
   <ng-template pTemplate="footer">
     <div class="flex justify-content-end gap-2">
-      <p-button 
-        label="Cancelar" 
-        icon="pi pi-times" 
-        [text]="true"
-        severity="secondary"
-        (onClick)="onCancel()"
+      <p-button label="Cancelar" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="onCancel()"
         [disabled]="loading">
       </p-button>
-      <p-button 
-        label="Matricular" 
-        icon="pi pi-check" 
-        severity="success"
-        [disabled]="!isFormValid || loading"
-        [loading]="loading"
-        (onClick)="onSubmit()">
+      <p-button label="Matricular" icon="pi pi-check" severity="success" [disabled]="!isFormValid || loading"
+        [loading]="loading" (onClick)="onSubmit()">
       </p-button>
     </div>
   </ng-template>

@@ -78,7 +78,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       tap(() => this.clearAuthData()),
       catchError(() => {
-        // Mesmo se a API falhar, limpar dados locais
+        // Clear local data even if API fails
         this.clearAuthData();
         return throwError('Logout failed');
       })
@@ -200,7 +200,7 @@ export class AuthService {
   /**
    * Define os dados de autenticação após login/refresh
    */
-  private setAuthData(authResponse: AuthResponse): void {
+  setAuthData(authResponse: AuthResponse): void {
     this.storageService.setItem('auth_token', authResponse.token);
     this.storageService.setItem('refresh_token', authResponse.refreshToken);
     this.storageService.setItem('current_user', JSON.stringify(authResponse.usuario));
@@ -214,7 +214,7 @@ export class AuthService {
   /**
    * Limpa todos os dados de autenticação
    */
-  private clearAuthData(): void {
+  clearAuthData(): void {
     this.storageService.removeItem('auth_token');
     this.storageService.removeItem('refresh_token');
     this.storageService.removeItem('current_user');

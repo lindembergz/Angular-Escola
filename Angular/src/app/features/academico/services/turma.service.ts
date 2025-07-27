@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import {
   Turma,
@@ -28,17 +29,62 @@ export class TurmaService {
     if (request.page) params = params.set('page', request.page.toString());
     if (request.pageSize) params = params.set('pageSize', request.pageSize.toString());
     if (request.escolaId) params = params.set('escolaId', request.escolaId);
-    if (request.anoLetivo) params = params.set('anoLetivo', request.anoLetivo.toString());
+    if (request.anoLetivo !== null && request.anoLetivo !== undefined) params = params.set('anoLetivo', request.anoLetivo.toString());
     if (request.serie) params = params.set('serie', request.serie);
     if (request.turno) params = params.set('turno', request.turno);
-    if (request.ativa !== undefined) params = params.set('ativa', request.ativa.toString());
+    if (request.ativa !== undefined && request.ativa !== null) params = params.set('ativa', request.ativa.toString());
 
-  alert("this.http.get");
-    return this.http.get<ObterTurmasResponse>(this.apiUrl, { params });
+    console.log('🔗 Fazendo requisição para:', this.apiUrl);
+    console.log('📋 Parâmetros:', params.toString());
+
+    return this.http.get<any>(this.apiUrl, { params }).pipe(
+      map(response => {
+        console.log('📥 Resposta da API de turmas:', response);
+        
+        // Se a resposta já está no formato esperado
+        if (response.turmas && Array.isArray(response.turmas)) {
+          return response as ObterTurmasResponse;
+        }
+        
+        // Se a resposta é um array direto
+        if (Array.isArray(response)) {
+          return {
+            turmas: response,
+            totalCount: response.length,
+            page: request.page || 1,
+            pageSize: request.pageSize || 10,
+            totalPages: Math.ceil(response.length / (request.pageSize || 10))
+          } as ObterTurmasResponse;
+        }
+        
+        // Se a resposta é um objeto único, transformar em array
+        return {
+          turmas: [response],
+          totalCount: 1,
+          page: 1,
+          pageSize: 1,
+          totalPages: 1
+        } as ObterTurmasResponse;
+      })
+    );
   }
 
   obterTurmaPorId(id: string): Observable<Turma> {
-    return this.http.get<Turma>(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+      map(response => ({
+        id: response.id,
+        nome: response.nome,
+        serie: response.serie,
+        turno: response.turno,
+        capacidadeMaxima: response.capacidadeMaxima,
+        anoLetivo: response.anoLetivo,
+        escolaId: response.escolaId,
+        ativa: response.ativa,
+        alunosMatriculados: response.alunosMatriculados,
+        vagasDisponiveis: response.vagasDisponiveis,
+        dataCriacao: new Date(response.dataCriacao)
+      } as Turma))
+    );
   }
 
   criarTurma(request: CriarTurmaRequest): Observable<string> {

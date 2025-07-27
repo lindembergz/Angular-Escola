@@ -41,6 +41,10 @@ export class HeaderComponent {
     this.toggleSidebar.emit();
   }
 
+  navigateToHome(): void {
+    this.router.navigate(['/']);
+  }
+
   private setupUserMenu(): void {
     this.userMenuItems = [
       {

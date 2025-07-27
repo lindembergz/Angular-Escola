@@ -14,6 +14,7 @@ namespace SistemaGestaoEscolar.Academico.Aplicacao.Commands
         public TimeOnly HoraInicioTurno { get; set; }
         public TimeOnly HoraFimTurno { get; set; }
         public int CapacidadeMaxima { get; set; }
+        public int AnoLetivo { get; set; }
         public Guid UnidadeEscolarId { get; set; }
     }
 }

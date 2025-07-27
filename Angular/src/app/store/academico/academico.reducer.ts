@@ -132,6 +132,12 @@ export const academicoReducer = createReducer(
     error
   })),
   
+  on(AcademicoActions.loadTurma, (state) => ({
+    ...state,
+    loading: true,
+    error: null
+  })),
+  
   on(AcademicoActions.loadTurmaSuccess, (state, { turma }) => ({
     ...state,
     selectedTurma: turma,

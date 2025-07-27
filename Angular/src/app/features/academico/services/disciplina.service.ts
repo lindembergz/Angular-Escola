@@ -9,7 +9,6 @@ import {
   ObterDisciplinasRequest,
   ObterDisciplinasResponse,
   DisciplinaEstatisticas,
-  PreRequisito,
   OpcoesDisciplina
 } from '../models/disciplina.model';
 

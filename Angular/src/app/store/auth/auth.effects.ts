@@ -33,6 +33,8 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
         tap(({ authResponse }) => {
+          // Ensure AuthService is updated with auth data
+          this.authService.setAuthData(authResponse);
           this.notificationService.success(`Bem-vindo, ${authResponse.usuario.nomeCompleto}!`);
           this.router.navigate(['/dashboard']);
         })
@@ -57,7 +59,11 @@ export class AuthEffects {
       exhaustMap(() =>
         this.authService.logout().pipe(
           map(() => AuthActions.logoutSuccess()),
-          catchError(() => of(AuthActions.logoutSuccess())) // Even if API fails, logout locally
+          catchError(() => {
+            // Even if API fails, logout locally
+            this.authService.clearAuthData();
+            return of(AuthActions.logoutSuccess());
+          })
         )
       )
     )
@@ -68,11 +74,11 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.logoutSuccess),
         tap(() => {
+          // Clear auth data first to ensure immediate state update
+          this.authService.clearAuthData();
           this.notificationService.success('Logout realizado com sucesso');
-          // Small delay to ensure state is updated before navigation
-          setTimeout(() => {
-            this.router.navigate(['/auth/login']);
-          }, 100);
+          // Navigate to login after clearing data
+          this.router.navigate(['/auth/login']);
         })
       ),
     { dispatch: false }
